@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import {
+  Box,
+  Flex,
   FlexProps,
   ResponsiveValue,
   useColorModeValue,
@@ -12,6 +14,7 @@ import { Container } from './components/Container';
 import { Logo } from './components/Logo';
 import { MenuLinks } from './components/MenuLinks';
 import { MenuToggle } from './components/MenuToggle';
+import { ThemeSwitcher } from 'components/ThemeSwitcher';
 
 type NavBarProps = {
   bgSelected?: ResponsiveValue<string>;
@@ -43,6 +46,7 @@ export function NavBar({
         transition="ease"
         transitionDuration="0.2s"
         boxShadow={{ base: isOpen ? 'dark-lg' : 'none', md: 'none' }}
+        flexDirection={isOpen ? 'column' : 'row'}
       >
         <Logo
           w="100px"
@@ -52,11 +56,21 @@ export function NavBar({
 
         <MenuToggle toggle={handleToggle} isOpen={isOpen} />
 
-        <MenuLinks
-          bgSelected={bgSelected}
-          colorSelected={colorSelected}
-          isOpen={isOpen}
-        />
+        <Flex align="center" gap="1rem">
+          <MenuLinks
+            bgSelected={bgSelected}
+            colorSelected={colorSelected}
+            isOpen={isOpen}
+          />
+
+          <Box
+            w="40px"
+            h="40px"
+            display={{ base: isOpen ? 'none' : 'block', md: 'block' }}
+          >
+            <ThemeSwitcher />
+          </Box>
+        </Flex>
       </Container>
     </>
   );

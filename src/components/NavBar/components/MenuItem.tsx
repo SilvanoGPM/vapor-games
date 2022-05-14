@@ -26,6 +26,7 @@ export function MenuItem({
       color={selected ? colorSelected : 'inherit'}
       px={4}
       py={{ base: 4, md: 0 }}
+      m={0}
       _focus={{
         outline: 'none',
         ringColor: 'blackAlpha.400',
@@ -35,7 +36,7 @@ export function MenuItem({
       }}
       {...(selected ? { 'data-testid': 'selected' } : {})}
     >
-      <Text display="flex" alignItems="center" gap="0.5rem" {...props}>
+      <Text display="flex" alignItems="center" gap="0.5rem" m={0} {...props}>
         {children}
       </Text>
     </Link>
