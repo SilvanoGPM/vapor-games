@@ -1,8 +1,15 @@
+import { useColorModeValue } from '@chakra-ui/react';
 import { Hero } from 'components/Hero';
 
 import { NavBar } from 'components/NavBar';
 
 export function Main() {
+  const navbarBgSelected = useColorModeValue('gray.300', 'gray.600');
+  const navbarColorSelected = useColorModeValue(
+    { base: 'black' },
+    { base: 'white', md: 'black' },
+  );
+
   return (
     <>
       <NavBar
@@ -16,6 +23,8 @@ export function Main() {
         rounded={{ base: 'none', md: '2xl' }}
         bg={{ base: 'transparent', md: 'blackAlpha.300' }}
         color="white"
+        bgSelected={{ base: navbarBgSelected, md: 'white' }}
+        colorSelected={navbarColorSelected}
       />
 
       <Hero

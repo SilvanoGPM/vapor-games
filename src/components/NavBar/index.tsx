@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { FlexProps, useColorModeValue } from '@chakra-ui/react';
+
+import {
+  FlexProps,
+  ResponsiveValue,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 import { useResizeEffect } from 'hooks/useResizeEffect';
 
@@ -8,7 +13,16 @@ import { Logo } from './components/Logo';
 import { MenuLinks } from './components/MenuLinks';
 import { MenuToggle } from './components/MenuToggle';
 
-export function NavBar(props: FlexProps) {
+type NavBarProps = {
+  bgSelected?: ResponsiveValue<string>;
+  colorSelected?: ResponsiveValue<string>;
+} & FlexProps;
+
+export function NavBar({
+  bgSelected = 'white',
+  colorSelected = 'black',
+  ...props
+}: NavBarProps) {
   const bg = useColorModeValue('white', 'gray.700');
   const color = useColorModeValue('black', 'white');
 
@@ -35,8 +49,14 @@ export function NavBar(props: FlexProps) {
           display={{ base: 'none', md: 'block' }}
           color={isOpen ? 'black' : props.color}
         />
+
         <MenuToggle toggle={handleToggle} isOpen={isOpen} />
-        <MenuLinks isOpen={isOpen} />
+
+        <MenuLinks
+          bgSelected={bgSelected}
+          colorSelected={colorSelected}
+          isOpen={isOpen}
+        />
       </Container>
     </>
   );
