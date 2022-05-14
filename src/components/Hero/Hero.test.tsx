@@ -15,12 +15,10 @@ describe('<Hero />', () => {
 
     renderComponentWithTheme(<Hero {...data} />);
 
-    screen.logTestingPlaygroundURL();
-
-    screen.getByText(/grand theft auto v/i);
-    screen.getByText(/rockstar games/i);
-    screen.getByText(/action/i);
-    screen.getByText(/adventure/i);
-    screen.getByText(/singleplayer/i);
+    expect(screen.getByText(/grand theft auto v/i)).toBeInTheDocument();
+    expect(screen.getByText(/rockstar games/i)).toBeInTheDocument();
+    expect(screen.getByText(/action/i)).toBeInTheDocument();
+    expect(screen.getByText(/adventure/i)).toBeInTheDocument();
+    expect(screen.getByText(/singleplayer/i)).toBeInTheDocument();
   });
 });
