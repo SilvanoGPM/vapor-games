@@ -9,11 +9,16 @@ type MenuToggleProps = {
 export function MenuToggle({ isOpen, toggle }: MenuToggleProps) {
   return (
     <Box
+      as="button"
       display={{ base: 'block', md: 'none' }}
       fontSize="2xl"
       onClick={toggle}
     >
-      {isOpen ? <CloseIcon /> : <HamburgerIcon />}
+      {isOpen ? (
+        <CloseIcon data-testid="close" />
+      ) : (
+        <HamburgerIcon data-testid="open" />
+      )}
     </Box>
   );
 }
