@@ -17,14 +17,15 @@ type HeroProps = {
   publisher: string;
   bgImage: string;
   genres: string[];
+  score: number;
 };
 
-export function Hero({ title, publisher, bgImage, genres }: HeroProps) {
+export function Hero({ title, publisher, bgImage, genres, score }: HeroProps) {
   return (
     <Box
       as="section"
       w="100%"
-      h={{ base: '350px', md: '90vh' }}
+      h={{ base: '400px', md: '95vh' }}
       minH={{ base: '250px', md: '300px', lg: '550px' }}
       bgImage={bgImage}
       bgSize="cover"
@@ -44,10 +45,8 @@ export function Hero({ title, publisher, bgImage, genres }: HeroProps) {
         color="white"
         bgGradient="linear(to bottom left, transparent 10%, rgba(0, 0, 0, 0.95) 80%)"
       >
-        <Heading mb="1rem">{title}</Heading>
-        <Text fontSize="1.5rem" mb="1rem">
-          {publisher}
-        </Text>
+        <Heading>{title}</Heading>
+        <Text mb="1rem">{publisher}</Text>
 
         <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
           {genres.map((genre) => (
@@ -58,7 +57,7 @@ export function Hero({ title, publisher, bgImage, genres }: HeroProps) {
           ))}
         </Flex>
 
-        <Rating score={1.6} iconSize="20px" mb="1rem" />
+        <Rating score={score} iconSize="20px" mb="1rem" />
 
         <Button
           colorScheme="whiteAlpha"
