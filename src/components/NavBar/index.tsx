@@ -26,7 +26,7 @@ export function NavBar({
   colorSelected = 'black',
   ...props
 }: NavBarProps) {
-  const bg = useColorModeValue('white', 'gray.700');
+  const bg = useColorModeValue('white', 'gray.800');
   const color = useColorModeValue('black', 'white');
 
   const [isOpen, setIsOpen] = useState(false);

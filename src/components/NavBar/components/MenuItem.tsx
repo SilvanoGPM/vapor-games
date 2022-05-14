@@ -25,7 +25,7 @@ export function MenuItem({
       bg={selected ? bgSelected : 'inherit'}
       color={selected ? colorSelected : 'inherit'}
       px={4}
-      py={{ base: 4, md: 0 }}
+      py={{ base: 4, md: 2 }}
       m={0}
       _focus={{
         outline: 'none',

@@ -26,6 +26,13 @@ export function ThemeSwitcher() {
           onClick={toggleColorMode}
           aria-label="Toggle theme"
           icon={<Icon as={toggleThemeIcon} />}
+          _focus={{
+            outline: 'none',
+            ringColor: 'white',
+            ring: 1,
+            ringOffsetColor: 'white',
+            ringOffset: '0.2rem',
+          }}
         />
       </Tooltip>
     </LightMode>
