@@ -3,7 +3,7 @@ import { Flex, FlexProps, Tooltip } from '@chakra-ui/react';
 
 type RatingProps = {
   score: number;
-  iconSize: number | string;
+  iconSize?: number | string;
   total?: number;
 } & FlexProps;
 
