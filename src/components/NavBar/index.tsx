@@ -1,4 +1,5 @@
 import { FlexProps } from '@chakra-ui/react';
+import { useResizeEffect } from 'hooks/useResizeEffect';
 import { useState } from 'react';
 import { Container } from './components/Container';
 import { Logo } from './components/Logo';
@@ -7,6 +8,8 @@ import { MenuToggle } from './components/MenuToggle';
 
 export function NavBar(props: FlexProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  useResizeEffect(() => setIsOpen(false));
 
   function handleToggle() {
     setIsOpen(!isOpen);
