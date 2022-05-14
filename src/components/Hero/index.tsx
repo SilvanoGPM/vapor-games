@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   Heading,
+  LightMode,
   Tag,
   TagLeftIcon,
   Text,
@@ -45,35 +46,37 @@ export function Hero({ title, publisher, bgImage, genres, score }: HeroProps) {
         color="white"
         bgGradient="linear(to bottom left, transparent 10%, rgba(0, 0, 0, 0.95) 80%)"
       >
-        <Heading>{title}</Heading>
-        <Text mb="1rem">{publisher}</Text>
+        <LightMode>
+          <Heading>{title}</Heading>
+          <Text mb="1rem">{publisher}</Text>
 
-        <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
-          {genres.map((genre) => (
-            <Tag key={genre} colorScheme="whiteAlpha">
-              <TagLeftIcon boxSize="12px" as={AddIcon} />
-              {genre}
-            </Tag>
-          ))}
-        </Flex>
+          <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
+            {genres.map((genre) => (
+              <Tag key={genre} colorScheme="whiteAlpha">
+                <TagLeftIcon boxSize="12px" as={AddIcon} />
+                {genre}
+              </Tag>
+            ))}
+          </Flex>
 
-        <Rating score={score} iconSize="20px" mb="1rem" />
+          <Rating score={score} iconSize="20px" mb="1rem" />
 
-        <Button
-          colorScheme="whiteAlpha"
-          rightIcon={<ArrowRightIcon />}
-          width="100%"
-          maxW="400px"
-          _focus={{
-            outline: 'none',
-            ringColor: 'whiteAlpha.800',
-            ring: 1,
-            ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
-            ringOffset: '0.2rem',
-          }}
-        >
-          Detalhes
-        </Button>
+          <Button
+            colorScheme="whiteAlpha"
+            rightIcon={<ArrowRightIcon />}
+            width="100%"
+            maxW="400px"
+            _focus={{
+              outline: 'none',
+              ringColor: 'whiteAlpha.800',
+              ring: 1,
+              ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
+              ringOffset: '0.2rem',
+            }}
+          >
+            Detalhes
+          </Button>
+        </LightMode>
       </Flex>
     </Box>
   );
