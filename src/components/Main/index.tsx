@@ -1,9 +1,5 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Hero } from 'components/Hero';
 
 export function Main() {
-  return (
-    <Box w="100vw" h="100vh">
-      <Heading as="h1">Vapor Games</Heading>
-    </Box>
-  );
+  return <Hero />;
 }
