@@ -1,4 +1,5 @@
-import { Box, Icon, Stack } from '@chakra-ui/react';
+import { Box, Stack, Icon } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { BsHouse, BsSearch } from 'react-icons/bs';
 
 import { MenuItem } from './MenuItem';
@@ -7,7 +8,14 @@ type MenuLinksProps = {
   isOpen: boolean;
 };
 
+export const routes = [
+  { to: '/', name: 'Home', icon: BsHouse },
+  { to: '/search', name: 'Search', icon: BsSearch },
+];
+
 export function MenuLinks({ isOpen }: MenuLinksProps) {
+  const router = useRouter();
+
   return (
     <Box
       display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
@@ -21,15 +29,17 @@ export function MenuLinks({ isOpen }: MenuLinksProps) {
         direction={['column', 'column', 'row', 'row']}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem to="/" fontSize="xl">
-          <Icon as={BsHouse} />
-          Home
-        </MenuItem>
-
-        <MenuItem to="/search" fontSize="xl">
-          <Icon as={BsSearch} />
-          Search
-        </MenuItem>
+        {routes.map(({ to, name, icon }) => (
+          <MenuItem
+            key={`${name}-${to}`}
+            to={to}
+            fontSize="xl"
+            selected={router.pathname === to}
+          >
+            <Icon as={icon} />
+            {name}
+          </MenuItem>
+        ))}
       </Stack>
     </Box>
   );
