@@ -27,6 +27,7 @@ export function MenuItem({
         ringOffsetColor: 'transparent',
         ringOffset: '0.2rem',
       }}
+      {...(selected ? { 'data-testid': 'selected' } : {})}
     >
       <Text display="flex" alignItems="center" gap="0.5rem" {...props}>
         {children}
