@@ -1,7 +1,9 @@
+import { Box, Heading } from '@chakra-ui/react';
+
 export function Main() {
   return (
-    <main>
-      <h1>Next Boilerplate</h1>
-    </main>
+    <Box w="100vw" h="100vh">
+      <Heading as="h1">Vapor Games</Heading>
+    </Box>
   );
 }
