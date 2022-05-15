@@ -3,14 +3,14 @@ import { Box } from '@chakra-ui/react';
 import { GenreList, GenresType } from 'components/GenreList';
 import { Header } from 'components/Header';
 import { HeroProps } from 'components/HeroParts';
-import { GameType } from 'services/rawg';
+import { PreviewGameType } from 'services/rawg';
 
 import { formatGenreTitle } from 'utils/formatGenreTitle';
 import { HomeHero } from './components/Hero';
 
 export type HomeTemplateProps = {
   hero: HeroProps;
-  genres: { [key in GenresType]: GameType[] };
+  genres: { [key in GenresType]: PreviewGameType[] };
 };
 
 export function HomeTemplate({ hero, genres }: HomeTemplateProps) {

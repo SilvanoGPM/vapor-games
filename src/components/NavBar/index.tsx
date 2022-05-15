@@ -2,12 +2,16 @@ import {
   Box,
   Flex,
   FlexProps,
+  IconButton,
+  LightMode,
   ResponsiveValue,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
 
+import { useRouter } from 'next/router';
 import { useResizeEffect } from 'hooks/useResizeEffect';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 
 import { Container } from './components/Container';
 import { Logo } from './components/Logo';
@@ -25,6 +29,8 @@ export function NavBar({
   colorSelected = 'black',
   ...props
 }: NavBarProps) {
+  const router = useRouter();
+
   const bg = useColorModeValue('#ffffff', '#121212');
   const color = useColorModeValue('#121212', '#ffffff');
 
@@ -43,10 +49,37 @@ export function NavBar({
         boxShadow={{ base: isOpen ? 'dark-lg' : 'none', md: 'none' }}
         flexDirection={isOpen ? 'column' : 'row'}
       >
-        <Logo
-          display={{ base: 'none', md: 'block' }}
-          color={isOpen ? 'black' : props.color}
-        />
+        <Flex
+          align="center"
+          gap="1.5rem"
+          display={{
+            base: router.pathname !== '/' ? 'flex' : 'none',
+            md: 'flex',
+          }}
+        >
+          <LightMode>
+            <IconButton
+              display={router.pathname !== '/' && !isOpen ? 'block' : 'none'}
+              fontSize="32px"
+              aria-label="Go back"
+              icon={<ArrowBackIcon />}
+              fontWeight="bold"
+              onClick={router.back}
+              bgColor="transparent"
+              _focus={{
+                outline: 'none',
+                ringColor: 'white',
+                ring: 1,
+                ringOffsetColor: 'white',
+                ringOffset: '0.2rem',
+              }}
+            />
+          </LightMode>
+          <Logo
+            display={{ base: 'none', md: 'block' }}
+            color={isOpen ? 'black' : props.color}
+          />
+        </Flex>
 
         <MenuToggle toggle={onToggle} isOpen={isOpen} />
 

@@ -17,10 +17,10 @@ export function HomeHero({
         <Hero.Title>{name}</Hero.Title>
 
         {publishers.length > 0 && (
-          <Hero.Publisher mb="4">{publishers[0].name}</Hero.Publisher>
+          <Hero.Publisher>{publishers[0].name}</Hero.Publisher>
         )}
 
-        <Hero.Genres genres={genres} mb="4" />
+        <Hero.Genres genres={genres} my="4" />
 
         <Hero.Scores rating={rating} metacritic={metacritic} mb="4" />
 

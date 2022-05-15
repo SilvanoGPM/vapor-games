@@ -1,10 +1,8 @@
-import { Box, Flex, Heading, HStack, Link } from '@chakra-ui/react';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import { Heading, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { GameCard } from 'components/GameCard';
-
-import { GameType } from 'services/rawg';
+import { PreviewGameType } from 'services/rawg';
+import { GameList } from 'components/GameList';
 
 export type GenresType =
   | 'action'
@@ -21,38 +19,31 @@ export type GenresType =
 type GenreListProps = {
   title: string;
   genre: GenresType;
-  data: GameType[];
+  data: PreviewGameType[];
 };
 
 export function GenreList({ title, genre, data }: GenreListProps) {
   return (
-    <Box w="100%" mb={50}>
-      <Flex mb={2} px={2} justify="space-between" align="center">
-        <Heading as="h3" fontSize="4xl">
-          {title}
-        </Heading>
+    <GameList
+      data={data}
+      header={
+        <>
+          <Heading as="h3" fontSize="4xl">
+            {title}
+          </Heading>
 
-        <NextLink href={`/games?genre=${genre}`} passHref>
-          <Link
-            fontSize="2xl"
-            _focus={{
-              textDecor: 'underline',
-            }}
-          >
-            See more
-          </Link>
-        </NextLink>
-      </Flex>
-
-      <HStack spacing={8} overflow="auto" py={4} px={2} as={ScrollContainer}>
-        {data.map((game) => (
-          <GameCard
-            key={game.slug}
-            fallbackImage="/fallback_game_image.png"
-            {...game}
-          />
-        ))}
-      </HStack>
-    </Box>
+          <NextLink href={`/games?genre=${genre}`} passHref>
+            <Link
+              fontSize="2xl"
+              _focus={{
+                textDecor: 'underline',
+              }}
+            >
+              See more
+            </Link>
+          </NextLink>
+        </>
+      }
+    />
   );
 }
