@@ -1,10 +1,12 @@
-import { useColorModeValue } from '@chakra-ui/react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
+import { GenreList } from 'components/GenreList';
 import { Hero } from 'components/Hero';
 
 import { NavBar } from 'components/NavBar';
 
 export function Main() {
   const navbarBgSelected = useColorModeValue('gray.300', 'gray.600');
+
   const navbarColorSelected = useColorModeValue(
     { base: 'black' },
     { base: 'white', md: 'black' },
@@ -34,6 +36,10 @@ export function Main() {
         bgImage="https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg"
         genres={['Action', 'Adventure', 'Singleplayer']}
       />
+
+      <Box as="section" mt={5} px={{ base: '2rem', md: '4rem' }}>
+        <GenreList title="Ação" genre="action" />
+      </Box>
     </>
   );
 }

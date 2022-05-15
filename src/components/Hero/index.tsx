@@ -1,17 +1,8 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  LightMode,
-  Tag,
-  TagLeftIcon,
-  Text,
-} from '@chakra-ui/react';
-
-import { AddIcon, ArrowRightIcon } from '@chakra-ui/icons';
+import { Box, Button, Flex, Heading, LightMode, Text } from '@chakra-ui/react';
+import { ArrowRightIcon } from '@chakra-ui/icons';
 
 import { Rating } from 'components/Rating';
+import { GameTag } from 'components/GameTag';
 
 type HeroProps = {
   title: string;
@@ -52,10 +43,7 @@ export function Hero({ title, publisher, bgImage, genres, score }: HeroProps) {
 
           <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
             {genres.map((genre) => (
-              <Tag key={genre} colorScheme="whiteAlpha">
-                <TagLeftIcon boxSize="12px" as={AddIcon} />
-                {genre}
-              </Tag>
+              <GameTag key={genre} text={genre} />
             ))}
           </Flex>
 
