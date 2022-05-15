@@ -46,7 +46,11 @@ export function GenreList({ title, genre, data }: GenreListProps) {
 
       <HStack spacing={8} overflow="auto" py={4} px={2} as={ScrollContainer}>
         {data.map((game) => (
-          <GameCard key={game.slug} {...game} />
+          <GameCard
+            key={game.slug}
+            fallbackImage="/fallback_game_image.png"
+            {...game}
+          />
         ))}
       </HStack>
     </Box>

@@ -8,6 +8,7 @@ describe('<GameCard />', () => {
       name: 'Grand Theft Auto V',
       slug: 'gta-v',
       rating: 5,
+      fallbackImage: '',
       metacritic: 92,
       background_image:
         'https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg',
@@ -24,6 +25,7 @@ describe('<GameCard />', () => {
       name: 'Grand Theft Auto V',
       slug: 'gta-v',
       rating: 5,
+      fallbackImage: '',
       background_image:
         'https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg',
     };

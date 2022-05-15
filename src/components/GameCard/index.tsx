@@ -6,6 +6,8 @@ import {
   Spacer,
   Text,
   useColorModeValue,
+  keyframes,
+  usePrefersReducedMotion,
 } from '@chakra-ui/react';
 
 import NextLink from 'next/link';
@@ -19,6 +21,7 @@ type GameCardProps = {
   background_image: string;
   rating: number;
   metacritic?: number | null;
+  fallbackImage: string;
 };
 
 export function GameCard({
@@ -27,8 +30,24 @@ export function GameCard({
   background_image,
   rating,
   metacritic,
+  fallbackImage,
 }: GameCardProps) {
   const outlineColor = useColorModeValue('black', 'white');
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  const shimmerAnimation = keyframes`
+    from {
+      background-position: -40rem 0;
+    }
+
+    to {
+      background-position: 40rem 0;
+    }
+  `;
+
+  const imageLoadingAnimation = prefersReducedMotion
+    ? undefined
+    : `${shimmerAnimation} 1s linear infinite forwards`;
 
   return (
     <NextLink href={`/games/${slug}`} passHref>
@@ -46,11 +65,22 @@ export function GameCard({
           _hover={{ transform: 'translateY(-10px)' }}
         >
           <Image
+            fallbackSrc={fallbackImage}
+            src={background_image}
             objectFit="cover"
             filter={{ base: '', md: 'grayscale(80%)' }}
-            src={background_image}
             w="100%"
             h="100%"
+            bgColor="#f6f7f8"
+            bgGradient="linear(
+              to-r,
+              #f6f7f8 0%,
+              #e3e5e9 20%,
+              #f6f7f8 40%,
+              #e3e5e9 100%
+            )"
+            bgSize="80rem 14rem"
+            animation={imageLoadingAnimation}
             transition="ease-in-out 0.2s"
             _groupHover={{
               filter: 'grayscale(0%)',
