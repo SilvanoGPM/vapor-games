@@ -19,9 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
     bgImage: game.background_image,
     rating: game.rating,
     publisher: { name: publisher?.name || '', slug: publisher?.slug || '' },
-    genres: game.genres
-      .filter(({ language }) => language === 'eng')
-      .map(({ name }) => name),
+    genres: game.genres,
   };
 
   return { props: { hero } };

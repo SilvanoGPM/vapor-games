@@ -3,6 +3,8 @@ import { chooseRandom } from 'utils/chooseRandom';
 
 export type PublisherType = { name: string; slug: string };
 
+export type GenrerType = { name: string; slug: string };
+
 export type GameTypeRaw = {
   id: number;
   name: string;
@@ -10,7 +12,7 @@ export type GameTypeRaw = {
   description: string | null;
   background_image: string;
   rating: number;
-  genres: Array<{ name: string; language: string }>;
+  genres: GenrerType[];
   publisher?: PublisherType;
   publishers?: PublisherType[];
 };
@@ -22,7 +24,7 @@ export type GameType = {
   description: string;
   bgImage: string;
   rating: number;
-  genres: string[];
+  genres: GenrerType[];
   publisher: PublisherType;
 };
 

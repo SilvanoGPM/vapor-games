@@ -3,12 +3,13 @@ import { ArrowRightIcon } from '@chakra-ui/icons';
 
 import { Rating } from 'components/Rating';
 import { GameTag } from 'components/GameTag';
+import { GenrerType, PublisherType } from 'services/rawg';
 
 export type HeroProps = {
   title: string;
-  publisher: { name: string; slug: string };
+  publisher: PublisherType;
   bgImage: string;
-  genres: string[];
+  genres: GenrerType[];
   rating: number;
 };
 
@@ -42,8 +43,8 @@ export function Hero({ title, publisher, bgImage, genres, rating }: HeroProps) {
           <Text mb="1rem">{publisher.name}</Text>
 
           <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
-            {genres.map((genre) => (
-              <GameTag key={genre} text={genre} />
+            {genres.map(({ name, slug }) => (
+              <GameTag key={slug} text={name} />
             ))}
           </Flex>
 

@@ -8,7 +8,11 @@ describe('<Hero />', () => {
     const data = {
       title: 'Grand Theft Auto V',
       publisher: { name: 'Rockstar Games', slug: 'rockstar-games' },
-      genres: ['Action', 'Adventure', 'Singleplayer'],
+      genres: [
+        { name: 'Action', slug: 'action' },
+        { name: 'Adventure', slug: 'adventure' },
+        { name: 'Singleplayer', slug: 'singleplayer' },
+      ],
       rating: 5,
       bgImage:
         'https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg',
