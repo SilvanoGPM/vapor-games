@@ -39,6 +39,7 @@ export function MenuLinks({
           <MenuItem
             key={`${name}-${to}`}
             to={to}
+            textTransform="uppercase"
             fontSize="xl"
             bgSelected={bgSelected}
             colorSelected={colorSelected}

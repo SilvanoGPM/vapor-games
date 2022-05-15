@@ -20,7 +20,7 @@ export function ThemeSwitcher() {
 
   return (
     <LightMode>
-      <Tooltip label={toggleThemeTooltip} placement="left" hasArrow>
+      <Tooltip label={toggleThemeTooltip} placement="bottom" hasArrow>
         <IconButton
           colorScheme="whiteAlpha"
           onClick={toggleColorMode}

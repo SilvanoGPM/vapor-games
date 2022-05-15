@@ -29,12 +29,28 @@ export function MenuItem({
       m={0}
       _focus={{
         outline: 'none',
-        ringColor: 'blackAlpha.400',
+        ringColor: 'white',
         ring: 1,
         ringOffsetColor: 'transparent',
         ringOffset: '0.2rem',
       }}
-      {...(selected ? { 'data-testid': 'selected' } : {})}
+      _hover={{
+        ringColor: 'white',
+        ring: 1,
+        ringOffsetColor: 'transparent',
+        ringOffset: '0.2rem',
+      }}
+      {...(selected
+        ? {
+            'data-testid': 'selected',
+            fontWeight: 'bold',
+            textDecor: 'underline',
+            ringColor: 'white',
+            ring: 1,
+            ringOffsetColor: 'transparent',
+            ringOffset: '0.2rem',
+          }
+        : {})}
     >
       <Text display="flex" alignItems="center" gap="0.5rem" m={0} {...props}>
         {children}

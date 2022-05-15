@@ -1,5 +1,6 @@
-import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
-import { Box } from '@chakra-ui/react';
+import { CloseIcon } from '@chakra-ui/icons';
+import { Icon, IconButton, LightMode } from '@chakra-ui/react';
+import { RiMenu2Line } from 'react-icons/ri';
 
 type MenuToggleProps = {
   isOpen: boolean;
@@ -8,17 +9,23 @@ type MenuToggleProps = {
 
 export function MenuToggle({ isOpen, toggle }: MenuToggleProps) {
   return (
-    <Box
-      as="button"
-      display={{ base: 'block', md: 'none' }}
-      fontSize="2xl"
-      onClick={toggle}
-    >
-      {isOpen ? (
-        <CloseIcon data-testid="close" />
-      ) : (
-        <HamburgerIcon data-testid="open" />
-      )}
-    </Box>
+    <LightMode>
+      <IconButton
+        colorScheme="whiteAlpha"
+        aria-label="Open menu"
+        data-testid={isOpen ? 'close' : 'open'}
+        icon={isOpen ? <CloseIcon /> : <Icon as={RiMenu2Line} />}
+        display={{ base: 'block', md: 'none' }}
+        onClick={toggle}
+        fontSize="lg"
+        _focus={{
+          outline: 'none',
+          ringColor: 'white',
+          ring: 1,
+          ringOffsetColor: 'white',
+          ringOffset: '0.2rem',
+        }}
+      />
+    </LightMode>
   );
 }

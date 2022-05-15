@@ -49,7 +49,6 @@ export function NavBar({
         flexDirection={isOpen ? 'column' : 'row'}
       >
         <Logo
-          w="100px"
           display={{ base: 'none', md: 'block' }}
           color={isOpen ? 'black' : props.color}
         />

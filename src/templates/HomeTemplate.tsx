@@ -9,11 +9,11 @@ export type HomeTemplateProps = {
 };
 
 export function HomeTemplate({ hero }: HomeTemplateProps) {
-  const navbarBgSelected = useColorModeValue('gray.300', '#262626');
+  const navbarBgSelected = useColorModeValue('#eeeeee', '#262626');
 
   const navbarColorSelected = useColorModeValue(
-    { base: 'black' },
-    { base: 'white', md: 'black' },
+    { base: 'black', md: 'white' },
+    'white',
   );
 
   return (
@@ -27,16 +27,16 @@ export function HomeTemplate({ hero }: HomeTemplateProps) {
         maxWidth="1250px"
         width={{ base: '100%', md: '90%' }}
         rounded={{ base: 'none', md: '2xl' }}
-        bg={{ base: 'transparent', md: 'blackAlpha.300' }}
+        bg="transparent"
         color="white"
-        bgSelected={{ base: navbarBgSelected, md: 'white' }}
+        bgSelected={{ base: navbarBgSelected, md: 'transparent' }}
         colorSelected={navbarColorSelected}
       />
 
       <Hero {...hero} />
 
       <Box as="section" mt={5} px={{ base: '2rem', md: '4rem' }}>
-        <GenreList title="Ação" genre="action" />
+        <GenreList title="Action" genre="action" />
       </Box>
     </>
   );

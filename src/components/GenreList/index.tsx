@@ -28,7 +28,7 @@ export function GenreList({ title, genre }: GenreListProps) {
               textDecor: 'underline',
             }}
           >
-            Ver mais
+            See more
           </Link>
         </NextLink>
       </Flex>
