@@ -5,7 +5,7 @@ import { Hero } from 'components/Hero';
 import { NavBar } from 'components/NavBar';
 
 export function Main() {
-  const navbarBgSelected = useColorModeValue('gray.300', 'gray.600');
+  const navbarBgSelected = useColorModeValue('gray.300', '#262626');
 
   const navbarColorSelected = useColorModeValue(
     { base: 'black' },
