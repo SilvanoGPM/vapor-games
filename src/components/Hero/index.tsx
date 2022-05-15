@@ -1,4 +1,14 @@
-import { Box, Button, Flex, Heading, LightMode, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  LightMode,
+  Link,
+  Text,
+} from '@chakra-ui/react';
+
+import NextLink from 'next/link';
 import { ArrowRightIcon } from '@chakra-ui/icons';
 
 import { Rating } from 'components/Rating';
@@ -7,13 +17,21 @@ import { GenrerType, PublisherType } from 'services/rawg';
 
 export type HeroProps = {
   title: string;
+  slug: string;
   publisher: PublisherType;
   bgImage: string;
   genres: GenrerType[];
   rating: number;
 };
 
-export function Hero({ title, publisher, bgImage, genres, rating }: HeroProps) {
+export function Hero({
+  title,
+  publisher,
+  bgImage,
+  genres,
+  slug,
+  rating,
+}: HeroProps) {
   return (
     <Box
       as="section"
@@ -59,27 +77,43 @@ export function Hero({ title, publisher, bgImage, genres, rating }: HeroProps) {
 
           <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
             {genres.map(({ name, slug }) => (
-              <GameTag key={slug} text={name} />
+              <NextLink key={slug} href={`/games?genre=${slug}`} passHref>
+                <Link
+                  _focus={{
+                    outline: 'none',
+                    ringColor: 'whiteAlpha.800',
+                    ring: 1,
+                    ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
+                    ringOffset: '0.2rem',
+                  }}
+                >
+                  <GameTag text={name} />
+                </Link>
+              </NextLink>
             ))}
           </Flex>
 
           <Rating score={rating} iconSize="20px" mb="1rem" />
 
-          <Button
-            colorScheme="whiteAlpha"
-            rightIcon={<ArrowRightIcon />}
-            width="100%"
-            maxW="400px"
-            _focus={{
-              outline: 'none',
-              ringColor: 'whiteAlpha.800',
-              ring: 1,
-              ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
-              ringOffset: '0.2rem',
-            }}
-          >
-            Detalhes
-          </Button>
+          <NextLink href={`/games/${slug}`} passHref>
+            <Link tabIndex={-1}>
+              <Button
+                colorScheme="whiteAlpha"
+                rightIcon={<ArrowRightIcon />}
+                width="100%"
+                maxW="400px"
+                _focus={{
+                  outline: 'none',
+                  ringColor: 'whiteAlpha.800',
+                  ring: 1,
+                  ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
+                  ringOffset: '0.2rem',
+                }}
+              >
+                Details
+              </Button>
+            </Link>
+          </NextLink>
         </LightMode>
       </Flex>
     </Box>

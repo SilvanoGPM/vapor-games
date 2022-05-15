@@ -27,7 +27,7 @@ export function GameCard({
   const outlineColor = useColorModeValue('black', 'white');
 
   return (
-    <NextLink href={`/game/${slug}`} passHref>
+    <NextLink href={`/games/${slug}`} passHref>
       <Link
         _focus={{ outlineColor: outlineColor, transform: 'translateY(-10px)' }}
         role="group"
@@ -38,12 +38,23 @@ export function GameCard({
           pos="relative"
           cursor="pointer"
           shadow="2xl"
-          transition="ease-in-out"
-          transitionProperty="all"
-          transitionDuration="0.2s"
+          transition="ease-in-out 0.2s"
           _hover={{ transform: 'translateY(-10px)' }}
         >
-          <Image objectFit="cover" src={background_image} w="100%" h="100%" />
+          <Image
+            objectFit="cover"
+            filter={{ base: '', md: 'grayscale(80%)' }}
+            src={background_image}
+            w="100%"
+            h="100%"
+            transition="ease-in-out 0.2s"
+            _groupHover={{
+              filter: 'grayscale(0%)',
+            }}
+            _groupFocus={{
+              filter: 'grayscale(0%)',
+            }}
+          />
 
           <Flex
             pos="absolute"

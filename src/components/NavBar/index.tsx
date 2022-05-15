@@ -1,11 +1,10 @@
-import { useState } from 'react';
-
 import {
   Box,
   Flex,
   FlexProps,
   ResponsiveValue,
   useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
 
 import { useResizeEffect } from 'hooks/useResizeEffect';
@@ -29,13 +28,9 @@ export function NavBar({
   const bg = useColorModeValue('#ffffff', '#121212');
   const color = useColorModeValue('#121212', '#ffffff');
 
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, onToggle, onClose } = useDisclosure();
 
-  useResizeEffect(() => setIsOpen(false));
-
-  function handleToggle() {
-    setIsOpen(!isOpen);
-  }
+  useResizeEffect(onClose);
 
   return (
     <>
@@ -53,7 +48,7 @@ export function NavBar({
           color={isOpen ? 'black' : props.color}
         />
 
-        <MenuToggle toggle={handleToggle} isOpen={isOpen} />
+        <MenuToggle toggle={onToggle} isOpen={isOpen} />
 
         <Flex align="center" gap="1rem">
           <MenuLinks
