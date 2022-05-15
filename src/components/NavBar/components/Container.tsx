@@ -11,7 +11,7 @@ export function Container({ children, ...props }: ContainerProps) {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      px={8}
+      px={{ base: 8, md: 0 }}
       py={5}
       {...props}
     >

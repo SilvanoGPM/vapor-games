@@ -52,7 +52,7 @@ export function Hero({
           width: '100%',
           height: '100%',
           bgImage: background_image,
-          filter: 'brightness(0.5)',
+          filter: 'brightness(0.6)',
           bgSize: 'cover',
           bgRepeat: 'no-repeat',
           bgPos: ['center', 'top'],
@@ -106,12 +106,11 @@ export function Hero({
           </Flex>
 
           <NextLink href={`/games/${slug}`} passHref>
-            <Link tabIndex={-1}>
+            <Link tabIndex={-1} _focus={{ outline: 'none' }} maxW="400px">
               <Button
                 colorScheme="whiteAlpha"
                 rightIcon={<ArrowRightIcon />}
                 width="100%"
-                maxW="400px"
                 _focus={{
                   outline: 'none',
                   ringColor: 'whiteAlpha.800',
