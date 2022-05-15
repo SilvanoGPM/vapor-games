@@ -2,8 +2,6 @@ import {
   Box,
   Flex,
   FlexProps,
-  IconButton,
-  LightMode,
   ResponsiveValue,
   useColorModeValue,
   useDisclosure,
@@ -11,13 +9,13 @@ import {
 
 import { useRouter } from 'next/router';
 import { useResizeEffect } from 'hooks/useResizeEffect';
-import { ArrowBackIcon } from '@chakra-ui/icons';
 
 import { Container } from './components/Container';
 import { Logo } from './components/Logo';
 import { MenuLinks } from './components/MenuLinks';
 import { MenuToggle } from './components/MenuToggle';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
+import { GoBack } from './components/GoBack';
 
 type NavBarProps = {
   bgSelected?: ResponsiveValue<string>;
@@ -57,24 +55,7 @@ export function NavBar({
             md: 'flex',
           }}
         >
-          <LightMode>
-            <IconButton
-              display={router.pathname !== '/' && !isOpen ? 'block' : 'none'}
-              fontSize="32px"
-              aria-label="Go back"
-              icon={<ArrowBackIcon />}
-              fontWeight="bold"
-              onClick={router.back}
-              bgColor="transparent"
-              _focus={{
-                outline: 'none',
-                ringColor: 'white',
-                ring: 1,
-                ringOffsetColor: 'white',
-                ringOffset: '0.2rem',
-              }}
-            />
-          </LightMode>
+          <GoBack isOpen={isOpen} />
           <Logo
             display={{ base: 'none', md: 'block' }}
             color={isOpen ? 'black' : props.color}

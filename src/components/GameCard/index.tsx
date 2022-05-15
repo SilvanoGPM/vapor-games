@@ -57,6 +57,7 @@ export function GameCard({
       >
         <Box
           minW={300}
+          maxW={300}
           h={400}
           pos="relative"
           cursor="pointer"
