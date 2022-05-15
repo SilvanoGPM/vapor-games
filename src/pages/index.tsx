@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next';
 import { HomeTemplate, HomeTemplateProps } from 'templates/HomeTemplate';
 import * as rawg from 'services/rawg';
 import { actionGames } from 'components/GenreList/fakeActionGames';
-import { GenresType } from 'components/GenreList';
 
 export default function Home(props: HomeTemplateProps) {
   return <HomeTemplate {...props} />;
@@ -30,25 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // };
 
   const genres = {
-    action: actionGames.results.map(
-      ({ id, name, slug, background_image, rating, metacritic, genres }) => {
-        const mappedGenres = genres.map(({ slug, ...genre }) => ({
-          ...genre,
-          slug: slug as GenresType,
-        }));
-
-        return rawg.convertGameRawToGame({
-          id,
-          name,
-          slug,
-          background_image,
-          rating,
-          metacritic,
-          genres: mappedGenres,
-          publishers: null,
-        });
-      },
-    ),
+    action: actionGames.results,
   };
 
   return {

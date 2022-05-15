@@ -6,81 +6,72 @@ export type PublisherType = { name: string; slug: string };
 
 export type GenreType = { name: string; slug: GenresType };
 
-export type GameRawType = {
+export type PreviewGameType = {
   id: number;
   name: string;
   slug: string;
   background_image: string;
   rating: number;
-  metacritic: number;
+  metacritc: number | null;
   genres: GenreType[];
-  publishers: PublisherType[] | null;
 };
 
 export type GameType = {
   id: number;
-  title: string;
+  name: string;
   slug: string;
-  bgImage: string;
+  background_image: string;
   rating: number;
   metacritic: number | null;
   genres: GenreType[];
-  publisher: PublisherType | null;
+  publishers: PublisherType[];
+  requirements: {
+    minimum: string;
+    recommended: string;
+  };
+  released: string;
+  updated: string;
+  series: PreviewGameType[];
 };
 
 const key = process.env.API_KEY;
 
-export function convertGameRawToGame(raw: GameRawType) {
-  const publisher = raw.publishers ? raw.publishers[0] : null;
+export async function getGameBySlug(slug: string): Promise<GameType> {
+  const { data: game } = await api.get<GameType>(`/games/${slug}?key=${key}`);
 
-  const game: GameType = {
-    id: raw.id,
-    title: raw.name,
-    slug: raw.slug,
-    bgImage: raw.background_image,
-    rating: raw.rating,
-    genres: raw.genres,
-    metacritic: raw.metacritic,
-    publisher,
-  };
+  const { data: series } = await api.get<{ results: PreviewGameType[] }>(
+    `/games/${slug}/game-series?key=${key}`,
+  );
 
-  return game;
-}
-
-export async function getGameBySlug(slug: string) {
-  const { data } = await api.get<GameRawType>(`/games/${slug}?key=${key}`);
-
-  return convertGameRawToGame(data);
+  return { ...game, series: series.results };
 }
 
 export async function getRandomGame() {
   const ordering = chooseRandom(['rating', 'metacritic', 'added', '']);
 
-  const { data } = await api.get(
+  const { data } = await api.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&page_size=100&ordering=${
       ordering ? '-' : ''
     }${ordering}`,
   );
 
-  const game = convertGameRawToGame(chooseRandom<GameRawType>(data.results));
+  const game = chooseRandom(data.results);
 
-  const foundGame = await getGameBySlug(game.slug);
-
-  return { ...foundGame };
+  return getGameBySlug(game.slug);
 }
 
 export async function getGamesByGenres(genres: GenresType[], size = 10) {
-  const { data } = await api.get<{ results: GameRawType[] }>(
+  const { data } = await api.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&genres=${genres.join(',')}&page_size=${size}`,
   );
 
-  return data.results.map(convertGameRawToGame);
+  return data.results;
 }
 
 export async function getMostPopularGames(size = 10) {
-  const { data } = await api.get<{ results: GameRawType[] }>(
+  const { data } = await api.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&page_size=${size}&ordering=-added`,
   );
 
-  return data.results.map(convertGameRawToGame);
+  return data.results;
 }

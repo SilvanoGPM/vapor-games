@@ -17,19 +17,19 @@ import { GenreType, PublisherType } from 'services/rawg';
 import { Metacritic } from 'components/Metacritic';
 
 export type HeroProps = {
-  title: string;
+  name: string;
   slug: string;
-  publisher: PublisherType;
-  bgImage: string;
+  publishers: PublisherType[];
+  background_image: string;
   genres: GenreType[];
   rating: number;
-  metacritic?: number;
+  metacritic?: number | null;
 };
 
 export function Hero({
-  title,
-  publisher,
-  bgImage,
+  name,
+  publishers,
+  background_image,
   genres,
   slug,
   rating,
@@ -51,7 +51,7 @@ export function Hero({
           left: 0,
           width: '100%',
           height: '100%',
-          bgImage,
+          bgImage: background_image,
           filter: 'brightness(0.5)',
           bgSize: 'cover',
           bgRepeat: 'no-repeat',
@@ -72,11 +72,13 @@ export function Hero({
         bgGradient="linear(to bottom left, transparent 10%, rgba(0, 0, 0, 0.95) 80%)"
       >
         <LightMode>
-          <Heading maxW="400px">{title}</Heading>
+          <Heading maxW="400px">{name}</Heading>
 
-          <Text mb="1rem" maxW="400px">
-            {publisher.name}
-          </Text>
+          {publishers.length > 0 && (
+            <Text mb="1rem" maxW="400px">
+              {publishers[0].name}
+            </Text>
+          )}
 
           <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
             {genres.map(({ name, slug }) => (

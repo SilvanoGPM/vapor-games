@@ -45,15 +45,8 @@ export function GenreList({ title, genre, data }: GenreListProps) {
       </Flex>
 
       <HStack spacing={8} overflow="auto" py={4} px={2} as={ScrollContainer}>
-        {data.map(({ slug, bgImage, title, metacritic, rating }) => (
-          <GameCard
-            key={slug}
-            background_image={bgImage}
-            name={title}
-            slug={slug}
-            rating={rating}
-            metacritic={metacritic}
-          />
+        {data.map((game) => (
+          <GameCard key={game.slug} {...game} />
         ))}
       </HStack>
     </Box>
