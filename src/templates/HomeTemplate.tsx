@@ -1,14 +1,17 @@
 import { Box, useColorModeValue } from '@chakra-ui/react';
-import { GenreList } from 'components/GenreList';
-import { Hero, HeroProps } from 'components/Hero';
 
+import { GenreList, GenresType } from 'components/GenreList';
+import { Hero, HeroProps } from 'components/Hero';
 import { NavBar } from 'components/NavBar';
+import { GameType } from 'services/rawg';
+import { formatGenreTitle } from 'utils/formatGenreTitle';
 
 export type HomeTemplateProps = {
   hero: HeroProps;
+  genres: { [key in GenresType]: GameType[] };
 };
 
-export function HomeTemplate({ hero }: HomeTemplateProps) {
+export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
   const navbarBgSelected = useColorModeValue('#eeeeee', '#262626');
 
   const navbarColorSelected = useColorModeValue(
@@ -36,7 +39,14 @@ export function HomeTemplate({ hero }: HomeTemplateProps) {
       <Hero {...hero} />
 
       <Box as="section" mt={5} px={{ base: '2rem', md: '4rem' }}>
-        <GenreList title="Action" genre="action" />
+        {Object.entries(genres).map(([key, value]) => (
+          <GenreList
+            key={key}
+            title={formatGenreTitle(key as GenresType)}
+            genre={key as GenresType}
+            data={value}
+          />
+        ))}
       </Box>
     </>
   );

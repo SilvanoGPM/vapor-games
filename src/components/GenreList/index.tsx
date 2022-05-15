@@ -4,16 +4,27 @@ import NextLink from 'next/link';
 
 import { GameCard } from 'components/GameCard';
 
-import { actionGames } from './fakeActionGames';
+import { GameType } from 'services/rawg';
 
-export type GenresType = 'action';
+export type GenresType =
+  | 'action'
+  | 'adventure'
+  | 'indie'
+  | 'role-playing-games-rpg'
+  | 'shooter'
+  | 'puzzle'
+  | 'sports'
+  | 'platformer'
+  | 'strategy'
+  | 'fighting';
 
 type GenreListProps = {
   title: string;
   genre: GenresType;
+  data: GameType[];
 };
 
-export function GenreList({ title, genre }: GenreListProps) {
+export function GenreList({ title, genre, data }: GenreListProps) {
   return (
     <Box w="100%" mb={50}>
       <Flex mb={2} px={2} justify="space-between" align="center">
@@ -34,9 +45,16 @@ export function GenreList({ title, genre }: GenreListProps) {
       </Flex>
 
       <HStack spacing={8} overflow="auto" py={4} px={2} as={ScrollContainer}>
-        {actionGames.results.map((game) => {
-          return <GameCard key={game.slug} {...game} />;
-        })}
+        {data.map(({ slug, bgImage, title, metacritic, rating }) => (
+          <GameCard
+            key={slug}
+            background_image={bgImage}
+            name={title}
+            slug={slug}
+            rating={rating}
+            metacritic={metacritic}
+          />
+        ))}
       </HStack>
     </Box>
   );
