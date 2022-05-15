@@ -13,7 +13,7 @@ import { ArrowRightIcon } from '@chakra-ui/icons';
 
 import { Rating } from 'components/Rating';
 import { GameTag } from 'components/GameTag';
-import { GenrerType, PublisherType } from 'services/rawg';
+import { GenreType, PublisherType } from 'services/rawg';
 import { Metacritic } from 'components/Metacritic';
 
 export type HeroProps = {
@@ -21,7 +21,7 @@ export type HeroProps = {
   slug: string;
   publisher: PublisherType;
   bgImage: string;
-  genres: GenrerType[];
+  genres: GenreType[];
   rating: number;
   metacritic?: number;
 };

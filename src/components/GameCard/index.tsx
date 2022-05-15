@@ -18,7 +18,7 @@ type GameCardProps = {
   name: string;
   background_image: string;
   rating: number;
-  metacritic?: number;
+  metacritic: number | null;
 };
 
 export function GameCard({

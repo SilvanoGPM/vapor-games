@@ -10,13 +10,13 @@ export type GenresType =
   | 'action'
   | 'adventure'
   | 'indie'
-  | 'role-playing-games-rpg'
   | 'shooter'
   | 'puzzle'
   | 'sports'
   | 'platformer'
   | 'strategy'
-  | 'fighting';
+  | 'fighting'
+  | 'role-playing-games-rpg';
 
 type GenreListProps = {
   title: string;
