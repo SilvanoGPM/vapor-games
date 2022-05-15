@@ -20,6 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
     rating: game.rating,
     publisher: { name: publisher?.name || '', slug: publisher?.slug || '' },
     genres: game.genres,
+    metacritic: game.metacritic,
   };
 
   return { props: { hero } };

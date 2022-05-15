@@ -3,6 +3,7 @@ import {
   Flex,
   Image,
   Link,
+  Spacer,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -10,12 +11,14 @@ import {
 import NextLink from 'next/link';
 
 import { Rating } from 'components/Rating';
+import { Metacritic } from 'components/Metacritic';
 
 type GameCardProps = {
   slug: string;
   name: string;
   background_image: string;
   rating: number;
+  metacritic?: number;
 };
 
 export function GameCard({
@@ -23,6 +26,7 @@ export function GameCard({
   name,
   background_image,
   rating,
+  metacritic,
 }: GameCardProps) {
   const outlineColor = useColorModeValue('black', 'white');
 
@@ -63,7 +67,7 @@ export function GameCard({
             px={2}
             py={4}
             bgGradient="linear(to top right, transparent 40%, blackAlpha.800 80%)"
-            justify="flex-end"
+            justify="space-between"
             w="100%"
             opacity={{ base: 1, lg: 0 }}
             transition="ease-in-out"
@@ -71,6 +75,11 @@ export function GameCard({
             _groupHover={{ opacity: 1 }}
             _groupFocus={{ opacity: 1 }}
           >
+            {metacritic !== undefined && metacritic !== null ? (
+              <Metacritic size="32px" value={metacritic} />
+            ) : (
+              <Spacer />
+            )}
             <Rating score={rating} iconSize="16px" />
           </Flex>
 

@@ -12,6 +12,7 @@ export type GameTypeRaw = {
   description: string | null;
   background_image: string;
   rating: number;
+  metacritic?: number;
   genres: GenrerType[];
   publisher?: PublisherType;
   publishers?: PublisherType[];
@@ -24,6 +25,7 @@ export type GameType = {
   description: string;
   bgImage: string;
   rating: number;
+  metacritic?: number;
   genres: GenrerType[];
   publisher: PublisherType;
 };

@@ -14,6 +14,7 @@ import { ArrowRightIcon } from '@chakra-ui/icons';
 import { Rating } from 'components/Rating';
 import { GameTag } from 'components/GameTag';
 import { GenrerType, PublisherType } from 'services/rawg';
+import { Metacritic } from 'components/Metacritic';
 
 export type HeroProps = {
   title: string;
@@ -22,6 +23,7 @@ export type HeroProps = {
   bgImage: string;
   genres: GenrerType[];
   rating: number;
+  metacritic?: number;
 };
 
 export function Hero({
@@ -31,6 +33,7 @@ export function Hero({
   genres,
   slug,
   rating,
+  metacritic,
 }: HeroProps) {
   return (
     <Box
@@ -93,7 +96,12 @@ export function Hero({
             ))}
           </Flex>
 
-          <Rating score={rating} iconSize="20px" mb="1rem" />
+          <Flex mb="1rem" gap="1rem">
+            <Rating score={rating} iconSize="20px" />
+            {metacritic !== undefined && metacritic !== null && (
+              <Metacritic size="32px" value={metacritic} />
+            )}
+          </Flex>
 
           <NextLink href={`/games/${slug}`} passHref>
             <Link tabIndex={-1}>

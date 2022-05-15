@@ -18,8 +18,14 @@ export function Rating({
     .map((_, index) => index + 1);
 
   return (
-    <Tooltip label={`Rating: ${score}`} placement="right" hasArrow>
-      <Flex gap="1" w={`calc(${iconSize} * ${total + 1})`} {...props}>
+    <Tooltip label={`Rating: ${score}`} placement="top" hasArrow>
+      <Flex
+        gap="1"
+        w={`calc(${iconSize} * ${total + 1})`}
+        align="center"
+        justify="center"
+        {...props}
+      >
         {stars.map((value) => (
           <StarIcon
             key={value}
