@@ -4,15 +4,15 @@ import { ArrowRightIcon } from '@chakra-ui/icons';
 import { Rating } from 'components/Rating';
 import { GameTag } from 'components/GameTag';
 
-type HeroProps = {
+export type HeroProps = {
   title: string;
-  publisher: string;
+  publisher: { name: string; slug: string };
   bgImage: string;
   genres: string[];
-  score: number;
+  rating: number;
 };
 
-export function Hero({ title, publisher, bgImage, genres, score }: HeroProps) {
+export function Hero({ title, publisher, bgImage, genres, rating }: HeroProps) {
   return (
     <Box
       as="section"
@@ -39,7 +39,7 @@ export function Hero({ title, publisher, bgImage, genres, score }: HeroProps) {
       >
         <LightMode>
           <Heading>{title}</Heading>
-          <Text mb="1rem">{publisher}</Text>
+          <Text mb="1rem">{publisher.name}</Text>
 
           <Flex gap="0.5rem" wrap="wrap" mb="1rem" width="100%">
             {genres.map((genre) => (
@@ -47,7 +47,7 @@ export function Hero({ title, publisher, bgImage, genres, score }: HeroProps) {
             ))}
           </Flex>
 
-          <Rating score={score} iconSize="20px" mb="1rem" />
+          <Rating score={rating} iconSize="20px" mb="1rem" />
 
           <Button
             colorScheme="whiteAlpha"

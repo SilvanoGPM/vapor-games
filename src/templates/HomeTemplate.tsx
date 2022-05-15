@@ -1,10 +1,14 @@
 import { Box, useColorModeValue } from '@chakra-ui/react';
 import { GenreList } from 'components/GenreList';
-import { Hero } from 'components/Hero';
+import { Hero, HeroProps } from 'components/Hero';
 
 import { NavBar } from 'components/NavBar';
 
-export function Main() {
+export type HomeTemplateProps = {
+  hero: HeroProps;
+};
+
+export function HomeTemplate({ hero }: HomeTemplateProps) {
   const navbarBgSelected = useColorModeValue('gray.300', '#262626');
 
   const navbarColorSelected = useColorModeValue(
@@ -29,13 +33,7 @@ export function Main() {
         colorSelected={navbarColorSelected}
       />
 
-      <Hero
-        title="Grand Theft Auto V"
-        publisher="Rockstar Games"
-        score={4.48}
-        bgImage="https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg"
-        genres={['Action', 'Adventure', 'Singleplayer']}
-      />
+      <Hero {...hero} />
 
       <Box as="section" mt={5} px={{ base: '2rem', md: '4rem' }}>
         <GenreList title="Ação" genre="action" />

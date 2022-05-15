@@ -7,8 +7,9 @@ describe('<Hero />', () => {
   it('should render a hero with title, publiser and genres', () => {
     const data = {
       title: 'Grand Theft Auto V',
-      publisher: 'Rockstar Games',
+      publisher: { name: 'Rockstar Games', slug: 'rockstar-games' },
       genres: ['Action', 'Adventure', 'Singleplayer'],
+      rating: 5,
       bgImage:
         'https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg',
     };
