@@ -7,5 +7,5 @@ export type GameTemplateProps = {
 };
 
 export function GameTemplate({ game }: GameTemplateProps) {
-  return <Heading>{game.title}</Heading>;
+  return <Heading>{game.name}</Heading>;
 }
