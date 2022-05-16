@@ -12,7 +12,7 @@ export function GoBack({ isOpen }: GoBackProps) {
   return (
     <LightMode>
       <IconButton
-        display={router.pathname !== '/' && !isOpen ? 'block' : 'none'}
+        display={router.pathname !== '/' && !isOpen ? 'flex' : 'none'}
         fontSize="32px"
         aria-label="Go back"
         icon={<ArrowBackIcon />}
@@ -28,6 +28,10 @@ export function GoBack({ isOpen }: GoBackProps) {
           ring: 1,
           ringOffsetColor: 'white',
           ringOffset: '0.2rem',
+          bgColor: 'transparent',
+        }}
+        _active={{
+          bgColor: 'transparent',
         }}
       />
     </LightMode>

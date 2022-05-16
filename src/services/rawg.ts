@@ -13,6 +13,11 @@ export type ScreenshotType = {
   width: number;
 };
 
+export type StoreType = {
+  store_id: number;
+  url: string;
+};
+
 export type PreviewGameType = {
   id: number;
   name: string;
@@ -27,7 +32,9 @@ export type GameType = {
   id: number;
   name: string;
   slug: string;
+  description_raw: string | null;
   background_image: string;
+  background_image_additional: string;
   rating: number;
   metacritic: number | null;
   genres: GenreType[];
@@ -40,6 +47,8 @@ export type GameType = {
   updated: string;
   series: PreviewGameType[];
   screenshots: ScreenshotType[];
+  stores: StoreType[];
+  website: string;
 };
 
 const key = process.env.API_KEY;
@@ -55,7 +64,16 @@ export async function getGameBySlug(slug: string): Promise<GameType> {
     `/games/${slug}/screenshots?key=${key}`,
   );
 
-  return { ...game, series: series.results, screenshots: screenshots.results };
+  const { data: stores } = await api.get<{ results: StoreType[] }>(
+    `/games/${slug}/stores?key=${key}`,
+  );
+
+  return {
+    ...game,
+    series: series.results,
+    screenshots: screenshots.results,
+    stores: stores.results,
+  };
 }
 
 export async function getRandomGame() {
