@@ -7,9 +7,8 @@ import {
   StackProps,
 } from '@chakra-ui/react';
 
-import ScrollContainer from 'react-indiana-drag-scroll';
-
 import { GameCard } from 'components/GameCard';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 import { PreviewGameType } from 'services/rawg';
 
@@ -36,21 +35,17 @@ export function GameList({
         </Flex>
       )}
 
-      <HStack
-        spacing={8}
-        overflow="auto"
-        py={4}
-        as={ScrollContainer}
-        {...listStyle}
-      >
-        {data.map((game) => (
-          <GameCard
-            key={game.slug}
-            fallbackImage="/fallback_game_image.png"
-            {...game}
-          />
-        ))}
-      </HStack>
+      <ScrollContainer style={{ width: '100%' }}>
+        <HStack spacing={8} py={4} {...listStyle}>
+          {data.map((game) => (
+            <GameCard
+              key={game.slug}
+              fallbackImage="/fallback_game_image.png"
+              {...game}
+            />
+          ))}
+        </HStack>
+      </ScrollContainer>
     </Box>
   );
 }
