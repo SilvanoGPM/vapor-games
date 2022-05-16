@@ -17,12 +17,7 @@ export function GameTemplate({ game }: GameTemplateProps) {
     <>
       <Header />
 
-      <GameHero
-        {...game}
-        background_image={
-          game.background_image_additional || game.background_image
-        }
-      />
+      <GameHero {...game} />
 
       <Box as="section" mt={8} px={{ base: '2rem', md: '4rem' }}>
         <Overview game={game} />

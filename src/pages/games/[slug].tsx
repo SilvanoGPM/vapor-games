@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export async function getStaticPaths() {
-  const games = await rawg.getMostPopularGames(1);
+  const games = await rawg.getMostPopularGames(10);
 
   const paths = games.map(({ slug }) => ({ params: { slug } }));
 

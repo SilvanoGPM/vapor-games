@@ -44,7 +44,7 @@ export function Overview({ game }: OverviewProps) {
         mb="8"
       >
         <Image
-          src={game.background_image}
+          src={game.background_image_additional || game.background_image}
           flex="1"
           maxW={{ base: '100%', lg: '50%' }}
           objectFit="cover"
