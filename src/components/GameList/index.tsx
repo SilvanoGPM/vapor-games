@@ -31,13 +31,7 @@ export function GameList({
   return (
     <Box w="100%" mb={50} {...containerStyle}>
       {header && (
-        <Flex
-          mb={2}
-          px={2}
-          justify="space-between"
-          align="center"
-          {...headerStyle}
-        >
+        <Flex mb={2} justify="space-between" align="center" {...headerStyle}>
           {header}
         </Flex>
       )}
@@ -46,7 +40,6 @@ export function GameList({
         spacing={8}
         overflow="auto"
         py={4}
-        px={2}
         as={ScrollContainer}
         {...listStyle}
       >

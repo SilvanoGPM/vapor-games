@@ -6,6 +6,13 @@ export type PublisherType = { name: string; slug: string };
 
 export type GenreType = { name: string; slug: GenresType };
 
+export type ScreenshotType = {
+  id: number;
+  image: string;
+  height: number;
+  width: number;
+};
+
 export type PreviewGameType = {
   id: number;
   name: string;
@@ -32,6 +39,7 @@ export type GameType = {
   released: string;
   updated: string;
   series: PreviewGameType[];
+  screenshots: ScreenshotType[];
 };
 
 const key = process.env.API_KEY;
@@ -43,7 +51,11 @@ export async function getGameBySlug(slug: string): Promise<GameType> {
     `/games/${slug}/game-series?key=${key}`,
   );
 
-  return { ...game, series: series.results };
+  const { data: screenshots } = await api.get<{ results: ScreenshotType[] }>(
+    `/games/${slug}/screenshots?key=${key}`,
+  );
+
+  return { ...game, series: series.results, screenshots: screenshots.results };
 }
 
 export async function getRandomGame() {

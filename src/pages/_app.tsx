@@ -5,6 +5,8 @@ import NextNProgress from 'nextjs-progressbar';
 
 import { theme } from 'styles/theme';
 
+import './styles.css';
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
