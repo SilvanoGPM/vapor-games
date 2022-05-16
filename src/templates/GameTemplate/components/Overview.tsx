@@ -1,17 +1,6 @@
-import {
-  Divider,
-  Flex,
-  Heading,
-  Image,
-  Link,
-  Spacer,
-  Text,
-} from '@chakra-ui/react';
+import { Divider, Flex, Heading, Image, Spacer, Text } from '@chakra-ui/react';
 
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { FiPackage } from 'react-icons/fi';
-import { MdUpdate } from 'react-icons/md';
-import { formatGameDate } from 'utils/formatGameDate';
 
 import { SteamButton } from './SteamButton';
 import { EpicGamesButton } from './EpicGamesButton';
@@ -21,13 +10,16 @@ type OverviewProps = {
   game: GameType;
 };
 
+const STEAM_ID = 1;
+const EPIC_GAMES_ID = 11;
+
 export function Overview({ game }: OverviewProps) {
   const gameIsAvailableOnSteam = game.stores.find(
-    ({ store_id }) => store_id === 1,
+    ({ store_id }) => store_id === STEAM_ID,
   );
 
   const gameIsAvailableOnEpicGames = game.stores.find(
-    ({ store_id }) => store_id === 11,
+    ({ store_id }) => store_id === EPIC_GAMES_ID,
   );
 
   return (
@@ -53,7 +45,7 @@ export function Overview({ game }: OverviewProps) {
         <Flex direction="column" flex="1">
           {game.description_raw && (
             <ScrollContainer
-              style={{ width: '100%', maxHeight: '250px' }}
+              style={{ width: '100%', maxHeight: '300px' }}
               hideScrollbars={false}
             >
               <Text fontSize="xl" flex="1" tabIndex={-1}>
@@ -63,24 +55,6 @@ export function Overview({ game }: OverviewProps) {
           )}
 
           <Divider my="2" />
-
-          <Flex gap="2rem" align="center" my="4">
-            <Link target="_blank" href={game.website}>
-              <Text fontSize="2xl">Website</Text>
-            </Link>
-
-            <Spacer />
-
-            <Flex align="center" direction="column">
-              <FiPackage />
-              <Text>{formatGameDate(game.released)}</Text>
-            </Flex>
-
-            <Flex align="center" direction="column">
-              <MdUpdate />
-              <Text>{formatGameDate(game.updated)}</Text>
-            </Flex>
-          </Flex>
 
           <Spacer />
 
