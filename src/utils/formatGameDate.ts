@@ -3,7 +3,7 @@ function clearDate(date: string) {
 }
 
 export function formatGameDate(date: string) {
-  const clearedDate = clearDate(date);
+  const clearedDate = clearDate(date || '');
 
   return clearedDate.replaceAll('-', ' ');
 }
