@@ -11,13 +11,16 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Head>
-        <title>Next Boilerplate</title>
+        <title>Vapor Games</title>
 
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
 
-        <meta name="description" content="Boilerplate for NextJS projects" />
+        <meta
+          name="description"
+          content="Vapor é uma plataforma para listar diversas informações de vários jogos."
+        />
         <meta name="theme-color" content="#FFFFFF" />
       </Head>
 

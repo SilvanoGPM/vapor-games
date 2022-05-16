@@ -1,6 +1,6 @@
 {
-  "name": "Next Boilerplate",
-  "short_name": "Boilerplate",
+  "name": "Vapor",
+  "short_name": "Vapor",
   "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "theme_color": "#FFFFFF",
-  "description": "Boilerplate for NextJS projects",
+  "description": "Vapor é uma plataforma para listar diversas informações de vários jogos.",
   "background_color": "#FFFFFF",
   "start_url": "/",
   "display": "standalone",
