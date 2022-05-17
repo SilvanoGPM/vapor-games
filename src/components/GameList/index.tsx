@@ -36,7 +36,7 @@ export function GameList({
       )}
 
       <ScrollContainer style={{ width: '100%' }}>
-        <HStack spacing={8} py={4} {...listStyle}>
+        <HStack spacing={4} py={4} {...listStyle}>
           {data.map((game) => (
             <GameCard
               key={game.slug}

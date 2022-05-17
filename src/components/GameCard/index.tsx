@@ -56,9 +56,9 @@ export function GameCard({
         role="group"
       >
         <Box
-          minW={300}
-          maxW={300}
-          h={400}
+          minW={{ base: 250, md: 300 }}
+          maxW={{ base: 250, md: 300 }}
+          h={{ base: 350, md: 400 }}
           pos="relative"
           cursor="pointer"
           shadow="2xl"
