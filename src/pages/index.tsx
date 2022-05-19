@@ -46,5 +46,6 @@ export const getStaticProps: GetStaticProps = async () => {
       hero,
       genres,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
