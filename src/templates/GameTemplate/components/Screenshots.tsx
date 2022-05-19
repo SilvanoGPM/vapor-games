@@ -8,6 +8,10 @@ type ScreenshotsProps = {
 
 export function Screenshots({ screenshots }: ScreenshotsProps) {
   const slidesPerView = useBreakpointValue({ base: 1, md: 2 });
+  const sliderClassName = useBreakpointValue({
+    base: 'show-buttons',
+    md: '',
+  });
 
   const sliderSettings: SlideSettings = {
     spaceBetween: 30,
@@ -18,6 +22,7 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
     pagination: screenshots.length > 2 && {
       clickable: true,
     },
+    className: sliderClassName,
   };
 
   return (

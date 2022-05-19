@@ -6,7 +6,15 @@ export type StoreButtonProps = {
 
 export function StoreButton({ url, children, ...props }: StoreButtonProps) {
   return (
-    <Link href={url} target="_blank" tabIndex={-1} flex="1">
+    <Link
+      href={url}
+      target="_blank"
+      tabIndex={-1}
+      flex="1"
+      border="none"
+      outline="none"
+      _focus={{ border: 'none', outline: 'none' }}
+    >
       <Button
         w="100%"
         bgColor="black"
@@ -17,19 +25,21 @@ export function StoreButton({ url, children, ...props }: StoreButtonProps) {
         }}
         _focus={{
           outline: 'none',
-          ringColor: 'black',
-          ring: 2,
+          ringColor: 'white',
+          ring: 1,
           ringOffsetColor: 'white',
-          ringOffset: '0.2rem',
+          ringOffset: '0.1rem',
         }}
         _active={{
           border: 'none',
+          outline: 'none',
           bg: 'black',
         }}
         _disabled={{
           bg: 'black',
           filter: 'brightness(0.8)',
-          cursor: 'default',
+          opacity: 0.6,
+          cursor: 'not-allowed',
           _hover: { filter: 'brightness(0.8)' },
         }}
         {...props}
