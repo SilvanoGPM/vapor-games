@@ -1,0 +1,17 @@
+.gameList {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-color) var(--scroll-background);
+}
+
+.gameList::-webkit-scrollbar {
+  width: 12px;
+}
+
+.gameList::-webkit-scrollbar-track {
+  background: var(--scroll-background);
+}
+
+.gameList::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-color);
+  border: 3px solid var(--scroll-background);
+}

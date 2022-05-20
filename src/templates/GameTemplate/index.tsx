@@ -26,6 +26,7 @@ export function GameTemplate({ game }: GameTemplateProps) {
 
         {game.series.length > 0 && (
           <GameList
+            hideScrollbars={false}
             data={game.series}
             header={
               <Heading as="h3" fontSize="4xl">
