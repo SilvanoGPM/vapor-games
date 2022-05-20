@@ -13,6 +13,8 @@ type OverviewProps = {
 const STEAM_ID = 1;
 const EPIC_GAMES_ID = 11;
 
+const fallbackImage = '/assets/game-fallback.png';
+
 export function Overview({ game }: OverviewProps) {
   const gameIsAvailableOnSteam = game.stores.find(
     ({ store_id }) => store_id === STEAM_ID,
@@ -36,7 +38,11 @@ export function Overview({ game }: OverviewProps) {
         mb="8"
       >
         <Image
-          src={game.background_image_additional || game.background_image}
+          src={
+            game.background_image_additional ||
+            game.background_image ||
+            fallbackImage
+          }
           flex="1"
           maxW={{ base: '100%', lg: '50%' }}
           objectFit="cover"

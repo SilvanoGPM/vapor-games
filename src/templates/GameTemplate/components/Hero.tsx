@@ -11,7 +11,7 @@ export function GameHero({
   metacritic,
 }: HeroProps) {
   return (
-    <Hero.Background bgImage={background_image}>
+    <Hero.Background bgImage={background_image || ''}>
       <LightMode>
         <Hero.Title>{name}</Hero.Title>
 

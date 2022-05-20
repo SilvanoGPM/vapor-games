@@ -1,5 +1,13 @@
-import { Box, Heading, Image, useBreakpointValue } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  useBreakpointValue,
+  usePrefersReducedMotion,
+  keyframes,
+} from '@chakra-ui/react';
+
 import { Slider, SlideSettings, Slide } from 'components/Slider';
+import { VaporImage } from 'components/VaporImage';
 import { ScreenshotType } from 'services/rawg';
 
 type ScreenshotsProps = {
@@ -12,6 +20,22 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
     base: 'show-buttons',
     md: '',
   });
+
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  const shimmerAnimation = keyframes`
+    from {
+      background-position: -40rem 0;
+    }
+
+    to {
+      background-position: 40rem 0;
+    }
+  `;
+
+  const imageLoadingAnimation = prefersReducedMotion
+    ? undefined
+    : `${shimmerAnimation} 1s linear infinite forwards`;
 
   const sliderSettings: SlideSettings = {
     spaceBetween: 30,
@@ -35,12 +59,24 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
         <Slider settings={sliderSettings}>
           {screenshots.map(({ id, image }) => (
             <Slide key={id}>
-              <Image
+              <VaporImage
+                bgColor="#f6f7f8"
+                bgGradient="linear(
+                  to-r,
+                  #f6f7f8 0%,
+                  #e3e5e9 20%,
+                  #f6f7f8 40%,
+                  #e3e5e9 100%
+                )"
+                bgSize="80rem 14rem"
+                animation={imageLoadingAnimation}
                 src={image}
-                w="100%"
-                h="400px"
+                width={1280}
+                height={720}
+                layout="fill"
                 objectFit="cover"
                 filter="brightness(0.8)"
+                overflow="hidden"
               />
             </Slide>
           ))}

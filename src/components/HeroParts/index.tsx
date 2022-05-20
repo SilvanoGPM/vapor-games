@@ -24,7 +24,7 @@ export type HeroProps = {
   name: string;
   slug: string;
   publishers: PublisherType[];
-  background_image: string;
+  background_image: string | null;
   genres: GenreType[];
   rating: number;
   metacritic?: number | null;

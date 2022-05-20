@@ -12,7 +12,7 @@ export function HomeHero({
   slug,
 }: HeroProps) {
   return (
-    <Hero.Background bgImage={background_image}>
+    <Hero.Background bgImage={background_image || ''}>
       <LightMode>
         <Hero.Title>{name}</Hero.Title>
 
