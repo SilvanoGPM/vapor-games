@@ -57,7 +57,7 @@ export async function getGameAdditionalInfo<T>(
       `/games/${slug}/${type}?key=${key}`,
     );
 
-    return data.results;
+    return data.results || [];
   } catch {
     return [];
   }

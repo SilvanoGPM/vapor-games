@@ -16,7 +16,7 @@ export function HomeHero({
       <LightMode>
         <Hero.Title>{name}</Hero.Title>
 
-        {publishers.length > 0 && (
+        {publishers?.length > 0 && (
           <Hero.Publisher>{publishers[0].name}</Hero.Publisher>
         )}
 

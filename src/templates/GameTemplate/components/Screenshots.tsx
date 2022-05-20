@@ -14,13 +14,7 @@ type ScreenshotsProps = {
   screenshots: ScreenshotType[];
 };
 
-export function Screenshots({ screenshots }: ScreenshotsProps) {
-  const slidesPerView = useBreakpointValue({ base: 1, md: 2 });
-  const sliderClassName = useBreakpointValue({
-    base: 'show-buttons',
-    md: '',
-  });
-
+function Screenshot({ image }: { image: string }) {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const shimmerAnimation = keyframes`
@@ -36,6 +30,36 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
   const imageLoadingAnimation = prefersReducedMotion
     ? undefined
     : `${shimmerAnimation} 1s linear infinite forwards`;
+
+  return (
+    <VaporImage
+      bgColor="#f6f7f8"
+      bgGradient="linear(
+                  to-r,
+                  #f6f7f8 0%,
+                  #e3e5e9 20%,
+                  #f6f7f8 40%,
+                  #e3e5e9 100%
+                )"
+      bgSize="80rem 14rem"
+      animation={imageLoadingAnimation}
+      src={image}
+      width={1280}
+      height={720}
+      layout="fill"
+      objectFit="cover"
+      filter="brightness(0.8)"
+      overflow="hidden"
+    />
+  );
+}
+
+export function Screenshots({ screenshots }: ScreenshotsProps) {
+  const slidesPerView = useBreakpointValue({ base: 1, md: 2 });
+  const sliderClassName = useBreakpointValue({
+    base: 'show-buttons',
+    md: '',
+  });
 
   const sliderSettings: SlideSettings = {
     spaceBetween: 30,
@@ -59,32 +83,18 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
         Screenshots
       </Heading>
 
-      <Box w="100%" h="400px">
-        <Slider settings={sliderSettings}>
-          {screenshots.map(({ id, image }) => (
-            <Slide key={id}>
-              <VaporImage
-                bgColor="#f6f7f8"
-                bgGradient="linear(
-                  to-r,
-                  #f6f7f8 0%,
-                  #e3e5e9 20%,
-                  #f6f7f8 40%,
-                  #e3e5e9 100%
-                )"
-                bgSize="80rem 14rem"
-                animation={imageLoadingAnimation}
-                src={image}
-                width={1280}
-                height={720}
-                layout="fill"
-                objectFit="cover"
-                filter="brightness(0.8)"
-                overflow="hidden"
-              />
-            </Slide>
-          ))}
-        </Slider>
+      <Box w="100%" h="400px" overflow="hidden">
+        {screenshots.length === 1 ? (
+          <Screenshot image={screenshots[0].image} />
+        ) : (
+          <Slider settings={sliderSettings}>
+            {screenshots.map(({ id, image }) => (
+              <Slide key={id}>
+                <Screenshot image={image} />
+              </Slide>
+            ))}
+          </Slider>
+        )}
       </Box>
     </Box>
   );
