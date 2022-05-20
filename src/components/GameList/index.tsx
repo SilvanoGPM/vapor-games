@@ -38,11 +38,7 @@ export function GameList({
       <ScrollContainer style={{ width: '100%' }}>
         <HStack spacing={4} py={4} {...listStyle}>
           {data.map((game) => (
-            <GameCard
-              key={game.slug}
-              fallbackImage="/fallback_game_image.png"
-              {...game}
-            />
+            <GameCard key={game.slug} {...game} />
           ))}
         </HStack>
       </ScrollContainer>

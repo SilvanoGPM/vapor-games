@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Image,
   Link,
   Spacer,
   Text,
@@ -14,6 +13,7 @@ import NextLink from 'next/link';
 
 import { Rating } from 'components/Rating';
 import { Metacritic } from 'components/Metacritic';
+import { VaporImage } from 'components/VaporImage';
 
 type GameCardProps = {
   slug: string;
@@ -21,7 +21,6 @@ type GameCardProps = {
   background_image: string;
   rating: number;
   metacritic?: number | null;
-  fallbackImage: string;
 };
 
 export function GameCard({
@@ -30,7 +29,6 @@ export function GameCard({
   background_image,
   rating,
   metacritic,
-  fallbackImage,
 }: GameCardProps) {
   const outlineColor = useColorModeValue('black', 'white');
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -59,19 +57,20 @@ export function GameCard({
           minW={{ base: 250, md: 300 }}
           maxW={{ base: 250, md: 300 }}
           h={{ base: 350, md: 400 }}
+          overflow="hidden"
           pos="relative"
           cursor="pointer"
           shadow="2xl"
           transition="ease-in-out 0.2s"
           _hover={{ transform: 'translateY(-10px)' }}
         >
-          <Image
-            fallbackSrc={fallbackImage}
+          <VaporImage
+            width={1200}
+            height={1700}
             src={background_image}
+            alt={`Game - ${name}`}
             objectFit="cover"
             filter={{ base: '', md: 'grayscale(80%)' }}
-            w="100%"
-            h="100%"
             bgColor="#f6f7f8"
             bgGradient="linear(
               to-r,
