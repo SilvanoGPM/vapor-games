@@ -57,7 +57,7 @@ export function GameList({
         className={styles.gameList}
         hideScrollbars={hideScrollbars}
       >
-        <HStack spacing={4} py={4} {...listStyle}>
+        <HStack spacing={4} {...listStyle}>
           {data.map((game) => (
             <GameCard key={game.slug} {...game} />
           ))}

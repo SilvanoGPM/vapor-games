@@ -14,7 +14,7 @@ export type GameTemplateProps = {
 
 export function GameTemplate({ game }: GameTemplateProps) {
   return (
-    <>
+    <main>
       <Header />
 
       <GameHero {...game} />
@@ -27,15 +27,16 @@ export function GameTemplate({ game }: GameTemplateProps) {
         {game.series.length > 0 && (
           <GameList
             hideScrollbars={false}
+            listStyle={{ mb: 4 }}
             data={game.series}
             header={
-              <Heading as="h3" fontSize="4xl">
+              <Heading as="h3" fontSize="4xl" mb={4}>
                 Game serie
               </Heading>
             }
           />
         )}
       </Box>
-    </>
+    </main>
   );
 }

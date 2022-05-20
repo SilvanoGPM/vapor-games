@@ -8,15 +8,20 @@ import 'swiper/css/pagination';
 type SliderProps = {
   settings: SwiperProps;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 };
 
 export type SlideSettings = SwiperProps;
 
 export const Slide = SwiperSlide;
 
-export function Slider({ settings, children }: SliderProps) {
+export function Slider({ settings, children, style }: SliderProps) {
   return (
-    <Swiper modules={[Navigation, Pagination, A11y]} {...settings}>
+    <Swiper
+      style={style}
+      modules={[Navigation, Pagination, A11y]}
+      {...settings}
+    >
       {children}
     </Swiper>
   );

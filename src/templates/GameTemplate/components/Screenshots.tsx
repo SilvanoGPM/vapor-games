@@ -78,8 +78,8 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
   }
 
   return (
-    <Box mb="8">
-      <Heading as="h3" mb="8">
+    <Box mb="8" as="section">
+      <Heading as="h3" mb="4">
         Screenshots
       </Heading>
 
@@ -87,7 +87,7 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
         {screenshots.length === 1 ? (
           <Screenshot image={screenshots[0].image} />
         ) : (
-          <Slider settings={sliderSettings}>
+          <Slider settings={sliderSettings} style={{ height: '100%' }}>
             {screenshots.map(({ id, image }) => (
               <Slide key={id}>
                 <Screenshot image={image} />
