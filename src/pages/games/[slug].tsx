@@ -7,7 +7,7 @@ import { GameTemplate, GameTemplateProps } from 'templates/GameTemplate';
 export default function Game(props: GameTemplateProps) {
   const router = useRouter();
 
-  if (router.isFallback) {
+  if (router.isFallback || !props) {
     return <Fallback />;
   }
 
@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const game = await rawg.getGameBySlug(slug);
     return { props: { game } };
   } catch (error) {
-    console.log(error);
+    console.log(`error on game: ${slug}`, error);
   }
 
   return { notFound: true };

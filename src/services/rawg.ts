@@ -22,22 +22,15 @@ export type PreviewGameType = {
   id: number;
   name: string;
   slug: string;
-  background_image: string;
+  background_image: string | null;
   rating: number;
   metacritc: number | null;
   genres: GenreType[];
 };
 
 export type GameType = {
-  id: number;
-  name: string;
-  slug: string;
   description_raw: string | null;
-  background_image: string;
-  background_image_additional: string;
-  rating: number;
-  metacritic: number | null;
-  genres: GenreType[];
+  background_image_additional: string | null;
   publishers: PublisherType[];
   requirements: {
     minimum: string;
@@ -49,7 +42,7 @@ export type GameType = {
   screenshots: ScreenshotType[];
   stores: StoreType[];
   website: string;
-};
+} & PreviewGameType;
 
 const key = process.env.API_KEY;
 

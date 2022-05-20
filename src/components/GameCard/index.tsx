@@ -15,10 +15,12 @@ import { Rating } from 'components/Rating';
 import { Metacritic } from 'components/Metacritic';
 import { VaporImage } from 'components/VaporImage';
 
+const fallbackImage = '/assets/game-fallback.png';
+
 type GameCardProps = {
   slug: string;
   name: string;
-  background_image: string;
+  background_image: string | null;
   rating: number;
   metacritic?: number | null;
 };
@@ -67,7 +69,7 @@ export function GameCard({
           <VaporImage
             width={1200}
             height={1700}
-            src={background_image}
+            src={background_image || fallbackImage}
             alt={`Game - ${name}`}
             objectFit="cover"
             filter={{ base: '', md: 'grayscale(80%)' }}
@@ -87,6 +89,9 @@ export function GameCard({
             }}
             _groupFocus={{
               filter: 'grayscale(0%)',
+            }}
+            onError={(event) => {
+              event.currentTarget.src = fallbackImage;
             }}
           />
 
