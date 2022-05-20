@@ -49,6 +49,10 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
     className: sliderClassName,
   };
 
+  if (screenshots.length === 0) {
+    return null;
+  }
+
   return (
     <Box mb="8">
       <Heading as="h3" mb="8">

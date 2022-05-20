@@ -44,28 +44,45 @@ export type GameType = {
   website: string;
 } & PreviewGameType;
 
+type GameAdditionalInfoType = 'game-series' | 'screenshots' | 'stores';
+
 const key = process.env.API_KEY;
+
+export async function getGameAdditionalInfo<T>(
+  type: GameAdditionalInfoType,
+  slug: string,
+) {
+  try {
+    const { data } = await api.get<{ results: T[] }>(
+      `/games/${slug}/${type}?key=${key}`,
+    );
+
+    return data.results;
+  } catch {
+    return [];
+  }
+}
 
 export async function getGameBySlug(slug: string): Promise<GameType> {
   const { data: game } = await api.get<GameType>(`/games/${slug}?key=${key}`);
 
-  const { data: series } = await api.get<{ results: PreviewGameType[] }>(
-    `/games/${slug}/game-series?key=${key}`,
+  const series = await getGameAdditionalInfo<PreviewGameType>(
+    'game-series',
+    slug,
   );
 
-  const { data: screenshots } = await api.get<{ results: ScreenshotType[] }>(
-    `/games/${slug}/screenshots?key=${key}`,
+  const screenshots = await getGameAdditionalInfo<ScreenshotType>(
+    'screenshots',
+    slug,
   );
 
-  const { data: stores } = await api.get<{ results: StoreType[] }>(
-    `/games/${slug}/stores?key=${key}`,
-  );
+  const stores = await getGameAdditionalInfo<StoreType>('stores', slug);
 
   return {
     ...game,
-    series: series.results,
-    screenshots: screenshots.results,
-    stores: stores.results,
+    series,
+    screenshots,
+    stores,
   };
 }
 
