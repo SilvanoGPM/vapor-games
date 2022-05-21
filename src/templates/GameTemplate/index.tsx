@@ -18,12 +18,12 @@ export function GameTemplate({ game }: GameTemplateProps) {
   return (
     <>
       <NextSeo
-        title={`${game.name}`}
+        title={`${game.name} - Vapor Games`}
         description={game.description_raw || 'No description'}
         canonical="https://vapor-games.vercel.app/"
         openGraph={{
           url: 'https://vapor-games.vercel.app/',
-          title: `${game.name}`,
+          title: `${game.name} - Vapor Games`,
           description: game.description_raw || 'No description',
           images: [
             {

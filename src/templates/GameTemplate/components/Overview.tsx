@@ -1,19 +1,24 @@
 import {
+  Box,
+  Button,
   Divider,
   Flex,
   Heading,
+  Icon,
   Image,
   Spacer,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
 
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 import { SteamButton } from './SteamButton';
 import { EpicGamesButton } from './EpicGamesButton';
 import { GameType } from 'services/rawg';
+import { useState } from 'react';
 
 type OverviewProps = {
   game: GameType;
@@ -26,6 +31,12 @@ const fallbackImage = '/assets/game-fallback.png';
 
 export function Overview({ game }: OverviewProps) {
   const descriptionMaxWidth = useBreakpointValue({ base: '100%', lg: '50%' });
+
+  const [showMoreDescription, setShowMoreDescription] = useState(false);
+
+  function toggleShowMore() {
+    setShowMoreDescription(!showMoreDescription);
+  }
 
   const gameIsAvailableOnSteam = game.stores.find(
     ({ store_id }) => store_id === STEAM_ID,
@@ -53,6 +64,8 @@ export function Overview({ game }: OverviewProps) {
           animateOnce
           style={{
             minWidth: descriptionMaxWidth,
+            maxWidth: descriptionMaxWidth,
+            width: '100%',
           }}
         >
           <Image
@@ -79,18 +92,58 @@ export function Overview({ game }: OverviewProps) {
             animateOnce
           >
             <Flex direction="column" flex="1" h="100%">
-              {game.description_raw && (
+              <Box>
                 <ScrollContainer
-                  style={{ width: '100%', maxHeight: '300px' }}
-                  hideScrollbars={false}
+                  style={{
+                    width: '100%',
+                    maxHeight: '260px',
+                  }}
+                  vertical={showMoreDescription}
+                  hideScrollbars={!showMoreDescription}
                 >
-                  <Text fontSize="xl" flex="1" tabIndex={-1}>
-                    {game.description_raw}
+                  <Text
+                    fontSize="xl"
+                    flex="1"
+                    tabIndex={-1}
+                    wordBreak="break-word"
+                  >
+                    {game.description_raw || 'No description.'}
                   </Text>
                 </ScrollContainer>
-              )}
 
-              <Divider my="2" />
+                <Flex mt={4}>
+                  <Button
+                    flex="1"
+                    leftIcon={
+                      <Icon
+                        as={
+                          showMoreDescription ? AiFillEyeInvisible : AiFillEye
+                        }
+                      />
+                    }
+                    textTransform="uppercase"
+                    onClick={toggleShowMore}
+                    _focus={{
+                      outline: 'none',
+                      ringColor: 'white',
+                      ring: 1,
+                      ringOffsetColor: 'white',
+                      ringOffset: '0.1rem',
+                    }}
+                    _hover={{
+                      outline: 'none',
+                      ringColor: 'white',
+                      ring: 1,
+                      ringOffsetColor: 'white',
+                      ringOffset: '0.1rem',
+                    }}
+                  >
+                    {showMoreDescription ? 'Hide' : 'See more'}
+                  </Button>
+                </Flex>
+              </Box>
+
+              <Divider my={4} />
 
               <Spacer />
 
