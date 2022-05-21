@@ -1,7 +1,8 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
+
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { theme } from 'styles/theme';
 
@@ -11,21 +12,27 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Head>
-        <title>Vapor Games</title>
+        <link
+          rel="icon"
+          type="image/png"
+          href="/icons/android-chrome-512x512.png"
+        />
 
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
 
+        <title>Vapor Games</title>
+
         <meta
           name="description"
           content="Vapor é uma plataforma para listar diversas informações de vários jogos."
         />
-        <meta name="theme-color" content="#FFFFFF" />
+
+        <meta name="theme-color" content="#121212" />
       </Head>
 
       <NextNProgress
