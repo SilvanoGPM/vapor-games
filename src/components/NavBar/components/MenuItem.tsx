@@ -45,9 +45,9 @@ export function MenuItem({
             'data-testid': 'selected',
             fontWeight: 'bold',
             ringColor: 'white',
-            ring: 1,
+            ring: { base: 0, md: 1 },
             ringOffsetColor: 'transparent',
-            ringOffset: '0.2rem',
+            ringOffset: { base: 0, md: '0.1rem' },
           }
         : {})}
     >

@@ -18,7 +18,8 @@ export function MenuToggle({ isOpen, toggle }: MenuToggleProps) {
         }
         aria-label="Open menu"
         data-testid={isOpen ? 'close' : 'open'}
-        icon={isOpen ? <CloseIcon color="red" /> : <Icon as={RiMenu2Line} />}
+        alignSelf="end"
+        icon={isOpen ? <CloseIcon /> : <Icon as={RiMenu2Line} />}
         display={{ base: 'block', md: 'none' }}
         onClick={toggle}
         fontSize="lg"

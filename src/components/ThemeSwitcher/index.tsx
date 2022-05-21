@@ -12,20 +12,19 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 export function ThemeSwitcher() {
   const { toggleColorMode } = useColorMode();
 
-  const toggleThemeIcon = useColorModeValue(FaSun, FaMoon);
-  const toggleThemeTooltip = useColorModeValue(
-    'Toggle to dark',
-    'Toggle to light',
+  const { label, icon } = useColorModeValue(
+    { label: 'Toggle to dark', icon: FaSun },
+    { label: 'Toggle to light', icon: FaMoon },
   );
 
   return (
     <LightMode>
-      <Tooltip label={toggleThemeTooltip} placement="bottom" hasArrow>
+      <Tooltip label={label} placement="bottom" hasArrow>
         <IconButton
           colorScheme="whiteAlpha"
           onClick={toggleColorMode}
           aria-label="Toggle theme"
-          icon={<Icon as={toggleThemeIcon} />}
+          icon={<Icon as={icon} />}
           _focus={{
             outline: 'none',
             ringColor: 'white',

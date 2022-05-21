@@ -16,6 +16,8 @@ import { MenuLinks } from './components/MenuLinks';
 import { MenuToggle } from './components/MenuToggle';
 import { ThemeSwitcher } from 'components/ThemeSwitcher';
 import { GoBack } from './components/GoBack';
+import { useScrollLock } from 'hooks/useScrollLock';
+import { useEffect } from 'react';
 
 type NavBarProps = {
   bgSelected?: ResponsiveValue<string>;
@@ -29,10 +31,16 @@ export function NavBar({
 }: NavBarProps) {
   const router = useRouter();
 
+  const { lockScroll, unlockScroll } = useScrollLock();
+
   const bg = useColorModeValue('#ffffff', '#121212');
   const color = useColorModeValue('#121212', '#ffffff');
 
   const { isOpen, onToggle, onClose } = useDisclosure();
+
+  useEffect(() => {
+    isOpen ? lockScroll() : unlockScroll();
+  }, [isOpen, lockScroll, unlockScroll]);
 
   useResizeEffect(onClose);
 
@@ -41,11 +49,16 @@ export function NavBar({
       <Container
         {...props}
         bg={isOpen ? bg : props.bg}
+        h={{ base: isOpen ? '100vh' : 'auto', md: 'auto' }}
         color={isOpen ? color : props.color}
         transition="ease"
         transitionDuration="0.2s"
         boxShadow={{ base: isOpen ? 'dark-lg' : 'none', md: 'none' }}
         flexDirection={isOpen ? 'column' : 'row'}
+        justify={{
+          base: isOpen ? 'flex-start' : 'space-between',
+          md: 'space-between',
+        }}
       >
         <Flex
           align="center"
@@ -64,7 +77,11 @@ export function NavBar({
 
         <MenuToggle toggle={onToggle} isOpen={isOpen} />
 
-        <Flex align="center" gap="1rem">
+        <Flex
+          align="center"
+          gap="1rem"
+          w={{ base: isOpen ? '100%' : 'auto', md: 'auto' }}
+        >
           <MenuLinks
             bgSelected={bgSelected}
             colorSelected={colorSelected}

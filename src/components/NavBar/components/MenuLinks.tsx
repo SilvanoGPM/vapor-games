@@ -29,7 +29,7 @@ export function MenuLinks({
     >
       <Stack
         spacing={8}
-        mt={{ base: 10, md: 0 }}
+        mt={{ base: isOpen ? 4 : 10, md: 0 }}
         align="flex-start"
         justify={['center', 'space-between', 'flex-end', 'flex-end']}
         direction={['column', 'column', 'row', 'row']}
