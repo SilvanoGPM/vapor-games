@@ -1,9 +1,12 @@
-import { Center, Spinner } from '@chakra-ui/react';
+import { Center, Spinner, Text } from '@chakra-ui/react';
 
 export function Fallback() {
   return (
-    <Center w="100%" h="100vh">
-      <Spinner />
+    <Center w="100%" h="100vh" flexDirection="column" gap="1rem">
+      <Spinner color="action" />
+      <Text fontSize="2xl" color="action">
+        Processing...
+      </Text>
     </Center>
   );
 }

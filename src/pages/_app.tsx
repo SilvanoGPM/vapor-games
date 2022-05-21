@@ -29,10 +29,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <NextNProgress
-        color="#ffffff"
+        color="#48b80f"
         startPosition={0.3}
         stopDelayMs={200}
-        height={7}
+        height={4}
       />
 
       <Component {...pageProps} />

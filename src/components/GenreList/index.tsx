@@ -27,22 +27,18 @@ export function GenreList({ title, genre, data }: GenreListProps) {
     <GameList
       data={data}
       header={
-        <>
-          <Heading as="h3" fontSize="4xl">
-            {title}
-          </Heading>
-
-          <NextLink href={`/games?genre=${genre}`} passHref>
-            <Link
-              fontSize="2xl"
-              _focus={{
-                textDecor: 'underline',
-              }}
-            >
-              See more
-            </Link>
-          </NextLink>
-        </>
+        <NextLink href={`/games?genre=${genre}`} passHref>
+          <Link
+            fontSize="2xl"
+            _focus={{
+              textDecor: 'underline',
+            }}
+          >
+            <Heading as="h3" fontSize="4xl">
+              {title}
+            </Heading>
+          </Link>
+        </NextLink>
       }
     />
   );

@@ -28,7 +28,6 @@ export function MenuLinks({
       flexBasis={{ base: '100%', md: 'auto' }}
     >
       <Stack
-        spacing={8}
         mt={{ base: isOpen ? 4 : 10, md: 0 }}
         align="flex-start"
         justify={['center', 'space-between', 'flex-end', 'flex-end']}
