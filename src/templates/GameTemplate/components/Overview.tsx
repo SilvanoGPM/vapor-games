@@ -68,9 +68,17 @@ export function Overview({ game }: OverviewProps) {
           />
         </AnimationOnScroll>
 
-        <AnimationOnScroll animateIn="animate__slideInRight" animateOnce>
-          <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-            <Flex direction="column" flex="1">
+        <AnimationOnScroll
+          style={{ flex: 1 }}
+          animateIn="animate__slideInRight"
+          animateOnce
+        >
+          <AnimationOnScroll
+            style={{ height: '100%' }}
+            animateIn="animate__fadeIn"
+            animateOnce
+          >
+            <Flex direction="column" flex="1" h="100%">
               {game.description_raw && (
                 <ScrollContainer
                   style={{ width: '100%', maxHeight: '300px' }}
@@ -89,6 +97,7 @@ export function Overview({ game }: OverviewProps) {
               <Flex gap="1rem" wrap="wrap" w="100%">
                 <AnimationOnScroll
                   animateIn="animate__fadeIn"
+                  style={{ flex: 1 }}
                   delay={200}
                   animateOnce
                 >
@@ -100,6 +109,7 @@ export function Overview({ game }: OverviewProps) {
 
                 <AnimationOnScroll
                   animateIn="animate__fadeIn"
+                  style={{ flex: 1 }}
                   delay={300}
                   animateOnce
                 >

@@ -16,13 +16,14 @@ export function Animation({
 }: AnimationProps) {
   return (
     <Box
-      {...props}
+      w="max-content"
       className={`${animation} ${className}`}
       style={{
         animationDelay: delay,
         animationDuration: duration,
         animationFillMode: 'backwards',
       }}
+      {...props}
     >
       {children}
     </Box>

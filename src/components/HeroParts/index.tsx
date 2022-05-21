@@ -139,7 +139,7 @@ function Scores({ rating, metacritic, ...props }: HeroScoresProps) {
 function Details({ slug, ...props }: HeroDetailsProps) {
   return (
     <NextLink href={`/games/${slug}`} passHref>
-      <Link tabIndex={-1} _focus={{ outline: 'none' }} maxW="400px">
+      <Link tabIndex={-1} _focus={{ outline: 'none' }} maxW="400px" w="100%">
         <Button
           colorScheme="whiteAlpha"
           rightIcon={<ArrowRightIcon />}
