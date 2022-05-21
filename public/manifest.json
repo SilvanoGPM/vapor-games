@@ -29,7 +29,7 @@
     }
   ],
   "theme_color": "#121212",
-  "description": "Vapor é uma plataforma para listar diversas informações de vários jogos.",
+  "description": "Vapor is a platform to list various information from various games.",
   "background_color": "#FFFFFF",
   "start_url": "/",
   "display": "standalone",

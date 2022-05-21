@@ -1,5 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { NextSeo } from 'next-seo';
 
 import { GameList } from 'components/GameList';
 import { Header } from 'components/Header';
@@ -15,33 +16,56 @@ export type GameTemplateProps = {
 
 export function GameTemplate({ game }: GameTemplateProps) {
   return (
-    <Box as="main" overflow="hidden">
-      <Header />
+    <>
+      <NextSeo
+        title={`${game.name}`}
+        description={game.description_raw || 'No description'}
+        canonical="https://vapor-games.vercel.app/"
+        openGraph={{
+          url: 'https://vapor-games.vercel.app/',
+          title: `${game.name}`,
+          description: game.description_raw || 'No description',
+          images: [
+            {
+              url:
+                game.background_image ||
+                'https://vapor-games.vercel.app/assets/game-fallback.png',
+              width: 1280,
+              height: 720,
+              alt: game.name,
+            },
+          ],
+        }}
+      />
 
-      <GameHero {...game} />
+      <Box as="main" overflow="hidden">
+        <Header />
 
-      <Box as="section" mt={8} px={{ base: '2rem', md: '4rem' }}>
-        <Overview game={game} />
+        <GameHero {...game} />
 
-        <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-          <Screenshots screenshots={game.screenshots} />
-        </AnimationOnScroll>
+        <Box as="section" mt={8} px={{ base: '2rem', md: '4rem' }}>
+          <Overview game={game} />
 
-        {game.series.length > 0 && (
           <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-            <GameList
-              hideScrollbars={false}
-              listStyle={{ mb: 4 }}
-              data={game.series}
-              header={
-                <Heading as="h3" fontSize="4xl" mb={4}>
-                  Game serie
-                </Heading>
-              }
-            />
+            <Screenshots screenshots={game.screenshots} />
           </AnimationOnScroll>
-        )}
+
+          {game.series.length > 0 && (
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <GameList
+                hideScrollbars={false}
+                listStyle={{ mb: 4 }}
+                data={game.series}
+                header={
+                  <Heading as="h3" fontSize="4xl" mb={4}>
+                    Game serie
+                  </Heading>
+                }
+              />
+            </AnimationOnScroll>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react';
+import { NextSeo } from 'next-seo';
 
 import { GenreList, GenresType } from 'components/GenreList';
 import { Header } from 'components/Header';
@@ -16,6 +17,27 @@ export type HomeTemplateProps = {
 export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
   return (
     <>
+      <NextSeo
+        title="Vapor"
+        description="Vapor is a platform to list various information from various games."
+        canonical="https://vapor-games.vercel.app/"
+        openGraph={{
+          url: 'https://vapor-games.vercel.app/',
+          title: 'Vapor',
+          description:
+            'Vapor is a platform to list various information from various games.',
+          site_name: 'Vapor',
+          images: [
+            {
+              url: 'https://vapor-games.vercel.app/assets/cover.png',
+              width: 1280,
+              height: 720,
+              alt: 'Vapor',
+            },
+          ],
+        }}
+      />
+
       <Header />
 
       <HomeHero {...hero} />

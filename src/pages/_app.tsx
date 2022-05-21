@@ -1,10 +1,12 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
-
+import { DefaultSeo } from 'next-seo';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import { theme } from 'styles/theme';
+
+import SEO from '../../next-seo.config';
 
 import './styles.css';
 
@@ -34,6 +36,8 @@ function App({ Component, pageProps }: AppProps) {
 
         <meta name="theme-color" content="#121212" />
       </Head>
+
+      <DefaultSeo {...SEO} />
 
       <NextNProgress
         color="#48b80f"

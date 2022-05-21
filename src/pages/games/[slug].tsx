@@ -1,6 +1,7 @@
-import { Fallback } from 'components/Fallback';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+
+import { Fallback } from 'components/Fallback';
 import * as rawg from 'services/rawg';
 import { GameTemplate, GameTemplateProps } from 'templates/GameTemplate';
 
