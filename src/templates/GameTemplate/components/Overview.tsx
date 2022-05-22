@@ -97,6 +97,7 @@ export function Overview({ game }: OverviewProps) {
                   style={{
                     width: '100%',
                     maxHeight: '260px',
+                    overflow: showMoreDescription ? 'auto' : 'hidden',
                   }}
                   vertical={showMoreDescription}
                   hideScrollbars={!showMoreDescription}
