@@ -28,7 +28,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#121212",
+  "theme_color": "#FFFFFF",
   "description": "Vapor is a platform to list various information from various games.",
   "background_color": "#FFFFFF",
   "start_url": "/",

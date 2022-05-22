@@ -4,6 +4,8 @@ import NextNProgress from 'nextjs-progressbar';
 import { DefaultSeo } from 'next-seo';
 import { ChakraProvider } from '@chakra-ui/react';
 
+import 'animate.css/animate.min.css';
+
 import { theme } from 'styles/theme';
 
 import SEO from '../../next-seo.config';
@@ -22,11 +24,6 @@ function App({ Component, pageProps }: AppProps) {
 
         <link rel="manifest" href="/manifest.json" />
 
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        />
-
         <title>Vapor Games</title>
 
         <meta
@@ -34,7 +31,7 @@ function App({ Component, pageProps }: AppProps) {
           content="Vapor é uma plataforma para listar diversas informações de vários jogos."
         />
 
-        <meta name="theme-color" content="#121212" />
+        <meta name="theme-color" content="#FFFFFF" />
       </Head>
 
       <DefaultSeo {...SEO} />
