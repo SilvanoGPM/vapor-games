@@ -4,7 +4,6 @@ import {
   Link,
   Spacer,
   Text,
-  useColorModeValue,
   keyframes,
   usePrefersReducedMotion,
 } from '@chakra-ui/react';
@@ -32,7 +31,6 @@ export function GameCard({
   rating,
   metacritic,
 }: GameCardProps) {
-  const outlineColor = useColorModeValue('black', 'white');
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const shimmerAnimation = keyframes`
@@ -52,8 +50,10 @@ export function GameCard({
   return (
     <NextLink href={`/games/${slug}`} passHref>
       <Link
-        _focus={{ outlineColor: outlineColor, transform: 'translateY(-10px)' }}
         role="group"
+        _focus={{ transform: 'translateY(-10px)' }}
+        _light={{ _focus: { outlineColor: 'black' } }}
+        _dark={{ _focus: { outlineColor: 'white' } }}
       >
         <Box
           minW={{ base: 250, md: 300 }}
