@@ -44,7 +44,7 @@ async function getHero(): Promise<rawg.GameType> {
 
     return {
       id: 1,
-      name: 'The Walking Dead: Season 1',
+      name: 'God of War',
       slug: 'god-of-war-2',
       metacritc: 94,
       rating: 4.6,
