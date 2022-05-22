@@ -89,7 +89,11 @@ function Background({ bgImage, children, ...props }: BoxProps) {
 
 function Title({ children, ...props }: HeadingProps) {
   return (
-    <Heading maxW="400px" wordBreak="break-word" {...props}>
+    <Heading
+      maxW={{ base: '300px', md: '400px' }}
+      wordBreak="break-word"
+      {...props}
+    >
       {children}
     </Heading>
   );
@@ -97,7 +101,11 @@ function Title({ children, ...props }: HeadingProps) {
 
 function Publisher({ children, ...props }: TextProps) {
   return (
-    <Text maxW="400px" wordBreak="break-word" {...props}>
+    <Text
+      maxW={{ base: '300px', md: '400px' }}
+      wordBreak="break-word"
+      {...props}
+    >
       {children}
     </Text>
   );
