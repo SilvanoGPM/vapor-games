@@ -29,7 +29,7 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
           site_name: 'Vapor',
           images: [
             {
-              url: 'https://vapor-games.vercel.app/assets/cover.png',
+              url: 'https://vapor-games.vercel.app/assets/cover-v2.png',
               width: 1280,
               height: 720,
               alt: 'Vapor',
