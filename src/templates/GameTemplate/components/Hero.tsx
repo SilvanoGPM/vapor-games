@@ -23,16 +23,16 @@ export function GameHero({
         </Animation>
 
         {publishers?.length > 0 && (
-          <Animation {...animationBase} delay="1s">
+          <Animation {...animationBase} delay="0.3s">
             <Hero.Publisher>{publishers[0].name}</Hero.Publisher>
           </Animation>
         )}
 
-        <Animation {...animationBase} delay="2s">
+        <Animation {...animationBase} delay="0.7s">
           <Hero.Genres genres={genres} my="4" />
         </Animation>
 
-        <Animation {...animationBase} delay="3s">
+        <Animation {...animationBase} delay="1s">
           <Hero.Scores rating={rating} metacritic={metacritic} mb="4" />
         </Animation>
       </LightMode>

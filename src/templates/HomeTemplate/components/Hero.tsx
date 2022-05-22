@@ -24,20 +24,20 @@ export function HomeHero({
         </Animation>
 
         {publishers?.length > 0 && (
-          <Animation {...animationBase} delay="0.5s">
+          <Animation {...animationBase} delay="0.3s">
             <Hero.Publisher>{publishers[0].name}</Hero.Publisher>
           </Animation>
         )}
 
-        <Animation {...animationBase} delay="1s">
+        <Animation {...animationBase} delay="0.7s">
           <Hero.Genres genres={genres} my="4" />
         </Animation>
 
-        <Animation {...animationBase} delay="1.5s">
+        <Animation {...animationBase} delay="1s">
           <Hero.Scores rating={rating} metacritic={metacritic} mb="4" />
         </Animation>
 
-        <Animation {...animationBase} delay="2s" maxW="400px" w="100%">
+        <Animation {...animationBase} delay="1.3s" maxW="400px" w="100%">
           <Hero.Details slug={slug} />
         </Animation>
       </LightMode>
