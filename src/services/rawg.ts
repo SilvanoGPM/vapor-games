@@ -32,10 +32,6 @@ export type GameType = {
   description_raw: string | null;
   background_image_additional: string | null;
   publishers: PublisherType[];
-  requirements: {
-    minimum: string;
-    recommended: string;
-  };
   released: string;
   updated: string;
   series: PreviewGameType[];

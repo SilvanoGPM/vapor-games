@@ -89,7 +89,7 @@ function Background({ bgImage, children, ...props }: BoxProps) {
 
 function Title({ children, ...props }: HeadingProps) {
   return (
-    <Heading maxW="400px" {...props}>
+    <Heading maxW="400px" wordBreak="break-word" {...props}>
       {children}
     </Heading>
   );
@@ -97,7 +97,7 @@ function Title({ children, ...props }: HeadingProps) {
 
 function Publisher({ children, ...props }: TextProps) {
   return (
-    <Text maxW="400px" {...props}>
+    <Text maxW="400px" wordBreak="break-word" {...props}>
       {children}
     </Text>
   );
