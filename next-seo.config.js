@@ -3,7 +3,7 @@ const SEO = {
     type: 'website',
     locale: 'en',
     url: 'https://vapor-games.vercel.app/',
-    site_name: 'Vapor',
+    site_name: 'Vapor Games',
   },
   twitter: {
     site: '@site',

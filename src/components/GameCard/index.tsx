@@ -50,6 +50,7 @@ export function GameCard({
   return (
     <NextLink href={`/games/${slug}`} passHref>
       <Link
+        title={name}
         role="group"
         _focus={{ transform: 'translateY(-10px)' }}
         _light={{ _focus: { outlineColor: 'black' } }}
