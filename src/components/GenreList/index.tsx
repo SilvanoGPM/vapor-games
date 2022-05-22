@@ -27,7 +27,7 @@ export function GenreList({ title, genre, data }: GenreListProps) {
     <GameList
       data={data}
       header={
-        <NextLink href={`/games?genre=${genre}`} passHref>
+        <NextLink href={`/search?genre=${genre}`} passHref>
           <Link
             fontSize="2xl"
             _focus={{

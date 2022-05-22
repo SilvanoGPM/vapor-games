@@ -48,6 +48,14 @@ type GameAdditionalInfoType = 'game-series' | 'screenshots' | 'stores';
 
 const key = process.env.API_KEY;
 
+export async function searchGames(search: string) {
+  const { data } = await api.get<{ results: PreviewGameType[] }>(
+    `/games?key=${key}&search=${search}`,
+  );
+
+  return data.results;
+}
+
 export async function getGameAdditionalInfo<T>(
   type: GameAdditionalInfoType,
   slug: string,
