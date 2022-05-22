@@ -17,9 +17,23 @@ function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <Head>
         <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+
+        <link
           rel="icon"
           type="image/png"
-          href="/icons/android-chrome-512x512.png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
         />
 
         <link rel="manifest" href="/manifest.json" />
@@ -31,7 +45,7 @@ function App({ Component, pageProps }: AppProps) {
           content="Vapor é uma plataforma para listar diversas informações de vários jogos."
         />
 
-        <meta name="theme-color" content="#FFFFFF" />
+        <meta name="theme-color" content="#48b80f" />
       </Head>
 
       <DefaultSeo {...SEO} />
