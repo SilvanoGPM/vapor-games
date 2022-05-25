@@ -121,7 +121,7 @@ function Genres({ genres, ...props }: HeroGenresProps) {
       {...props}
     >
       {genres.map(({ name, slug }) => (
-        <NextLink key={slug} href={`/games?genre=${slug}`} passHref>
+        <NextLink key={slug} href={`/search?genre=${slug}`} passHref>
           <Link
             _focus={{
               outline: 'none',

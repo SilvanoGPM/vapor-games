@@ -47,6 +47,11 @@ export function GameList({
       )}
 
       <ScrollContainer
+        innerRef={(ref) => {
+          if (ref) {
+            ref.tabIndex = -1;
+          }
+        }}
         style={
           {
             width: '100%',

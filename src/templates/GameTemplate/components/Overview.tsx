@@ -94,6 +94,11 @@ export function Overview({ game }: OverviewProps) {
             <Flex direction="column" flex="1" h="100%">
               <Box>
                 <ScrollContainer
+                  innerRef={(ref) => {
+                    if (ref) {
+                      ref.tabIndex = -1;
+                    }
+                  }}
                   style={{
                     width: '100%',
                     maxHeight: '260px',

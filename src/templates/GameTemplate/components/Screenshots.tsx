@@ -6,6 +6,8 @@ import {
   keyframes,
 } from '@chakra-ui/react';
 
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 import { Slider, SlideSettings, Slide } from 'components/Slider';
 import { VaporImage } from 'components/VaporImage';
 import { ScreenshotType } from 'services/rawg';
@@ -78,24 +80,26 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
   }
 
   return (
-    <Box mb="8" as="section">
-      <Heading as="h3" mb="4">
-        Screenshots
-      </Heading>
+    <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+      <Box mb="8" as="section">
+        <Heading as="h3" mb="4">
+          Screenshots
+        </Heading>
 
-      <Box w="100%" h="400px" overflow="hidden">
-        {screenshots.length === 1 ? (
-          <Screenshot image={screenshots[0].image} />
-        ) : (
-          <Slider settings={sliderSettings} style={{ height: '100%' }}>
-            {screenshots.map(({ id, image }) => (
-              <Slide key={id}>
-                <Screenshot image={image} />
-              </Slide>
-            ))}
-          </Slider>
-        )}
+        <Box w="100%" h="400px" overflow="hidden">
+          {screenshots.length === 1 ? (
+            <Screenshot image={screenshots[0].image} />
+          ) : (
+            <Slider settings={sliderSettings} style={{ height: '100%' }}>
+              {screenshots.map(({ id, image }) => (
+                <Slide key={id}>
+                  <Screenshot image={image} />
+                </Slide>
+              ))}
+            </Slider>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </AnimationOnScroll>
   );
 }
