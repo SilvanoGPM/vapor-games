@@ -50,6 +50,7 @@ export function Details({ game }: DetailsProps) {
               href={game.website}
               color="action"
               fontWeight="bold"
+              target="_blank"
               _focus={{
                 outline: 'none',
                 textDecor: 'underline',
