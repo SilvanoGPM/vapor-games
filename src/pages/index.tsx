@@ -62,6 +62,8 @@ async function getHero(): Promise<rawg.GameType> {
       stores: [],
       website: '',
       background_image,
+      developers: [{ slug: 'sony', name: 'Sony Interactive Developers' }],
+      parent_platforms: [{ platform: { slug: 'pc', name: 'pc' } }],
     };
   }
 
