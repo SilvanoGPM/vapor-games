@@ -2,7 +2,19 @@ import { GenresType } from 'components/GenreList';
 import { api } from 'libs/api';
 import { chooseRandom } from 'utils/chooseRandom';
 
+export type PlatformsType =
+  | 'pc'
+  | 'playstation'
+  | 'xbox'
+  | 'android'
+  | 'mac'
+  | 'linux';
+
+export type PlatformType = { platform: { name: string; slug: PlatformsType } };
+
 export type PublisherType = { name: string; slug: string };
+
+export type DeveloperType = { name: string; slug: string };
 
 export type GenreType = { name: string; slug: GenresType };
 
@@ -32,12 +44,14 @@ export type GameType = {
   description_raw: string | null;
   background_image_additional: string | null;
   publishers: PublisherType[];
+  developers: DeveloperType[];
   released: string;
   updated: string;
   series: PreviewGameType[];
   screenshots: ScreenshotType[];
   stores: StoreType[];
   website: string;
+  parent_platforms: PlatformType[];
 } & PreviewGameType;
 
 type GameAdditionalInfoType = 'game-series' | 'screenshots' | 'stores';

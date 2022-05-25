@@ -8,8 +8,8 @@ type AnimationProps = {
 
 export function Animation({
   children,
-  className,
   animation,
+  className = '',
   delay = '0',
   duration = '1s',
   ...props

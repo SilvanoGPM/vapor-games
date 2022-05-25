@@ -113,7 +113,13 @@ function Publisher({ children, ...props }: TextProps) {
 
 function Genres({ genres, ...props }: HeroGenresProps) {
   return (
-    <Flex gap="0.5rem" wrap="wrap" width="100%" {...props}>
+    <Flex
+      gap="0.5rem"
+      wrap="wrap"
+      width="100%"
+      maxW={{ base: '300px', md: '400px' }}
+      {...props}
+    >
       {genres.map(({ name, slug }) => (
         <NextLink key={slug} href={`/games?genre=${slug}`} passHref>
           <Link

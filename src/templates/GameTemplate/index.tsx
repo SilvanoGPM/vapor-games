@@ -9,6 +9,7 @@ import { GameType } from 'services/rawg';
 import { GameHero } from './components/Hero';
 import { Screenshots } from './components/Screenshots';
 import { Overview } from './components/Overview';
+import { Details } from './components/Details';
 
 export type GameTemplateProps = {
   game: GameType;
@@ -46,6 +47,8 @@ export function GameTemplate({ game }: GameTemplateProps) {
         <Box as="section" mt={8} px={{ base: '2rem', md: '4rem' }}>
           <Overview game={game} />
 
+          <Details game={game} />
+
           <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
             <Screenshots screenshots={game.screenshots} />
           </AnimationOnScroll>
@@ -58,7 +61,7 @@ export function GameTemplate({ game }: GameTemplateProps) {
                 data={game.series}
                 header={
                   <Heading as="h3" fontSize="4xl" mb={4}>
-                    Game serie
+                    Game Serie
                   </Heading>
                 }
               />
