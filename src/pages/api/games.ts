@@ -6,10 +6,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { game } = req.query as { game: string };
+  const params = req.query as Record<string, string>;
 
   try {
-    const games = await rawg.searchGames(game);
+    const games = await rawg.searchGames(params);
     res.send(games);
   } catch {
     res.status(404).send({});

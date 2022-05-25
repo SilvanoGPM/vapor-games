@@ -1,5 +1,10 @@
+import { useRouter } from 'next/router';
 import { SearchTemplate } from 'templates/SearchTemplate';
 
 export default function Search() {
-  return <SearchTemplate />;
+  const router = useRouter();
+
+  const { genre } = router.query as { genre: string };
+
+  return <SearchTemplate genre={genre} />;
 }

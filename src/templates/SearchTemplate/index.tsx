@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { Center, Flex, useToast } from '@chakra-ui/react';
+import { Center, Flex, Spinner, useToast } from '@chakra-ui/react';
+import queryString from 'query-string';
 
 import { PreviewGameType } from 'services/rawg';
 import { Header } from 'components/Header';
@@ -8,20 +9,26 @@ import { Hero } from 'components/HeroParts';
 import { GameCard } from 'components/GameCard';
 
 import { SearchInput } from './components/SearchInput';
+import { useEffect } from 'react';
 
-export function SearchTemplate() {
+type SearchTemplateProps = {
+  genre?: string;
+};
+
+export function SearchTemplate({ genre }: SearchTemplateProps) {
   const toast = useToast();
 
   const [games, setGames] = useState<PreviewGameType[]>([]);
 
   const [isFetchingGames, setIsFetchingGames] = useState(false);
 
-  const handleGameValueChange = useCallback(
-    async (game: string) => {
+  const fetchGames = useCallback(
+    async (query: Record<string, unknown>) => {
       try {
         setIsFetchingGames(true);
 
-        const response = await fetch(`/api/games?game=${game}`);
+        const params = queryString.stringify(query);
+        const response = await fetch(`/api/games?${params}`);
         const games: PreviewGameType[] = await response.json();
 
         setGames(games);
@@ -40,20 +47,41 @@ export function SearchTemplate() {
     [toast],
   );
 
+  useEffect(() => {
+    if (genre) {
+      fetchGames({ genres: genre });
+    }
+  }, [genre, fetchGames]);
+
+  const handleGameValueChange = useCallback(
+    (game: string) => {
+      fetchGames({ search: game });
+    },
+    [fetchGames],
+  );
+
   return (
     <>
       <Header />
 
       <Hero.Background bgImage="/assets/search.jpg" h="100vh">
         <Center h="full" flexDirection="column" w="100%" maxW="500px" m="auto">
-          <Hero.Title fontSize="5xl" mb="8">
-            Search <SearchIcon />
+          <Hero.Title fontSize={genre ? '3xl' : '5xl'} mb="8" maxW="100%">
+            {genre ? (
+              `Searching genre: "${genre}"`
+            ) : (
+              <>
+                Search <SearchIcon />
+              </>
+            )}
           </Hero.Title>
 
-          <SearchInput
-            isLoading={isFetchingGames}
-            onValueChange={handleGameValueChange}
-          />
+          {!genre && (
+            <SearchInput
+              isLoading={isFetchingGames}
+              onValueChange={handleGameValueChange}
+            />
+          )}
         </Center>
       </Hero.Background>
 
@@ -65,6 +93,7 @@ export function SearchTemplate() {
         px={{ base: 2, md: 4 }}
         justifyContent="center"
       >
+        {isFetchingGames && genre && <Spinner />}
         {games.map((game) => (
           <GameCard key={game.slug} {...game} />
         ))}

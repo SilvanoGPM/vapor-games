@@ -12,7 +12,7 @@ type SearchInputProps = {
 export function SearchInput({ onValueChange, isLoading }: SearchInputProps) {
   const [game, setGame] = useState('');
 
-  const debouncedGame = useDebounce(game, 2000);
+  const debouncedGame = useDebounce(game, 1000);
 
   useEffect(() => {
     if (debouncedGame) {

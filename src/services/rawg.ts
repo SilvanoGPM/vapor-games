@@ -1,6 +1,7 @@
 import { GenresType } from 'components/GenreList';
 import { api } from 'libs/api';
 import { chooseRandom } from 'utils/chooseRandom';
+import queryString from 'query-string';
 
 export type PlatformsType =
   | 'pc'
@@ -58,9 +59,11 @@ type GameAdditionalInfoType = 'game-series' | 'screenshots' | 'stores';
 
 const key = process.env.API_KEY;
 
-export async function searchGames(search: string) {
+export async function searchGames(params: Record<string, string>) {
+  const stringParams = queryString.stringify(params);
+
   const { data } = await api.get<{ results: PreviewGameType[] }>(
-    `/games?key=${key}&search=${search}`,
+    `/games?key=${key}&${stringParams}`,
   );
 
   return data.results;
