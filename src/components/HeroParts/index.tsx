@@ -123,7 +123,8 @@ function Genres({ genres, ...props }: HeroGenresProps) {
       {genres.map(({ name, slug }) => (
         <NextLink key={slug} href={`/search?genre=${slug}`} passHref>
           <Link
-            _focus={{
+            _focus={{ outline: 'none' }}
+            _focusVisible={{
               outline: 'none',
               ringColor: 'whiteAlpha.800',
               ring: 1,
@@ -153,12 +154,19 @@ function Scores({ rating, metacritic, ...props }: HeroScoresProps) {
 function Details({ slug, ...props }: HeroDetailsProps) {
   return (
     <NextLink href={`/games/${slug}`} passHref>
-      <Link tabIndex={-1} _focus={{ outline: 'none' }} maxW="400px" w="100%">
+      <Link
+        tabIndex={-1}
+        _focus={{ outline: 'none' }}
+        _focusVisible={{ outline: 'none' }}
+        maxW="400px"
+        w="100%"
+      >
         <Button
           colorScheme="whiteAlpha"
           rightIcon={<ArrowRightIcon />}
           width="100%"
-          _focus={{
+          _focus={{ outline: 'none' }}
+          _focusVisible={{
             outline: 'none',
             ringColor: 'whiteAlpha.800',
             ring: 1,

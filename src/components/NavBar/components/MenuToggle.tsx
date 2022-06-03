@@ -23,7 +23,8 @@ export function MenuToggle({ isOpen, toggle }: MenuToggleProps) {
         display={{ base: 'block', md: 'none' }}
         onClick={toggle}
         fontSize="lg"
-        _focus={{
+        _focus={{ outline: 'none' }}
+        _focusVisible={{
           outline: 'none',
           ringColor: 'white',
           ring: 1,

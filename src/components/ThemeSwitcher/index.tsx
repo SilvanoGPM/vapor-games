@@ -25,7 +25,8 @@ export function ThemeSwitcher() {
           onClick={toggleColorMode}
           aria-label="Toggle theme"
           icon={<Icon as={icon} />}
-          _focus={{
+          _focus={{ outline: 'none' }}
+          _focusVisible={{
             outline: 'none',
             ringColor: 'white',
             ring: 1,

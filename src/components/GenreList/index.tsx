@@ -30,7 +30,8 @@ export function GenreList({ title, genre, data }: GenreListProps) {
         <NextLink href={`/search?genre=${genre}`} passHref>
           <Link
             fontSize="2xl"
-            _focus={{
+            _focus={{ outline: 'none' }}
+            _focusVisible={{
               textDecor: 'underline',
             }}
           >

@@ -51,7 +51,8 @@ export function Details({ game }: DetailsProps) {
               color="action"
               fontWeight="bold"
               target="_blank"
-              _focus={{
+              _focus={{ outline: 'none' }}
+              _focusVisible={{
                 outline: 'none',
                 textDecor: 'underline',
               }}

@@ -129,7 +129,8 @@ export function Overview({ game }: OverviewProps) {
                     }
                     textTransform="uppercase"
                     onClick={toggleShowMore}
-                    _focus={{
+                    _focus={{ outline: 'none' }}
+                    _focusVisible={{
                       outline: 'none',
                       ringColor: 'white',
                       ring: 1,

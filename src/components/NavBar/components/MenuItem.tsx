@@ -28,7 +28,8 @@ export function MenuItem({
       py={{ base: 4, md: 1 }}
       mr={{ base: 0, md: 4 }}
       m={0}
-      _focus={{
+      _focus={{ outline: 'none' }}
+      _focusVisible={{
         outline: 'none',
         ringColor: 'white',
         ring: 1,

@@ -13,7 +13,8 @@ export function StoreButton({ url, children, ...props }: StoreButtonProps) {
       flex="1"
       border="none"
       outline="none"
-      _focus={{ border: 'none', outline: 'none' }}
+      _focus={{ outline: 'none' }}
+      _focusVisible={{ border: 'none', outline: 'none' }}
     >
       <Button
         w="100%"
@@ -23,7 +24,8 @@ export function StoreButton({ url, children, ...props }: StoreButtonProps) {
           bg: 'black',
           filter: 'brightness(0.9)',
         }}
-        _focus={{
+        _focus={{ outline: 'none' }}
+        _focusVisible={{
           outline: 'none',
           ringColor: 'white',
           ring: 1,

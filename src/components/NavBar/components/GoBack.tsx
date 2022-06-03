@@ -22,7 +22,8 @@ export function GoBack({ isOpen }: GoBackProps) {
         _hover={{
           bgColor: 'transparent',
         }}
-        _focus={{
+        _focus={{ outline: 'none' }}
+        _focusVisible={{
           outline: 'none',
           ringColor: 'white',
           ring: 1,

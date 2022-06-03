@@ -39,7 +39,8 @@ export function SearchInput({ onValueChange, isLoading }: SearchInputProps) {
         w="100%"
         disabled={isLoading}
         _placeholder={{ color: 'white' }}
-        _focus={{ borderColor: 'action' }}
+        _focus={{ outline: 'none' }}
+        _focusVisible={{ borderColor: 'action' }}
         _hover={{ borderColor: 'action' }}
         _disabled={{ _hover: { borderColor: 'white', cursor: 'not-allowed' } }}
       />

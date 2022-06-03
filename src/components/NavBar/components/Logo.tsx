@@ -6,7 +6,8 @@ export function Logo(props: BoxProps) {
     <Box {...props}>
       <NextLink href="/" passHref>
         <Link
-          _focus={{ textDecor: 'underline' }}
+          _focus={{ outline: 'none' }}
+          _focusVisible={{ textDecor: 'underline' }}
           _hover={{ textDecor: 'none' }}
         >
           <Text

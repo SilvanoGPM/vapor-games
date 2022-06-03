@@ -18,7 +18,8 @@ export default function NotFound() {
           <Link href="/">
             <Button
               colorScheme="whiteAlpha"
-              _focus={{
+              _focus={{ outline: 'none' }}
+              _focusVisible={{
                 outline: 'none',
                 ringColor: 'whiteAlpha.800',
                 ring: 1,
