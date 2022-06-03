@@ -41,7 +41,13 @@ export function GameList({
   return (
     <Box w="100%" mb={50} {...containerStyle}>
       {header && (
-        <Flex mb={2} justify="space-between" align="center" {...headerStyle}>
+        <Flex
+          mb={2}
+          mx="2"
+          justify="space-between"
+          align="center"
+          {...headerStyle}
+        >
           {header}
         </Flex>
       )}
@@ -62,7 +68,7 @@ export function GameList({
         className={styles.gameList}
         hideScrollbars={hideScrollbars}
       >
-        <HStack spacing={4} {...listStyle}>
+        <HStack py="4" mx="2" spacing={4} {...listStyle}>
           {data.map((game) => (
             <GameCard key={game.slug} {...game} />
           ))}

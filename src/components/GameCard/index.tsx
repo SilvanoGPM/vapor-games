@@ -52,9 +52,15 @@ export function GameCard({
       <Link
         title={name}
         role="group"
-        _focus={{ transform: 'translateY(-10px)' }}
-        _light={{ _focus: { outlineColor: 'black' } }}
-        _dark={{ _focus: { outlineColor: 'white' } }}
+        _focusVisible={{
+          outline: 'none',
+          ringColor: 'whiteAlpha.800',
+          ring: 1,
+          ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
+          ringOffset: '0.25rem',
+        }}
+        _light={{ _focus: { ringColor: 'black' } }}
+        _dark={{ _focus: { ringColor: 'white' } }}
       >
         <Box
           minW={{ base: 250, md: 300 }}
@@ -65,7 +71,6 @@ export function GameCard({
           cursor="pointer"
           shadow="2xl"
           transition="ease-in-out 0.2s"
-          _hover={{ transform: 'translateY(-10px)' }}
         >
           <VaporImage
             width={1200}
