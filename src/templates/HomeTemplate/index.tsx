@@ -18,12 +18,12 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
   return (
     <>
       <NextSeo
-        title="Vapor Games"
+        title="Vapor Games - Your favorite games in one place"
         description="Vapor is a platform to list various information from various games."
         canonical="https://vapor-games.vercel.app/"
         openGraph={{
           url: 'https://vapor-games.vercel.app/',
-          title: 'Vapor',
+          title: 'Vapor Games - Your favorite games in one place',
           description:
             'Vapor is a platform to list various information from various games.',
           site_name: 'Vapor',

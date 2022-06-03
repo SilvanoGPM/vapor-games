@@ -38,11 +38,11 @@ function App({ Component, pageProps }: AppProps) {
 
         <link rel="manifest" href="/manifest.json" />
 
-        <title>Vapor Games</title>
+        <title>Vapor Games - Your favorite games in one place</title>
 
         <meta
           name="description"
-          content="Vapor é uma plataforma para listar diversas informações de vários jogos."
+          content="Vapor is a platform to list various information from various games."
         />
 
         <meta name="theme-color" content="#48b80f" />
