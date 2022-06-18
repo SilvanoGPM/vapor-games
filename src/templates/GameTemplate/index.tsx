@@ -43,7 +43,13 @@ export function GameTemplate({ game }: GameTemplateProps) {
 
         <GameHero {...game} />
 
-        <Box as="section" mt={8} px={{ base: '2rem', md: '4rem' }}>
+        <Box
+          as="section"
+          maxW="1400px"
+          mx="auto"
+          mt={8}
+          px={{ base: '2rem', md: '4rem' }}
+        >
           <Overview game={game} />
 
           <Details game={game} />

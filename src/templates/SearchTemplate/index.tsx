@@ -88,6 +88,8 @@ export function SearchTemplate({ genre }: SearchTemplateProps) {
       <Flex
         gap="1rem"
         wrap="wrap"
+        maxW="1400px"
+        mx="auto"
         mt={{ base: '-100px', md: '-150px' }}
         mb={4}
         px={{ base: 2, md: 4 }}

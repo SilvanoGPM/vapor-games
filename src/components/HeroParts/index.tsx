@@ -52,6 +52,7 @@ function Background({ bgImage, children, ...props }: BoxProps) {
       h={{ base: '400px', md: '95vh' }}
       minH={{ base: '250px', md: '300px', lg: '550px' }}
       transition="ease-in-out 0.2s"
+      boxShadow="dark-lg"
       sx={{
         '&::before': {
           content: "''",
@@ -61,7 +62,7 @@ function Background({ bgImage, children, ...props }: BoxProps) {
           width: '100%',
           height: '100%',
           bgImage,
-          filter: 'brightness(0.6)',
+          filter: 'brightness(0.3)',
           bgSize: 'cover',
           bgRepeat: 'no-repeat',
           bgPos: ['center', 'top'],
@@ -73,13 +74,13 @@ function Background({ bgImage, children, ...props }: BoxProps) {
         w="100%"
         h="100%"
         pos="relative"
+        maxW="1400px"
+        m="auto"
         flexDir="column"
         justify="flex-end"
-        boxShadow="dark-lg"
         py="1rem"
         px={{ base: '2rem', md: '4rem' }}
         color="white"
-        bgGradient="linear(to bottom left, transparent 10%, rgba(0, 0, 0, 0.95) 80%)"
       >
         {children}
       </Flex>

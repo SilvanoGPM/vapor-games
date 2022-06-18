@@ -42,7 +42,13 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
 
       <HomeHero {...hero} />
 
-      <Box as="section" mt={5} px={{ base: '2rem', md: '4rem' }}>
+      <Box
+        as="section"
+        mt="8"
+        maxW="1400px"
+        mx="auto"
+        px={{ base: '2rem', md: '4rem' }}
+      >
         {Object.entries(genres).map(([key, value]) => (
           <GenreList
             key={key}

@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { Box, ColorModeScript } from '@chakra-ui/react';
+import { ColorModeScript } from '@chakra-ui/react';
 
 export default function Document() {
   return (
@@ -7,9 +7,7 @@ export default function Document() {
       <Head />
       <body>
         <ColorModeScript initialColorMode="dark" />
-        <Box maxW="1400px" m="auto">
-          <Main />
-        </Box>
+        <Main />
         <NextScript />
       </body>
     </Html>
