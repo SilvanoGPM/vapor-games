@@ -17,7 +17,7 @@ import { FaPlaystation, FaXbox, FaLinux } from 'react-icons/fa';
 import { CgMore } from 'react-icons/cg';
 
 import { GameType } from 'services/rawg';
-import { formaeGameStrDate } from 'utils/formatDate';
+import { formatGameStrDate } from 'utils/fomatters';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 type DetailsProps = {
@@ -84,7 +84,7 @@ export function Details({ game }: DetailsProps) {
           <Box flex="1" maxW={{ base: '100%', lg: '300px' }} minW="200px">
             <Text fontSize="xl">Release Date</Text>
             <Text fontSize="xl" fontWeight="bold">
-              {formaeGameStrDate(game.released)}
+              {formatGameStrDate(game.released)}
             </Text>
           </Box>
 

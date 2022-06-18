@@ -6,7 +6,7 @@ import { Header } from 'components/Header';
 import { HeroProps } from 'components/HeroParts';
 import { PreviewGameType } from 'services/rawg';
 
-import { formatGenreTitle } from 'utils/formatGenreTitle';
+import { formatGenreTitle } from 'utils/fomatters';
 import { HomeHero } from './components/Hero';
 
 export type HomeTemplateProps = {
