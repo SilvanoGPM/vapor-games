@@ -1,15 +1,15 @@
 import { useState, useCallback } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { Center, Flex, Spinner, useToast } from '@chakra-ui/react';
+import { Center, useToast } from '@chakra-ui/react';
 import queryString from 'query-string';
 
 import { PreviewGameType } from 'services/rawg';
 import { Header } from 'components/Header';
 import { Hero } from 'components/HeroParts';
-import { GameCard } from 'components/GameCard';
 
-import { SearchInput } from './components/SearchInput';
+import { SearchInput } from './SearchInput';
 import { useEffect } from 'react';
+import { GamesFound } from './GamesFound';
 
 type SearchTemplateProps = {
   genre?: string;
@@ -85,21 +85,11 @@ export function SearchTemplate({ genre }: SearchTemplateProps) {
         </Center>
       </Hero.Background>
 
-      <Flex
-        gap="1rem"
-        wrap="wrap"
-        maxW="1400px"
-        mx="auto"
-        mt={{ base: '-100px', md: '-150px' }}
-        mb={4}
-        px={{ base: 2, md: 4 }}
-        justifyContent="center"
-      >
-        {isFetchingGames && genre && <Spinner />}
-        {games.map((game) => (
-          <GameCard key={game.slug} {...game} />
-        ))}
-      </Flex>
+      <GamesFound
+        games={games}
+        genre={genre}
+        isFetchingGames={isFetchingGames}
+      />
     </>
   );
 }
