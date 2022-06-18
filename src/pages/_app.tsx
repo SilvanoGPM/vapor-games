@@ -10,7 +10,7 @@ import { theme } from 'styles/theme';
 
 import SEO from '../../next-seo.config';
 
-import './styles.css';
+import '../styles/global.css';
 
 function App({ Component, pageProps }: AppProps) {
   return (

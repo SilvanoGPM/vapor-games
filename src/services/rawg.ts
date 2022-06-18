@@ -1,5 +1,5 @@
 import { GenresType } from 'components/GenreList';
-import { api } from 'libs/api';
+import { api } from 'services/api';
 import { chooseRandom } from 'utils/chooseRandom';
 import queryString from 'query-string';
 
