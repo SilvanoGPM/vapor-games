@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 import {
   Box,
   Flex,
@@ -7,17 +10,16 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { useRouter } from 'next/router';
 import { useResizeEffect } from 'hooks/useResizeEffect';
-
-import { Container } from './components/Container';
-import { Logo } from './components/Logo';
-import { MenuLinks } from './components/MenuLinks';
-import { MenuToggle } from './components/MenuToggle';
-import { ThemeSwitcher } from 'components/ThemeSwitcher';
-import { GoBack } from './components/GoBack';
 import { useScrollLock } from 'hooks/useScrollLock';
-import { useEffect } from 'react';
+
+import { ThemeSwitcher } from '../ThemeSwitcher';
+
+import { Container } from './Container';
+import { Logo } from './Logo';
+import { MenuLinks } from './MenuLinks';
+import { MenuToggle } from './MenuToggle';
+import { GoBack } from './GoBack';
 
 type NavBarProps = {
   bgSelected?: ResponsiveValue<string>;
