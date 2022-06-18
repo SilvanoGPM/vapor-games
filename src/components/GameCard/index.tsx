@@ -1,20 +1,9 @@
-import {
-  Box,
-  Flex,
-  Link,
-  Spacer,
-  Text,
-  keyframes,
-  usePrefersReducedMotion,
-} from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
-import NextLink from 'next/link';
-
-import { Rating } from 'components/Rating';
-import { Metacritic } from 'components/Metacritic';
-import { VaporImage } from 'components/VaporImage';
-
-const fallbackImage = '/assets/game-fallback.png';
+import { GameImage } from './GameImage';
+import { GameLink } from './GameLink';
+import { GameScores } from './GameScores';
+import { GameTitle } from './GameTitle';
 
 type GameCardProps = {
   slug: string;
@@ -31,120 +20,23 @@ export function GameCard({
   rating,
   metacritic,
 }: GameCardProps) {
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  const shimmerAnimation = keyframes`
-    from {
-      background-position: -40rem 0;
-    }
-
-    to {
-      background-position: 40rem 0;
-    }
-  `;
-
-  const imageLoadingAnimation = prefersReducedMotion
-    ? undefined
-    : `${shimmerAnimation} 1s linear infinite forwards`;
-
   return (
-    <NextLink href={`/games/${slug}`} passHref>
-      <Link
-        title={name}
-        role="group"
-        _focus={{ outline: 'none' }}
-        _focusVisible={{
-          outline: 'none',
-          ringColor: 'whiteAlpha.800',
-          ring: 1,
-          ringOffsetColor: 'rgba(0, 0, 0, 0.95)',
-          ringOffset: '0.25rem',
-        }}
-        _light={{ _focusVisible: { ringColor: 'black' } }}
-        _dark={{ _focusVisible: { ringColor: 'white' } }}
+    <GameLink slug={slug} name={name}>
+      <Box
+        w={{ base: 250, md: 300 }}
+        h={{ base: 350, md: 400 }}
+        overflow="hidden"
+        pos="relative"
+        cursor="pointer"
+        shadow="2xl"
+        transition="ease-in-out 0.2s"
       >
-        <Box
-          minW={{ base: 250, md: 300 }}
-          maxW={{ base: 250, md: 300 }}
-          h={{ base: 350, md: 400 }}
-          overflow="hidden"
-          pos="relative"
-          cursor="pointer"
-          shadow="2xl"
-          transition="ease-in-out 0.2s"
-        >
-          <VaporImage
-            width={1200}
-            height={1700}
-            src={background_image || fallbackImage}
-            alt={`Game - ${name}`}
-            objectFit="cover"
-            filter={{ base: '', md: 'grayscale(80%)' }}
-            bgColor="#f6f7f8"
-            bgGradient="linear(
-              to-r,
-              #f6f7f8 0%,
-              #e3e5e9 20%,
-              #f6f7f8 40%,
-              #e3e5e9 100%
-            )"
-            bgSize="80rem 14rem"
-            animation={imageLoadingAnimation}
-            transition="ease-in-out 0.2s"
-            _groupHover={{
-              filter: 'grayscale(0%)',
-            }}
-            _groupFocus={{
-              filter: 'grayscale(0%)',
-            }}
-            onError={(event) => {
-              event.currentTarget.src = fallbackImage;
-            }}
-          />
+        <GameImage name={name} src={background_image} />
 
-          <Flex
-            pos="absolute"
-            top={0}
-            right={0}
-            px={2}
-            py={4}
-            bgGradient="linear(to top right, transparent 40%, blackAlpha.800 80%)"
-            justify="space-between"
-            w="100%"
-            opacity={{ base: 1, lg: 0 }}
-            transition="ease-in-out"
-            transitionDuration="0.2s"
-            _groupHover={{ opacity: 1 }}
-            _groupFocus={{ opacity: 1 }}
-          >
-            {metacritic !== undefined && metacritic !== null ? (
-              <Metacritic size="32px" value={metacritic} />
-            ) : (
-              <Spacer />
-            )}
-            <Rating score={rating} iconSize="16px" />
-          </Flex>
+        <GameScores rating={rating} metacritic={metacritic} />
 
-          <Box
-            w="100%"
-            pos="absolute"
-            bottom={0}
-            left={0}
-            opacity={{ base: 1, lg: 0 }}
-            bgGradient="linear(to bottom, transparent 10%, blackAlpha.800 50%)"
-            transition="ease-in-out"
-            transitionDuration="0.2s"
-            transitionDelay="0.1s"
-            transform="translateY(50px)"
-            _groupHover={{ opacity: 1, transform: 'translateY(0)' }}
-            _groupFocus={{ opacity: 1, transform: 'translateY(0)' }}
-          >
-            <Text color="white" fontSize="3xl" p={4} fontWeight="bold">
-              {name}
-            </Text>
-          </Box>
-        </Box>
-      </Link>
-    </NextLink>
+        <GameTitle name={name} />
+      </Box>
+    </GameLink>
   );
 }
