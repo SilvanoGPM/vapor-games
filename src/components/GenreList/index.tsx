@@ -1,8 +1,7 @@
-import { Heading, Link } from '@chakra-ui/react';
-import NextLink from 'next/link';
-
 import { PreviewGameType } from 'services/rawg';
 import { GameList } from 'components/GameList';
+
+import { ListHeader } from './ListHeader';
 
 export type GenresType =
   | 'action'
@@ -24,23 +23,6 @@ type GenreListProps = {
 
 export function GenreList({ title, genre, data }: GenreListProps) {
   return (
-    <GameList
-      data={data}
-      header={
-        <NextLink href={`/search?genre=${genre}`} passHref>
-          <Link
-            fontSize="2xl"
-            _focus={{ outline: 'none' }}
-            _focusVisible={{
-              textDecor: 'underline',
-            }}
-          >
-            <Heading as="h3" fontSize="4xl">
-              {title}
-            </Heading>
-          </Link>
-        </NextLink>
-      }
-    />
+    <GameList data={data} header={<ListHeader title={title} genre={genre} />} />
   );
 }
