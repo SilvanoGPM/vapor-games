@@ -28,7 +28,7 @@ export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
       h="160px"
       role="group"
       onClick={handleScrollTo}
-      _focus={{
+      _focusVisible={{
         outline: 'none',
         _dark: { border: '1px solid white' },
         _light: { border: '1px solid black' },

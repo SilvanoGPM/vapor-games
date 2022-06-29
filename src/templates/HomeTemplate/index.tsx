@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Divider } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
 
 import { GenreList, GenresType } from 'components/GenreList';
@@ -6,6 +6,7 @@ import { Header } from 'components/Header';
 import { HeroProps } from 'components/HeroParts';
 import { PreviewGameType } from 'services/rawg';
 import { formatGenreTitle } from 'utils/fomatters';
+import { BackToTop } from 'components/BackToTop';
 
 import { HomeHero } from './components/Hero';
 import { TopGenres } from './components/TopGenres';
@@ -52,6 +53,8 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
       >
         <TopGenres />
 
+        <Divider mb="8" />
+
         {Object.entries(genres).map(([key, value]) => (
           <GenreList
             key={key}
@@ -61,6 +64,8 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
           />
         ))}
       </Box>
+
+      <BackToTop />
     </>
   );
 }

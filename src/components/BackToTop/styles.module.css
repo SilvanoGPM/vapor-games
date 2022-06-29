@@ -1,0 +1,11 @@
+.default {
+  transition: transform 0.2s;
+}
+
+.hide {
+  transform: scale(0);
+}
+
+.show {
+  transform: scale(1);
+}
