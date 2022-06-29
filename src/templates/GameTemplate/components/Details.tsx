@@ -67,6 +67,7 @@ export function Details({ game }: DetailsProps) {
             <Text fontSize="xl" mb="0.4rem">
               Publisher
             </Text>
+
             <Text fontSize="xl" fontWeight="bold">
               {game.publishers[0].name}
             </Text>
@@ -76,6 +77,7 @@ export function Details({ game }: DetailsProps) {
             <Text fontSize="xl" mb="0.4rem">
               Developer
             </Text>
+
             <Text fontSize="xl" fontWeight="bold">
               {game.developers[0].name}
             </Text>

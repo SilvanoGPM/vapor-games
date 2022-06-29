@@ -5,9 +5,10 @@ import { GenreList, GenresType } from 'components/GenreList';
 import { Header } from 'components/Header';
 import { HeroProps } from 'components/HeroParts';
 import { PreviewGameType } from 'services/rawg';
-
 import { formatGenreTitle } from 'utils/fomatters';
+
 import { HomeHero } from './components/Hero';
+import { TopGenres } from './components/TopGenres';
 
 export type HomeTemplateProps = {
   hero: HeroProps;
@@ -49,6 +50,8 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
         mx="auto"
         px={{ base: '2rem', md: '4rem' }}
       >
+        <TopGenres />
+
         {Object.entries(genres).map(([key, value]) => (
           <GenreList
             key={key}

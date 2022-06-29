@@ -23,6 +23,11 @@ type GenreListProps = {
 
 export function GenreList({ title, genre, data }: GenreListProps) {
   return (
-    <GameList data={data} header={<ListHeader title={title} genre={genre} />} />
+    <div data-scroll={genre}>
+      <GameList
+        data={data}
+        header={<ListHeader title={title} genre={genre} />}
+      />
+    </div>
   );
 }
