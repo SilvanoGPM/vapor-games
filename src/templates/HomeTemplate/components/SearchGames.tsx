@@ -18,6 +18,7 @@ export function SearchGames() {
     <Flex
       justify="space-between"
       flexDir={{ base: 'column-reverse', md: 'row' }}
+      mb="4"
     >
       <Center flex="1" flexDir="column" maxW="400px" mx="auto">
         <Icon as={AiOutlineSearch} fontSize="5xl" mb="4" />
@@ -29,7 +30,7 @@ export function SearchGames() {
           textAlign="center"
           mb="8"
         >
-          Search for your favorite{' '}
+          Find your favorite{' '}
           <Text
             as="span"
             color="action.500"

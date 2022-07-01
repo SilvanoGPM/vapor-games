@@ -29,14 +29,7 @@ export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
         <Image h="100%" objectFit="cover" alt={title} src={image} />
       </Box>
 
-      <Box
-        pos="absolute"
-        top="0"
-        bottom="0"
-        left="0"
-        right="0"
-        zIndex="overlay"
-      >
+      <Box pos="absolute" top="0" bottom="0" left="0" right="0" zIndex="docked">
         <Center
           h="full"
           textAlign="center"

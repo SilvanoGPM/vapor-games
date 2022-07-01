@@ -12,7 +12,7 @@ export function Header() {
   return (
     <Box
       as="header"
-      zIndex={100}
+      zIndex="overlay"
       pos="absolute"
       top={{ base: 0, md: '2rem' }}
       left="50%"

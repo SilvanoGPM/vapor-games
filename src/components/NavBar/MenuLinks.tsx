@@ -1,4 +1,4 @@
-import { Box, Stack, Icon, ResponsiveValue } from '@chakra-ui/react';
+import { Box, Stack, Icon, ResponsiveValue, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { BsHouse, BsSearch } from 'react-icons/bs';
 
@@ -45,7 +45,9 @@ export function MenuLinks({
             selected={router.pathname === to}
           >
             <Icon as={icon} />
-            {name}
+            <Text as="span" display={{ base: 'block', md: 'none' }}>
+              {name}
+            </Text>
           </MenuItem>
         ))}
       </Stack>

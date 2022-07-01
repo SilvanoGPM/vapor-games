@@ -20,7 +20,11 @@ export function MenuItem({
   return (
     <Link
       href={to}
-      w="100%"
+      w={{ base: '100%', md: '40px' }}
+      h="40px"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
       rounded="xl"
       bg={selected ? bgSelected : 'inherit'}
       color={selected ? colorSelected : 'inherit'}
