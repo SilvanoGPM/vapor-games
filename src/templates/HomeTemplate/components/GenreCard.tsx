@@ -15,8 +15,8 @@ export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
     <Box
       as="button"
       pos="relative"
-      w="160px"
-      h="160px"
+      w={{ base: '120px', md: '160px' }}
+      h={{ base: '120px', md: '160px' }}
       role="group"
       onClick={() => scrollToElement(genre)}
       _focusVisible={{
@@ -58,7 +58,7 @@ export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
           </Text>
 
           <Text
-            fontSize="2xl"
+            fontSize={{ base: 'xl', md: '2xl' }}
             fontWeight={700}
             transition="0.2s"
             opacity={{ base: '1', lg: '0' }}

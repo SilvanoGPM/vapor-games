@@ -1,49 +1,63 @@
-import { useState, useEffect, ChangeEvent } from 'react';
-import { Input, InputGroup, InputLeftElement, Spinner } from '@chakra-ui/react';
+import { FormEvent, useState } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
 
-import { useDebounce } from 'hooks/useDebounce';
+import {
+  Box,
+  IconButton,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Spinner,
+} from '@chakra-ui/react';
 
 type SearchInputProps = {
   isLoading: boolean;
-  onValueChange: (value: string) => void;
+  onSubmit: (value: string) => void;
 };
 
-export function SearchInput({ onValueChange, isLoading }: SearchInputProps) {
+export function SearchInput({ onSubmit, isLoading }: SearchInputProps) {
   const [game, setGame] = useState('');
 
-  const debouncedGame = useDebounce(game, 1000);
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
 
-  useEffect(() => {
-    if (debouncedGame) {
-      onValueChange(debouncedGame);
-    }
-  }, [debouncedGame, onValueChange]);
-
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setGame(event.target.value);
+    onSubmit(game.toLowerCase());
   }
 
   return (
-    <InputGroup>
-      <InputLeftElement>
-        {isLoading ? <Spinner /> : <SearchIcon />}
-      </InputLeftElement>
-      <Input
-        value={game}
-        onChange={handleChange}
-        border="1px"
-        borderColor="white"
-        placeholder="ex: Minecraft"
-        fontSize="2xl"
-        w="100%"
-        disabled={isLoading}
-        _placeholder={{ color: 'white' }}
-        _focus={{ outline: 'none' }}
-        _focusVisible={{ borderColor: 'action' }}
-        _hover={{ borderColor: 'action' }}
-        _disabled={{ _hover: { borderColor: 'white', cursor: 'not-allowed' } }}
-      />
-    </InputGroup>
+    <Box as="form" w="full" onSubmit={handleSubmit}>
+      <InputGroup>
+        <Input
+          value={game}
+          onChange={(event) => setGame(event.target.value)}
+          border="1px"
+          borderColor="white"
+          placeholder="ex: Minecraft"
+          fontSize="2xl"
+          w="full"
+          disabled={isLoading}
+          _placeholder={{ color: 'white' }}
+          _focus={{ outline: 'none' }}
+          _focusVisible={{ borderColor: 'action' }}
+          _hover={{ borderColor: 'action' }}
+          _disabled={{
+            _hover: { borderColor: 'white', cursor: 'not-allowed' },
+          }}
+        />
+
+        <InputRightElement>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <IconButton
+              aria-label="Search game"
+              variant="unstyled"
+              type="submit"
+              icon={<SearchIcon />}
+            />
+          )}
+        </InputRightElement>
+      </InputGroup>
+    </Box>
   );
 }

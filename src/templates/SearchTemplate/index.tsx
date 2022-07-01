@@ -1,64 +1,37 @@
 import { useState, useCallback } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
-import { Center, useToast } from '@chakra-ui/react';
-import queryString from 'query-string';
+import { Center, Spinner, Text } from '@chakra-ui/react';
 
-import { PreviewGameType } from 'services/rawg';
 import { Header } from 'components/Header';
 import { Hero } from 'components/HeroParts';
+import { titleString } from 'utils/fomatters';
 
 import { SearchInput } from './SearchInput';
 import { useEffect } from 'react';
 import { GamesFound } from './GamesFound';
+import { useSearchGame } from 'services/hooks/useSearchGame';
 
 type SearchTemplateProps = {
   genre?: string;
 };
 
 export function SearchTemplate({ genre }: SearchTemplateProps) {
-  const toast = useToast();
+  const [search, setSearch] = useState<Record<string, unknown>>({});
 
-  const [games, setGames] = useState<PreviewGameType[]>([]);
+  const shouldFetchGames = Object.keys(search).length > 0;
+  const isSearchByName = Boolean(search.search);
 
-  const [isFetchingGames, setIsFetchingGames] = useState(false);
-
-  const fetchGames = useCallback(
-    async (query: Record<string, unknown>) => {
-      try {
-        setIsFetchingGames(true);
-
-        const params = queryString.stringify(query);
-        const response = await fetch(`/api/games?${params}`);
-        const games: PreviewGameType[] = await response.json();
-
-        setGames(games);
-      } catch {
-        toast({
-          title: 'Error trying to fetch games',
-          position: 'bottom',
-          status: 'error',
-          isClosable: true,
-          duration: 4000,
-        });
-      } finally {
-        setIsFetchingGames(false);
-      }
-    },
-    [toast],
-  );
+  const { data: games, isLoading } = useSearchGame(search, shouldFetchGames);
 
   useEffect(() => {
     if (genre) {
-      fetchGames({ genres: genre });
+      setSearch({ genres: genre });
     }
-  }, [genre, fetchGames]);
+  }, [genre]);
 
-  const handleGameValueChange = useCallback(
-    (game: string) => {
-      fetchGames({ search: game });
-    },
-    [fetchGames],
-  );
+  const handleGameSearch = useCallback((game: string) => {
+    setSearch({ search: game });
+  }, []);
 
   return (
     <>
@@ -67,8 +40,14 @@ export function SearchTemplate({ genre }: SearchTemplateProps) {
       <Hero.Background bgImage="/assets/search.jpg" h="100vh">
         <Center h="full" flexDirection="column" w="100%" maxW="500px" m="auto">
           <Hero.Title fontSize={genre ? '3xl' : '5xl'} mb="8" maxW="100%">
-            {genre ? (
-              `Searching genre: "${genre}"`
+            {genre && !isSearchByName ? (
+              <>
+                <Text as="span" color="action.500" textDecor="underline">
+                  {titleString(genre)}
+                </Text>{' '}
+                Games
+                {isLoading && <Spinner ml="4" />}
+              </>
             ) : (
               <>
                 Search <SearchIcon />
@@ -76,20 +55,13 @@ export function SearchTemplate({ genre }: SearchTemplateProps) {
             )}
           </Hero.Title>
 
-          {!genre && (
-            <SearchInput
-              isLoading={isFetchingGames}
-              onValueChange={handleGameValueChange}
-            />
-          )}
+          <SearchInput isLoading={isLoading} onSubmit={handleGameSearch} />
         </Center>
       </Hero.Background>
 
-      <GamesFound
-        games={games}
-        genre={genre}
-        isFetchingGames={isFetchingGames}
-      />
+      {games && (
+        <GamesFound games={games} genre={genre} isFetchingGames={isLoading} />
+      )}
     </>
   );
 }
