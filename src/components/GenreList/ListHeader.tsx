@@ -18,7 +18,7 @@ export function ListHeader({ title, genre }: ListHeaderProps) {
           textDecor: 'underline',
         }}
       >
-        <Heading as="h3" fontSize="4xl">
+        <Heading as="h3" fontSize="3xl">
           {title}
         </Heading>
       </Link>

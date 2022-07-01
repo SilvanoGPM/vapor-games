@@ -1,6 +1,7 @@
 import { Box, Center, Image, Text } from '@chakra-ui/react';
 
 import { GenresType } from 'components/GenreList';
+import { scrollToElement } from 'utils/scrollToElement';
 
 interface GenreCardProps {
   image: string;
@@ -10,16 +11,6 @@ interface GenreCardProps {
 }
 
 export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
-  function handleScrollTo() {
-    const $section = document.querySelector(`[data-scroll="${genre}"]`);
-
-    if (!$section) {
-      return;
-    }
-
-    $section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
   return (
     <Box
       as="button"
@@ -27,7 +18,7 @@ export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
       w="160px"
       h="160px"
       role="group"
-      onClick={handleScrollTo}
+      onClick={() => scrollToElement(genre)}
       _focusVisible={{
         outline: 'none',
         _dark: { border: '1px solid white' },

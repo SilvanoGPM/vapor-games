@@ -10,6 +10,7 @@ import { BackToTop } from 'components/BackToTop';
 
 import { HomeHero } from './components/Hero';
 import { TopGenres } from './components/TopGenres';
+import { SearchGames } from './components/SearchGames';
 
 export type HomeTemplateProps = {
   hero: HeroProps;
@@ -52,6 +53,7 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
         px={{ base: '2rem', md: '4rem' }}
       >
         <TopGenres />
+        <SearchGames />
 
         <Divider mb="8" />
 

@@ -3,7 +3,10 @@ import { GlobalStyleProps, mode } from '@chakra-ui/theme-tools';
 
 export const theme = extendTheme({
   colors: {
-    action: '#48b80f',
+    action: {
+      500: '#48b80f',
+      600: '#235c07',
+    },
   },
   styles: {
     global: (props: GlobalStyleProps) => ({

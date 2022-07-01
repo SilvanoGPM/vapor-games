@@ -1,4 +1,4 @@
-import { Box, DarkMode, Icon, IconButton, useBoolean } from '@chakra-ui/react';
+import { Box, Icon, IconButton, LightMode, useBoolean } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { RiArrowUpCircleFill } from 'react-icons/ri';
 
@@ -35,7 +35,7 @@ export function BackToTop() {
   }`;
 
   return (
-    <DarkMode>
+    <LightMode>
       <Box
         pos="fixed"
         right="1rem"
@@ -45,11 +45,10 @@ export function BackToTop() {
         <IconButton
           aria-label="Back to top"
           onClick={backToTop}
-          bg="action"
+          colorScheme="action"
           icon={<Icon as={RiArrowUpCircleFill} color="white" />}
-          _hover={{ bg: 'action', filter: 'brightness(0.9)' }}
         />
       </Box>
-    </DarkMode>
+    </LightMode>
   );
 }
