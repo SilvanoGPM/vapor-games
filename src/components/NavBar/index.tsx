@@ -5,7 +5,9 @@ import {
   Box,
   Flex,
   FlexProps,
+  Image,
   ResponsiveValue,
+  Text,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -97,6 +99,26 @@ export function NavBar({
           >
             <ThemeSwitcher />
           </Box>
+
+          {!isOpen && (
+            <>
+              <Box h="30px" w="2px" bg="gray.700" />
+
+              <Flex h="40px" align="center">
+                <Box display={{ base: 'none', md: 'block' }} mr="4">
+                  <Text>Silvano Marques</Text>
+                  <Text color="gray.500" fontSize="sm">
+                    silvanosilvino@hotmail.com
+                  </Text>
+                </Box>
+                <Image
+                  src="https://github.com/SkyG0D.png"
+                  borderRadius="xl"
+                  w="40px"
+                />
+              </Flex>
+            </>
+          )}
         </Flex>
       </Container>
     </>
