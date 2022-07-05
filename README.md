@@ -17,11 +17,11 @@
 
 ## Funcionalidades :video_game:
 
-- Visualização de jogose informações detalhadas.
+- Visualização de jogos e informações detalhadas.
 - Pesquisa de jogos por nome e gênero.
 - Navegação por teclado. 
 - Tema claro e escuro.
-- Geração de um novo Hero novo todo dia por meio de [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
+- Geração de um novo Hero todo dia por meio de [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
 
 ## Imagens :sparkles:
 
