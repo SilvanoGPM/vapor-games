@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 import {
   Box,
@@ -7,6 +8,7 @@ import {
   Flex,
   FlexProps,
   ResponsiveValue,
+  Spinner,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -22,6 +24,7 @@ import { Logo } from './Logo';
 import { MenuLinks } from './MenuLinks';
 import { MenuToggle } from './MenuToggle';
 import { GoBack } from './GoBack';
+import { UserInfo } from './UserInfo';
 
 type NavBarProps = {
   bgSelected?: ResponsiveValue<string>;
@@ -40,6 +43,8 @@ export function NavBar({
   const bg = useColorModeValue('#ffffff', '#121212');
   const color = useColorModeValue('#121212', '#ffffff');
 
+  const { data: userInfo, status } = useSession();
+
   const { isOpen, onToggle, onClose } = useDisclosure();
 
   useEffect(() => {
@@ -47,6 +52,9 @@ export function NavBar({
   }, [isOpen, lockScroll, unlockScroll]);
 
   useResizeEffect(onClose);
+
+  const isUserLoggedLoading = status === 'loading';
+  const isUserLoggedIn = status === 'authenticated';
 
   return (
     <>
@@ -102,11 +110,24 @@ export function NavBar({
 
           {!isOpen && (
             <>
-              <Box h="30px" w="2px" bg="gray.700" />
-
-              <DarkMode>
-                <LogInButton />
-              </DarkMode>
+              <Box h="30px" w="2px" bg="gray.400" opacity={0.5} />
+              {isUserLoggedLoading ? (
+                <Spinner color="action.500" size="sm" />
+              ) : (
+                <>
+                  {isUserLoggedIn ? (
+                    <UserInfo
+                      name={userInfo?.user?.name || 'Jon Doe'}
+                      email={userInfo?.user?.email}
+                      image={userInfo?.user?.image}
+                    />
+                  ) : (
+                    <DarkMode>
+                      <LogInButton />
+                    </DarkMode>
+                  )}
+                </>
+              )}
             </>
           )}
         </Flex>
