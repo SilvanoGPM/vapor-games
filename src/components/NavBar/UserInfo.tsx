@@ -12,16 +12,15 @@ import {
   PopoverHeader,
   PopoverTrigger,
   Portal,
-  Text,
   VStack,
 } from '@chakra-ui/react';
 
 import { signOut } from 'next-auth/react';
-
 import { RiLogoutBoxFill, RiUser2Fill } from 'react-icons/ri';
 import { BiDownArrow } from 'react-icons/bi';
 
 import { firstString } from 'utils/firstString';
+import { OneLineText } from 'components/OneLineText';
 
 interface UserInfoProps {
   name: string;
@@ -33,10 +32,11 @@ export function UserInfo({ name, image, email }: UserInfoProps) {
   return (
     <Flex h="40px" align="center">
       <Box display={{ base: 'none', md: 'block' }} mr="4">
-        <Text>{name}</Text>
-        <Text color="gray.500" fontSize="sm">
+        <OneLineText title={name}>{name}</OneLineText>
+
+        <OneLineText title={String(email)} color="gray.500" fontSize="sm">
           {email}
-        </Text>
+        </OneLineText>
       </Box>
 
       <Popover trigger="click" placement="bottom-end">
@@ -65,9 +65,9 @@ export function UserInfo({ name, image, email }: UserInfoProps) {
             <PopoverCloseButton />
             <PopoverHeader>
               Signed in as{' '}
-              <Text fontWeight={600} as="span">
+              <OneLineText fontWeight={600} as="span">
                 {firstString(name)}
-              </Text>
+              </OneLineText>
             </PopoverHeader>
             <PopoverBody>
               <VStack spacing="4" w="full">
