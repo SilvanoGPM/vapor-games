@@ -20,7 +20,7 @@ export function GameActions({ gameName }: GameActionsProps) {
 
   const isUserLoggedLoading = status === 'loading';
 
-  const [latestAction, setLatestAction] = useState<ActionType | null>(null);
+  const [actualAction, setActualAction] = useState<ActionType | null>(null);
 
   const { data, isLoading } = useQuery(
     ['actions', gameName],
@@ -40,8 +40,17 @@ export function GameActions({ gameName }: GameActionsProps) {
 
   function toggleAction(action: ActionType) {
     return async () => {
-      setLatestAction(action);
-      await mutation.mutateAsync(action);
+      if (actualAction) {
+        return;
+      }
+
+      setActualAction(action);
+
+      try {
+        await mutation.mutateAsync(action);
+      } finally {
+        setActualAction(null);
+      }
     };
   }
 
@@ -51,9 +60,9 @@ export function GameActions({ gameName }: GameActionsProps) {
 
   const actions = data?.body?.[0];
 
-  const favoriteLoading = mutation.isLoading && latestAction === 'favorite';
-  const likeLoading = mutation.isLoading && latestAction === 'like';
-  const playedLoading = mutation.isLoading && latestAction === 'played';
+  const favoriteLoading = mutation.isLoading && actualAction === 'favorite';
+  const likeLoading = mutation.isLoading && actualAction === 'like';
+  const playedLoading = mutation.isLoading && actualAction === 'played';
 
   return (
     <HStack spacing="4">

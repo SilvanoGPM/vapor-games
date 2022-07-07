@@ -1,5 +1,7 @@
-import { Button, Flex, Heading, LightMode } from '@chakra-ui/react';
+import { Button, Flex, LightMode } from '@chakra-ui/react';
 import NextLink from 'next/link';
+
+import { Title } from 'components/Title';
 
 import { GenresType } from '.';
 
@@ -11,22 +13,9 @@ interface ListHeaderProps {
 export function ListHeader({ title, genre }: ListHeaderProps) {
   return (
     <Flex w="full" align="center" justify="space-between">
-      <Heading
-        as="h3"
-        fontSize="3xl"
-        sx={{
-          '&::after': {
-            content: "''",
-            display: 'block',
-            mt: '8px',
-            bg: 'action.500',
-            width: '60%',
-            height: '5px',
-          },
-        }}
-      >
+      <Title as="h3" fontSize="3xl">
         {title}
-      </Heading>
+      </Title>
 
       <LightMode>
         <NextLink href={`/search?genre=${genre}`} passHref>

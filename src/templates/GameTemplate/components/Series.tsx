@@ -1,8 +1,8 @@
-import { Heading } from '@chakra-ui/react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 import { GameList } from 'components/GameList';
 import { GameType } from 'services/rawg';
+import { Title } from 'components/Title';
 
 type SeriesProps = { game: GameType };
 
@@ -18,9 +18,9 @@ export function Series({ game }: SeriesProps) {
         listStyle={{ mb: 4 }}
         data={game.series}
         header={
-          <Heading as="h3" fontSize="4xl" mb={4}>
+          <Title as="h3" mb={4}>
             Game Serie
-          </Heading>
+          </Title>
         }
       />
     </AnimationOnScroll>

@@ -1,14 +1,15 @@
 import { useState } from 'react';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 import {
   Box,
   Flex,
-  Heading,
   Text,
-  Link,
   Divider,
   Tooltip,
   Center,
+  Button,
+  LightMode,
 } from '@chakra-ui/react';
 
 import { IconType } from 'react-icons';
@@ -18,7 +19,7 @@ import { CgMore } from 'react-icons/cg';
 
 import { GameType } from 'services/rawg';
 import { formatGameStrDate } from 'utils/fomatters';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { Title } from 'components/Title';
 
 type DetailsProps = {
   game: GameType;
@@ -40,25 +41,25 @@ export function Details({ game }: DetailsProps) {
     <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
       <Box mb="8" as="section">
         <Center justifyContent="space-between" mb="4">
-          <Heading w="100%" flex="1" as="h3">
-            Game Details
-          </Heading>
+          <Title as="h3">Game Details</Title>
 
           {game.website && (
-            <Link
-              fontSize="xl"
-              href={game.website}
-              color="action"
-              fontWeight="bold"
-              target="_blank"
-              _focus={{ outline: 'none' }}
-              _focusVisible={{
-                outline: 'none',
-                textDecor: 'underline',
-              }}
-            >
-              Website
-            </Link>
+            <LightMode>
+              <Button
+                as="a"
+                href={game.website}
+                target="_blank"
+                size="sm"
+                textTransform="uppercase"
+                colorScheme="action"
+                _focus={{ outline: 'none' }}
+                _focusVisible={{
+                  textDecor: 'underline',
+                }}
+              >
+                Website
+              </Button>
+            </LightMode>
           )}
         </Center>
 

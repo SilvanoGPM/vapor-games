@@ -1,6 +1,5 @@
 import {
   Box,
-  Heading,
   useBreakpointValue,
   usePrefersReducedMotion,
   keyframes,
@@ -11,6 +10,7 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { Slider, SlideSettings, Slide } from 'components/Slider';
 import { VaporImage } from 'components/VaporImage';
 import { ScreenshotType } from 'services/rawg';
+import { Title } from 'components/Title';
 
 type ScreenshotsProps = {
   screenshots: ScreenshotType[];
@@ -82,9 +82,9 @@ export function Screenshots({ screenshots }: ScreenshotsProps) {
   return (
     <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
       <Box mb="8" as="section">
-        <Heading as="h3" mb="4">
+        <Title as="h3" mb="4">
           Screenshots
-        </Heading>
+        </Title>
 
         <Box w="100%" h="400px" overflow="hidden">
           {screenshots.length === 1 ? (

@@ -3,7 +3,6 @@ import {
   Button,
   Divider,
   Flex,
-  Heading,
   Icon,
   Image,
   Spacer,
@@ -11,14 +10,16 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 
+import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
+import { GameType } from 'services/rawg';
+import { Title } from 'components/Title';
+
 import { SteamButton } from './SteamButton';
 import { EpicGamesButton } from './EpicGamesButton';
-import { GameType } from 'services/rawg';
-import { useState } from 'react';
 
 type OverviewProps = {
   game: GameType;
@@ -48,9 +49,9 @@ export function Overview({ game }: OverviewProps) {
 
   return (
     <>
-      <Heading w="100%" flex="1" as="h3" mb="4">
+      <Title flex="1" as="h3" mb="4">
         Overview
-      </Heading>
+      </Title>
 
       <Flex
         w="100%"
