@@ -1,7 +1,13 @@
-import { LightMode } from '@chakra-ui/react';
-import { Animation } from 'components/Animation';
+import { Box, DarkMode, LightMode } from '@chakra-ui/react';
+import { useSession } from 'next-auth/react';
 
+import { Animation } from 'components/Animation';
+import { GameActions } from 'components/GameActions';
 import { Hero, HeroProps } from 'components/HeroParts';
+
+const animationBase = {
+  animation: 'animate__fadeIn',
+};
 
 export function GameHero({
   name,
@@ -11,9 +17,9 @@ export function GameHero({
   rating,
   metacritic,
 }: HeroProps) {
-  const animationBase = {
-    animation: 'animate__fadeIn',
-  };
+  const { status } = useSession();
+
+  const isUserLoggedIn = status === 'authenticated';
 
   return (
     <Hero.Background bgImage={background_image || ''}>
@@ -36,6 +42,14 @@ export function GameHero({
           <Hero.Scores rating={rating} metacritic={metacritic} mb="4" />
         </Animation>
       </LightMode>
+
+      {isUserLoggedIn && (
+        <Box pos="absolute" right="1rem" bottom={{ base: '-3rem', md: '1rem' }}>
+          <DarkMode>
+            <GameActions gameName={name} />
+          </DarkMode>
+        </Box>
+      )}
     </Hero.Background>
   );
 }

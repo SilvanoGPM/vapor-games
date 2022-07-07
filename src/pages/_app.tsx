@@ -3,18 +3,17 @@ import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
 import { DefaultSeo } from 'next-seo';
 import { ChakraProvider } from '@chakra-ui/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
 
 import 'animate.css/animate.min.css';
 
 import { theme } from 'styles/theme';
+import { queryCient } from 'services/queryClient';
 
 import SEO from '../../next-seo.config';
 
 import '../styles/global.css';
 import { SessionProvider } from 'next-auth/react';
-
-const queryCient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   return (
