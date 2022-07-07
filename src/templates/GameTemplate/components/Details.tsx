@@ -69,7 +69,7 @@ export function Details({ game }: DetailsProps) {
             </Text>
 
             <Text fontSize="xl" fontWeight="bold">
-              {game.publishers[0].name}
+              {game?.publishers?.[0]?.name || 'No informations'}
             </Text>
           </Box>
 
@@ -79,7 +79,7 @@ export function Details({ game }: DetailsProps) {
             </Text>
 
             <Text fontSize="xl" fontWeight="bold">
-              {game.developers[0].name}
+              {game?.developers?.[0]?.name || 'No informations'}
             </Text>
           </Box>
 

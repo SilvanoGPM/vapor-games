@@ -77,7 +77,7 @@ export function GameActions({ gameName }: GameActionsProps) {
 
       <Action
         aria-label="Played"
-        activeColor="action?.500"
+        activeColor="action.500"
         loading={playedLoading}
         active={actions?.played}
         icon={BiJoystick}
