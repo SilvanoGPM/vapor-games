@@ -4,12 +4,13 @@ import { Center, Spinner, Text } from '@chakra-ui/react';
 
 import { Header } from 'components/Header';
 import { Hero } from 'components/HeroParts';
-import { titleString } from 'utils/fomatters';
+import { formatGenreTitle } from 'utils/fomatters';
+import { useSearchGame } from 'services/hooks/useSearchGame';
+import { GenresType } from 'components/GenreList';
 
 import { SearchInput } from './SearchInput';
 import { useEffect } from 'react';
 import { GamesFound } from './GamesFound';
-import { useSearchGame } from 'services/hooks/useSearchGame';
 
 type SearchTemplateProps = {
   genre?: string;
@@ -43,7 +44,7 @@ export function SearchTemplate({ genre }: SearchTemplateProps) {
             {genre && !isSearchByName ? (
               <>
                 <Text as="span" color="action.500" textDecor="underline">
-                  {titleString(genre)}
+                  {formatGenreTitle(genre as GenresType)}
                 </Text>{' '}
                 Games
                 {isLoading && <Spinner ml="4" />}
