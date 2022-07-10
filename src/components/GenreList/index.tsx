@@ -13,7 +13,9 @@ export type GenresType =
   | 'platformer'
   | 'strategy'
   | 'fighting'
-  | 'role-playing-games-rpg';
+  | 'role-playing-games-rpg'
+  | 'simulation'
+  | 'arcade';
 
 type GenreListProps = {
   title: string;

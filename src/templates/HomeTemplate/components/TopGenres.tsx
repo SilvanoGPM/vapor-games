@@ -10,7 +10,8 @@ export function TopGenres() {
       justify={{ base: 'center', lg: 'space-between' }}
       gap="1rem"
       flexWrap="wrap"
-      my="16"
+      mt="32"
+      mb="16"
     >
       {topGenres.map((genre) => (
         <GenreCard key={genre.genre} {...genre} />

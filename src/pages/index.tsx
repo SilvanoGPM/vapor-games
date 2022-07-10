@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 
 import { HomeTemplate, HomeTemplateProps } from 'templates/HomeTemplate';
 import * as rawg from 'services/rawg';
-import { fakeHero } from 'dev/fakeHero';
+import { fakeHeroGames } from 'dev/fakeHero';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -38,22 +38,22 @@ async function getGenres() {
   };
 }
 
-async function getHero(): Promise<rawg.GameType> {
+async function getHero(): Promise<rawg.GameType[]> {
   if (isDev) {
-    return fakeHero;
+    return fakeHeroGames;
   }
 
-  return rawg.getRandomGame();
+  return rawg.getRandomHeroGames();
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const hero = await getHero();
+  const games = await getHero();
 
   const genres = await getGenres();
 
   return {
     props: {
-      hero,
+      games,
       genres,
     },
     revalidate: 60 * 60 * 24,

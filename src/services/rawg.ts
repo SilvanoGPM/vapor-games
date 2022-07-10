@@ -107,7 +107,7 @@ export async function getGameBySlug(slug: string): Promise<GameType> {
   };
 }
 
-export async function getRandomGame() {
+export async function getRandomGamesData() {
   const ordering = chooseRandom(['rating', 'metacritic', 'added', '']);
 
   const { data } = await api.get<{ results: PreviewGameType[] }>(
@@ -116,9 +116,33 @@ export async function getRandomGame() {
     }${ordering}`,
   );
 
+  return data;
+}
+
+export async function getRandomGame() {
+  const data = await getRandomGamesData();
+
   const game = chooseRandom(data.results);
 
   return getGameBySlug(game.slug);
+}
+
+export async function getRandomHeroGames(size = 4) {
+  const data = await getRandomGamesData();
+  const games: GameType[] = [];
+
+  while (games.length < size) {
+    const randomGame = chooseRandom(data.results);
+
+    const containsGame = games.some((game) => game.slug === randomGame.slug);
+
+    if (!containsGame) {
+      const game = await getGameBySlug(randomGame.slug);
+      games.push(game);
+    }
+  }
+
+  return games;
 }
 
 export async function getGamesByGenres(genres: GenresType[], size = 10) {

@@ -13,11 +13,11 @@ import { TopGenres } from './components/TopGenres';
 import { SearchGames } from './components/SearchGames';
 
 export type HomeTemplateProps = {
-  hero: HeroProps;
+  games: HeroProps[];
   genres: { [key in GenresType]: PreviewGameType[] };
 };
 
-export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
+export function HomeTemplate({ games, genres }: HomeTemplateProps) {
   return (
     <>
       <NextSeo
@@ -43,7 +43,7 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
 
       <Header />
 
-      <HomeHero {...hero} />
+      <HomeHero games={games} />
 
       <Box
         as="section"
@@ -53,6 +53,7 @@ export function HomeTemplate({ hero, genres }: HomeTemplateProps) {
         px={{ base: '2rem', md: '4rem' }}
       >
         <TopGenres />
+
         <SearchGames />
 
         <Divider mb="8" />
