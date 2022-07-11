@@ -1,15 +1,9 @@
 import { useState } from 'react';
-
-import {
-  Button,
-  LightMode,
-  Stack,
-  Tooltip,
-  useBoolean,
-} from '@chakra-ui/react';
+import { LightMode, useBoolean } from '@chakra-ui/react';
 
 import { Animation } from 'components/Animation';
 import { Hero, HeroProps } from 'components/HeroParts';
+import { GameStack } from './GameStack';
 
 interface HomeHeroProps {
   games: HeroProps[];
@@ -28,13 +22,6 @@ export function HomeHero({ games }: HomeHeroProps) {
     metacritic,
     slug,
   } = games[selectedGameIndex];
-
-  function handleSelectedGame(index: number) {
-    return () => {
-      setSelectedGameIndex(index);
-      animateActions.on();
-    };
-  }
 
   const animationBase = {
     animation: animate ? 'animate__fadeInLeft' : '',
@@ -74,37 +61,12 @@ export function HomeHero({ games }: HomeHeroProps) {
         </Animation>
       </LightMode>
 
-      <Stack
-        pos="absolute"
-        right={{ base: '2rem', md: '4rem' }}
-        left={{ base: '2rem', md: 'unset' }}
-        bottom={{ base: '-6rem', md: '1rem' }}
-        direction={{ base: 'row', md: 'column' }}
-        justify="space-between"
-      >
-        {games.map((game, index) => (
-          <LightMode key={game.slug}>
-            <Tooltip
-              placement="left"
-              label={game.name}
-              hasArrow
-              openDelay={500}
-            >
-              <Button
-                onClick={handleSelectedGame(index)}
-                w="100px"
-                h="60px"
-                rounded="xl"
-                bg="whiteAlpha.500"
-                bgImage={game.background_image || ''}
-                bgSize="cover"
-                bgPos="center"
-                variant="unstyled"
-              />
-            </Tooltip>
-          </LightMode>
-        ))}
-      </Stack>
+      <GameStack
+        selectedIndex={selectedGameIndex}
+        games={games}
+        startAnimation={animateActions.on}
+        onSelectGame={setSelectedGameIndex}
+      />
     </Hero.Background>
   );
 }

@@ -10,7 +10,7 @@ export function TopGenres() {
       justify={{ base: 'center', lg: 'space-between' }}
       gap="1rem"
       flexWrap="wrap"
-      mt="32"
+      mt={{ base: '32', md: '16' }}
       mb="16"
     >
       {topGenres.map((genre) => (
