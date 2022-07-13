@@ -9,12 +9,34 @@ import { Screenshots } from './components/Screenshots';
 import { Overview } from './components/Overview';
 import { Details } from './components/Details';
 import { Series } from './components/Series';
+import dynamic from 'next/dynamic';
+
+const Trailer = dynamic(
+  async () => {
+    const { Trailer } = await import('./components/Trailer');
+    return Trailer;
+  },
+  {
+    ssr: false,
+  },
+);
+
+type GameVideo = {
+  name: string;
+  video_id: string;
+};
 
 export type GameTemplateProps = {
   game: GameType;
+  videos: GameVideo[];
 };
 
-export function GameTemplate({ game }: GameTemplateProps) {
+export function GameTemplate({ game, videos }: GameTemplateProps) {
+  const gameTrailer =
+    videos.find((video) => video.name === 'Gameplay Trailer') ||
+    videos.find((video) => video.name === 'Trailer') ||
+    videos[0];
+
   return (
     <>
       <NextSeo
@@ -50,6 +72,8 @@ export function GameTemplate({ game }: GameTemplateProps) {
           mt={8}
           px={{ base: '2rem', md: '4rem' }}
         >
+          {gameTrailer && <Trailer trailerId={gameTrailer.video_id} />}
+
           <Overview game={game} />
 
           <Details game={game} />

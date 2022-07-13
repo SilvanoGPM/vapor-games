@@ -1,5 +1,5 @@
 import { GenresType } from 'components/GenreList';
-import { api } from 'services/api';
+import { rawgApi } from 'services/api';
 import { chooseRandom } from 'utils/chooseRandom';
 import queryString from 'query-string';
 
@@ -62,7 +62,7 @@ const key = process.env.API_KEY;
 export async function searchGames(params: Record<string, string>) {
   const stringParams = queryString.stringify(params);
 
-  const { data } = await api.get<{ results: PreviewGameType[] }>(
+  const { data } = await rawgApi.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&${stringParams}`,
   );
 
@@ -74,7 +74,7 @@ export async function getGameAdditionalInfo<T>(
   slug: string,
 ) {
   try {
-    const { data } = await api.get<{ results: T[] }>(
+    const { data } = await rawgApi.get<{ results: T[] }>(
       `/games/${slug}/${type}?key=${key}`,
     );
 
@@ -85,7 +85,9 @@ export async function getGameAdditionalInfo<T>(
 }
 
 export async function getGameBySlug(slug: string): Promise<GameType> {
-  const { data: game } = await api.get<GameType>(`/games/${slug}?key=${key}`);
+  const { data: game } = await rawgApi.get<GameType>(
+    `/games/${slug}?key=${key}`,
+  );
 
   const series = await getGameAdditionalInfo<PreviewGameType>(
     'game-series',
@@ -110,7 +112,7 @@ export async function getGameBySlug(slug: string): Promise<GameType> {
 export async function getRandomGamesData() {
   const ordering = chooseRandom(['rating', 'metacritic', 'added', '']);
 
-  const { data } = await api.get<{ results: PreviewGameType[] }>(
+  const { data } = await rawgApi.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&page_size=100&ordering=${
       ordering ? '-' : ''
     }${ordering}`,
@@ -146,7 +148,7 @@ export async function getRandomHeroGames(size = 4) {
 }
 
 export async function getGamesByGenres(genres: GenresType[], size = 10) {
-  const { data } = await api.get<{ results: PreviewGameType[] }>(
+  const { data } = await rawgApi.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&genres=${genres.join(',')}&page_size=${size}`,
   );
 
@@ -154,7 +156,7 @@ export async function getGamesByGenres(genres: GenresType[], size = 10) {
 }
 
 export async function getMostPopularGames(size = 10) {
-  const { data } = await api.get<{ results: PreviewGameType[] }>(
+  const { data } = await rawgApi.get<{ results: PreviewGameType[] }>(
     `/games?key=${key}&page_size=${size}&ordering=-added`,
   );
 

@@ -6,6 +6,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClientProvider } from 'react-query';
 
 import 'animate.css/animate.min.css';
+import '@vime/core/themes/default.css';
+import '@vime/core/themes/light.css';
 
 import { theme } from 'styles/theme';
 import { queryCient } from 'services/queryClient';

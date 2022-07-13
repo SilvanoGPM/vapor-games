@@ -1,8 +1,9 @@
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
 import { Fallback } from 'components/Fallback';
 import * as rawg from 'services/rawg';
+import * as igbd from 'services/igbd';
 import { GameTemplate, GameTemplateProps } from 'templates/GameTemplate';
 
 export default function Game(props: GameTemplateProps) {
@@ -20,7 +21,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   try {
     const game = await rawg.getGameBySlug(slug);
-    return { props: { game } };
+
+    const videos = await igbd.getGameVideos(game.name);
+
+    return { props: { game, videos } };
   } catch (error) {
     console.log(`error on game: ${slug}`, error);
   }
@@ -28,10 +32,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { notFound: true };
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const games = await rawg.getMostPopularGames(10);
 
   const paths = games.map(({ slug }) => ({ params: { slug } }));
 
   return { paths, fallback: true };
-}
+};

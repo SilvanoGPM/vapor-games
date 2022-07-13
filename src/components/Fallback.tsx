@@ -1,17 +1,21 @@
-import { Center, Spinner, Text } from '@chakra-ui/react';
+import { Center, Icon, Spinner, Text } from '@chakra-ui/react';
+import { BiJoystick } from 'react-icons/bi';
 
 export function Fallback() {
   return (
     <Center w="100%" h="100vh" flexDirection="column" gap="1rem">
-      <Spinner color="action" />
+      <Spinner color="action.500" />
+
       <Text
         fontSize="2xl"
-        color="action"
+        color="action.500"
         textTransform="uppercase"
         fontWeight="extrabold"
       >
-        Processing...
+        Loading game...
       </Text>
+
+      <Icon as={BiJoystick} color="action.500" w={40} h={40} />
     </Center>
   );
 }

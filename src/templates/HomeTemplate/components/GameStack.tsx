@@ -3,12 +3,10 @@ import {
   LightMode,
   Stack,
   Tooltip,
-  useBoolean,
   useBreakpointValue,
 } from '@chakra-ui/react';
 
 import { HeroProps } from 'components/HeroParts';
-import { useEffect } from 'react';
 
 interface GameStackProps {
   games: HeroProps[];
@@ -23,20 +21,10 @@ export function GameStack({
   startAnimation,
   onSelectGame,
 }: GameStackProps) {
-  const [switchingGame, switchingGameActions] = useBoolean(false);
-
   const gameTooltipPlacement = useBreakpointValue({
     base: 'top' as const,
     md: 'left' as const,
   });
-
-  useEffect(() => {
-    console.log(switchingGame);
-
-    if (!switchingGame) {
-      switchingGameActions.on();
-    }
-  }, [switchingGame, switchingGameActions]);
 
   function handleSelectedGame(index: number) {
     return () => {
