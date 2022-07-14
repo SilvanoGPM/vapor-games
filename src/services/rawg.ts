@@ -129,7 +129,7 @@ export async function getRandomGame() {
   return getGameBySlug(game.slug);
 }
 
-export async function getRandomHeroGames(size = 4) {
+export async function getRandomHeroGames(size = 3) {
   const data = await getRandomGamesData();
   const games: GameType[] = [];
 

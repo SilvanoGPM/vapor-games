@@ -15,7 +15,7 @@ export function Fallback() {
         Loading game...
       </Text>
 
-      <Icon as={BiJoystick} color="action.500" w={40} h={40} />
+      <Icon as={BiJoystick} color="action.500" w={20} h={20} />
     </Center>
   );
 }

@@ -30,6 +30,7 @@ export function GameCard({
         cursor="pointer"
         shadow="2xl"
         transition="ease-in-out 0.2s"
+        rounded="xl"
       >
         <GameImage name={name} src={background_image} />
 

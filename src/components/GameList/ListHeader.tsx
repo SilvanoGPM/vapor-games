@@ -12,7 +12,7 @@ export function ListHeader({ header, headerStyle }: ListHeaderProps) {
   }
 
   return (
-    <Flex mb={2} mx="2" justify="space-between" align="center" {...headerStyle}>
+    <Flex mb={2} justify="space-between" align="center" {...headerStyle}>
       {header}
     </Flex>
   );

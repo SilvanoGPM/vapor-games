@@ -18,12 +18,9 @@ export function GenreCard({ image, title, emoji, genre }: GenreCardProps) {
       w={{ base: '120px', md: '160px' }}
       h={{ base: '120px', md: '160px' }}
       role="group"
+      rounded="xl"
+      overflow="hidden"
       onClick={() => scrollToElement(genre)}
-      _focusVisible={{
-        outline: 'none',
-        _dark: { border: '1px solid white' },
-        _light: { border: '1px solid black' },
-      }}
     >
       <Box pos="absolute" top="0" bottom="0" left="0" right="0">
         <Image h="100%" objectFit="cover" alt={title} src={image} />

@@ -40,7 +40,7 @@ export function ListScroller({
       className={styles.gameList}
       hideScrollbars={hideScrollbars}
     >
-      <HStack py="4" mx="2" spacing={4} {...listStyle}>
+      <HStack py="4" spacing={4} {...listStyle}>
         {data.map((game) => (
           <GameCard key={game.slug} {...game} />
         ))}
