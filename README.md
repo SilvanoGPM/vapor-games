@@ -14,6 +14,9 @@
 - [Jest](https://jestjs.io/pt-BR/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Rawg API](https://rawg.io/apidocs)
+- [IGBD Api](https://www.igdb.com/api)
+- [Supabase](https://supabase.com/)
+- [VimeJS](https://vimejs.com/)
 
 ## Funcionalidades :video_game:
 
@@ -22,6 +25,8 @@
 - Navegação por teclado. 
 - Tema claro e escuro.
 - Geração de um novo Hero todo dia por meio de [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
+- Ações para cada jogo(like, favorite, played).
+- Trailer do Jogo.
 
 ## Imagens :sparkles:
 
