@@ -30,9 +30,11 @@
 
 ## Imagens :sparkles:
 
-![image](https://user-images.githubusercontent.com/59753526/171779929-e38043a4-5e55-41c2-ac5e-9e2aa014933a.png)
-![image](https://user-images.githubusercontent.com/59753526/171779952-c95b8a27-55e9-4452-9ddc-a08a292ec20a.png)
-![image](https://user-images.githubusercontent.com/59753526/171780063-ce286906-3252-4e07-b996-bc86bd06064b.png)
+![image](https://user-images.githubusercontent.com/59753526/179491341-385cc8be-20a7-47b0-89d8-f46a20c1ab17.png)
+![image](https://user-images.githubusercontent.com/59753526/179491451-9e34420e-c0fa-42d5-9413-69d3d83e25da.png)
+![image](https://user-images.githubusercontent.com/59753526/179491525-b879bf54-aa69-4564-aabc-6a244461af51.png)
+![image](https://user-images.githubusercontent.com/59753526/179491671-0da07c93-9d77-4681-93ca-04b81a102c51.png)
+![image](https://user-images.githubusercontent.com/59753526/179491733-905a745c-13e7-443b-bb4e-0bb22448ccbc.png)
 ![image](https://user-images.githubusercontent.com/59753526/171780088-50f878f0-81ad-4545-907f-9831db37547f.png)
 ![image](https://user-images.githubusercontent.com/59753526/171780104-dc21ea14-1590-4572-9e7e-bde2f727233c.png)
 ![image](https://user-images.githubusercontent.com/59753526/171779984-f780364d-a34d-4c76-98ab-910412b2e4de.png)
