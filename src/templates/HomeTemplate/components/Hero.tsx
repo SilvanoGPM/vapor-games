@@ -28,7 +28,7 @@ export function HomeHero({ games }: HomeHeroProps) {
   };
 
   return (
-    <Hero.Background bgImage={background_image || ''}>
+    <Hero.Background bgImage={background_image || ''} h="100vh">
       <LightMode>
         <Animation {...animationBase}>
           <Hero.Title>{name}</Hero.Title>
