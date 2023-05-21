@@ -4,6 +4,7 @@ import NextNProgress from 'nextjs-progressbar';
 import { DefaultSeo } from 'next-seo';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClientProvider } from 'react-query';
+import { SessionProvider } from 'next-auth/react';
 
 import 'animate.css/animate.min.css';
 import '@vime/core/themes/default.css';
@@ -11,13 +12,15 @@ import '@vime/core/themes/light.css';
 
 import { theme } from 'styles/theme';
 import { queryCient } from 'services/queryClient';
+import { useSplashScreen } from 'hooks/useSplashScreen';
 
 import SEO from '../../next-seo.config';
 
 import '../styles/global.css';
-import { SessionProvider } from 'next-auth/react';
 
 function App({ Component, pageProps }: AppProps) {
+  useSplashScreen('hide');
+
   return (
     <SessionProvider>
       <QueryClientProvider client={queryCient}>
