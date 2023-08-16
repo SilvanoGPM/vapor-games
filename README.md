@@ -14,7 +14,7 @@
 - [Jest](https://jestjs.io/pt-BR/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Rawg API](https://rawg.io/apidocs)
-- [IGBD Api](https://www.igdb.com/api)
+- [IGBD API](https://www.igdb.com/api)
 - [Supabase](https://supabase.com/)
 - [VimeJS](https://vimejs.com/)
 
