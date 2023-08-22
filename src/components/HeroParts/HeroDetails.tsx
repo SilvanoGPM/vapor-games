@@ -17,7 +17,7 @@ export function HeroDetails({ slug, ...props }: HeroDetailsProps) {
         w="100%"
       >
         <Button
-          colorScheme="whiteAlpha"
+          colorScheme="action"
           rightIcon={<ArrowRightIcon />}
           width="100%"
           _focus={{ outline: 'none' }}

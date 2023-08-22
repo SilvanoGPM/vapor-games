@@ -53,6 +53,8 @@ export function GameStack({
             label={game.name}
             hasArrow
             openDelay={500}
+            color="white"
+            bg="action.500"
           >
             <Button
               onClick={handleSelectedGame(index)}

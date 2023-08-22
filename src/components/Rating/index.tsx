@@ -18,7 +18,13 @@ export function Rating({
     .map((_, index) => index + 1);
 
   return (
-    <Tooltip label={`Rating: ${score}`} placement="top" hasArrow>
+    <Tooltip
+      label={`Rating: ${score}`}
+      placement="top"
+      hasArrow
+      color="white"
+      bg="action.500"
+    >
       <Flex
         gap="1"
         w={`calc(${iconSize} * ${total + 1})`}

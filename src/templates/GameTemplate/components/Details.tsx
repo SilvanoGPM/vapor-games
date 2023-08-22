@@ -65,7 +65,7 @@ export function Details({ game }: DetailsProps) {
 
         <Flex wrap="wrap" pb="8" gap={{ base: '1rem', lg: '3rem' }} h="100%">
           <Box flex="1" maxW={{ base: '100%', lg: '300px' }} minW="200px">
-            <Text fontSize="xl" mb="0.4rem">
+            <Text fontSize="xl" mb="0.4rem" color="gray.500">
               Publisher
             </Text>
 
@@ -75,7 +75,7 @@ export function Details({ game }: DetailsProps) {
           </Box>
 
           <Box flex="1" maxW={{ base: '100%', lg: '300px' }} minW="200px">
-            <Text fontSize="xl" mb="0.4rem">
+            <Text fontSize="xl" mb="0.4rem" color="gray.500">
               Developer
             </Text>
 
@@ -85,7 +85,10 @@ export function Details({ game }: DetailsProps) {
           </Box>
 
           <Box flex="1" maxW={{ base: '100%', lg: '300px' }} minW="200px">
-            <Text fontSize="xl">Release Date</Text>
+            <Text fontSize="xl" color="gray.500">
+              Release Date
+            </Text>
+
             <Text fontSize="xl" fontWeight="bold">
               {formatGameStrDate(game.released)}
             </Text>
@@ -100,7 +103,7 @@ export function Details({ game }: DetailsProps) {
             wrap="wrap"
             direction="column"
           >
-            <Text fontSize="xl" mb="0.4rem">
+            <Text fontSize="xl" mb="0.4rem" color="gray.500">
               Platforms
             </Text>
 
@@ -121,6 +124,8 @@ export function Details({ game }: DetailsProps) {
                     key={platform.slug}
                     placement="bottom"
                     label={platform.name}
+                    color="white"
+                    bg="action.500"
                   >
                     <Box>
                       <PlatformIcon size={20} />
@@ -130,7 +135,12 @@ export function Details({ game }: DetailsProps) {
               })}
 
               {hasOthersPlatforms && (
-                <Tooltip placement="bottom" label="Others">
+                <Tooltip
+                  placement="bottom"
+                  label="Others"
+                  color="white"
+                  bg="action.500"
+                >
                   <Box>
                     <CgMore />
                   </Box>

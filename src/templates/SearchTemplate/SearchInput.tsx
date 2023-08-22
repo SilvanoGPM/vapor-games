@@ -7,7 +7,6 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Spinner,
 } from '@chakra-ui/react';
 
 type SearchInputProps = {
@@ -46,16 +45,17 @@ export function SearchInput({ onSubmit, isLoading }: SearchInputProps) {
         />
 
         <InputRightElement>
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <IconButton
-              aria-label="Search game"
-              variant="unstyled"
-              type="submit"
-              icon={<SearchIcon />}
-            />
-          )}
+          <IconButton
+            aria-label="Search game"
+            variant="unstyled"
+            type="submit"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            fontSize="xl"
+            icon={<SearchIcon />}
+            isLoading={isLoading}
+          />
         </InputRightElement>
       </InputGroup>
     </Box>

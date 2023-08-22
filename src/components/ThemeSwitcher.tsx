@@ -19,7 +19,13 @@ export function ThemeSwitcher() {
 
   return (
     <LightMode>
-      <Tooltip label={label} placement="bottom" hasArrow>
+      <Tooltip
+        label={label}
+        placement="bottom"
+        hasArrow
+        color="white"
+        bg="action.500"
+      >
         <IconButton
           colorScheme="whiteAlpha"
           onClick={toggleColorMode}
