@@ -35,6 +35,7 @@ function Screenshot({ image }: { image: string }) {
 
   return (
     <VaporImage
+      unoptimized
       bgColor="#f6f7f8"
       bgGradient="linear(
                   to-r,

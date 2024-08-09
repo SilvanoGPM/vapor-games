@@ -27,6 +27,7 @@ export function GameImage({ src, name }: GameImageProps) {
 
   return (
     <VaporImage
+      unoptimized
       width={1200}
       height={1700}
       src={src || fallbackImage}

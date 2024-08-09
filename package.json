@@ -63,8 +63,8 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js}": [
-      "yarn lint --fix",
-      "yarn test --findRelatedTests --passWithNoTests --bail"
+      "npm run lint -- --fix",
+      "npm run test -- --findRelatedTests --passWithNoTests --bail"
     ],
     "*.{css,md}": [
       "prettier --write"
