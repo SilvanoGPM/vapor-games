@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 
 import { Title } from 'components/Title';
 
+import { ArrowRightIcon } from '@chakra-ui/icons';
 import { GenresType } from '.';
 
 interface ListHeaderProps {
@@ -28,6 +29,7 @@ export function ListHeader({ title, genre }: ListHeaderProps) {
             _focusVisible={{
               textDecor: 'underline',
             }}
+            rightIcon={<ArrowRightIcon />}
           >
             View more
           </Button>

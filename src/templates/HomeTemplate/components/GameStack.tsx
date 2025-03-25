@@ -42,7 +42,7 @@ export function GameStack({
       pos="absolute"
       right={{ base: '2rem', md: '4rem' }}
       left={{ base: '2rem', md: 'unset' }}
-      bottom={{ base: '-6rem', md: '1rem' }}
+      bottom={{ base: '1rem', md: '1rem' }}
       direction={{ base: 'row', md: 'column' }}
       justify="space-between"
     >
@@ -52,14 +52,13 @@ export function GameStack({
             placement={gameTooltipPlacement}
             label={game.name}
             hasArrow
-            openDelay={500}
             color="white"
             bg="action.500"
           >
             <Button
               onClick={handleSelectedGame(index)}
-              w="100px"
-              h="60px"
+              w={{ base: '200px', lg: '16vw' }}
+              h={{ base: '120px', lg: '16vh' }}
               rounded="xl"
               bg="whiteAlpha.500"
               bgImage={game.background_image || ''}

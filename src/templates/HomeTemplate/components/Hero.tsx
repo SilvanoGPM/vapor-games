@@ -1,5 +1,5 @@
+import { Box, LightMode, useBoolean } from '@chakra-ui/react';
 import { useState } from 'react';
-import { LightMode, useBoolean } from '@chakra-ui/react';
 
 import { Animation } from 'components/Animation';
 import { Hero, HeroProps } from 'components/HeroParts';
@@ -28,7 +28,11 @@ export function HomeHero({ games }: HomeHeroProps) {
   };
 
   return (
-    <Hero.Background bgImage={background_image || ''} h="100vh">
+    <Hero.Background
+      bgImage={background_image || ''}
+      h="100vh"
+      pb={{ base: '0', md: '20' }}
+    >
       <LightMode>
         <Animation {...animationBase}>
           <Hero.Title>{name}</Hero.Title>
@@ -60,6 +64,8 @@ export function HomeHero({ games }: HomeHeroProps) {
           <Hero.Details slug={slug} />
         </Animation>
       </LightMode>
+
+      <Box width="100%" height={{ base: '150px', md: '0' }} />
 
       <GameStack
         selectedIndex={selectedGameIndex}
