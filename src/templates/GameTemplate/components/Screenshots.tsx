@@ -2,7 +2,6 @@ import {
   Box,
   useBreakpointValue,
   usePrefersReducedMotion,
-  keyframes,
 } from '@chakra-ui/react';
 
 import { AnimationOnScroll } from 'react-animation-on-scroll';
@@ -11,6 +10,7 @@ import { Slider, SlideSettings, Slide } from 'components/Slider';
 import { VaporImage } from 'components/VaporImage';
 import { ScreenshotType } from 'services/rawg';
 import { Title } from 'components/Title';
+import { keyframes } from '@emotion/react';
 
 type ScreenshotsProps = {
   screenshots: ScreenshotType[];

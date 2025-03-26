@@ -1,11 +1,11 @@
 import { HStack, Spinner } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
-import { BiLike, BiJoystick, BiHeart } from 'react-icons/bi';
-import { useMutation, useQuery } from 'react-query';
 import { useState } from 'react';
+import { BiHeart, BiJoystick, BiLike } from 'react-icons/bi';
+import { useMutation, useQuery } from 'react-query';
 
-import { getUserActions, toggleUserAction } from 'services/supabase';
 import { queryCient } from 'services/queryClient';
+import { getUserActions, toggleUserAction } from 'services/supabase';
 
 import { Action } from './Action';
 
@@ -65,7 +65,7 @@ export function GameActions({ gameName }: GameActionsProps) {
   const playedLoading = mutation.isLoading && actualAction === 'played';
 
   return (
-    <HStack spacing="4">
+    <HStack spacing="4" align="center">
       <Action
         aria-label="Favorite"
         activeColor="red"

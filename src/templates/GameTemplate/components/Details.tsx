@@ -3,23 +3,24 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 import {
   Box,
-  Flex,
-  Text,
-  Divider,
-  Tooltip,
-  Center,
   Button,
+  Center,
+  Divider,
+  Flex,
   LightMode,
+  Text,
+  Tooltip,
 } from '@chakra-ui/react';
 
 import { IconType } from 'react-icons';
-import { AiFillWindows, AiFillAndroid, AiFillApple } from 'react-icons/ai';
-import { FaPlaystation, FaXbox, FaLinux } from 'react-icons/fa';
+import { AiFillAndroid, AiFillApple, AiFillWindows } from 'react-icons/ai';
 import { CgMore } from 'react-icons/cg';
+import { FaLinux, FaPlaystation, FaXbox } from 'react-icons/fa';
 
+import { Title } from 'components/Title';
+import { BiGlobe } from 'react-icons/bi';
 import { GameType } from 'services/rawg';
 import { formatGameStrDate } from 'utils/fomatters';
-import { Title } from 'components/Title';
 
 type DetailsProps = {
   game: GameType;
@@ -56,6 +57,7 @@ export function Details({ game }: DetailsProps) {
                 _focusVisible={{
                   textDecor: 'underline',
                 }}
+                leftIcon={<BiGlobe />}
               >
                 Website
               </Button>

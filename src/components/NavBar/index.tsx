@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 
 import {
   Box,
@@ -13,17 +12,17 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
+import { LogInButton } from 'components/LogInButton';
 import { useResizeEffect } from 'hooks/useResizeEffect';
 import { useScrollLock } from 'hooks/useScrollLock';
-import { LogInButton } from 'components/LogInButton';
 
 import { ThemeSwitcher } from '../ThemeSwitcher';
 
 import { Container } from './Container';
+import { GoBack } from './GoBack';
 import { Logo } from './Logo';
 import { MenuLinks } from './MenuLinks';
 import { MenuToggle } from './MenuToggle';
-import { GoBack } from './GoBack';
 import { UserInfo } from './UserInfo';
 
 type NavBarProps = {
@@ -36,8 +35,6 @@ export function NavBar({
   colorSelected = 'black',
   ...props
 }: NavBarProps) {
-  const router = useRouter();
-
   const { lockScroll, unlockScroll } = useScrollLock();
 
   const bg = useColorModeValue('#ffffff', '#121212');
@@ -72,22 +69,14 @@ export function NavBar({
           md: 'space-between',
         }}
       >
-        <Flex
-          align="center"
-          gap="1.5rem"
-          display={{
-            base: router.pathname !== '/' ? 'flex' : 'none',
-            md: 'flex',
-          }}
-        >
+        <Flex align="center" gap="1.5rem" display="flex">
           <GoBack isOpen={isOpen} />
           <Logo
             display={{ base: 'none', md: 'block' }}
             color={isOpen ? 'black' : props.color}
           />
+          <MenuToggle toggle={onToggle} isOpen={isOpen} />
         </Flex>
-
-        <MenuToggle toggle={onToggle} isOpen={isOpen} />
 
         <Flex
           align="center"

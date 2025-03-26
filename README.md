@@ -22,11 +22,11 @@
 
 - Visualização de jogos e informações detalhadas.
 - Pesquisa de jogos por nome e gênero.
-- Navegação por teclado. 
+- Navegação por teclado.
 - Tema claro e escuro.
 - Geração de um novo Hero todo dia por meio de [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
 - Ações para cada jogo(like, favorite, played).
-- Trailer do Jogo.
+- Trailer do Jogo (quando encontrado).
 
 ## Imagens :sparkles:
 

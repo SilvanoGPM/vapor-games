@@ -44,7 +44,11 @@ export function GameHero({
       </LightMode>
 
       {isUserLoggedIn && (
-        <Box pos="absolute" right="1rem" bottom={{ base: '-3rem', md: '1rem' }}>
+        <Box
+          pos="absolute"
+          right="1rem"
+          bottom={{ base: '2rem', md: '3rem', lg: '5rem' }}
+        >
           <DarkMode>
             <GameActions gameName={name} />
           </DarkMode>

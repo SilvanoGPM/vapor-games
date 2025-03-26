@@ -69,5 +69,5 @@ export async function getIGBDToken() {
     return generateToken();
   }
 
-  return token;
+  return token as string;
 }

@@ -1,5 +1,4 @@
 import {
-  As,
   Icon,
   IconButton,
   IconButtonProps,
@@ -10,7 +9,7 @@ import {
 interface ActionProps extends Omit<IconButtonProps, 'icon'> {
   active?: boolean;
   activeColor?: string;
-  icon: As;
+  icon: React.ElementType;
   loading?: boolean;
 }
 
@@ -22,10 +21,6 @@ export function Action({
   children,
   ...props
 }: ActionProps) {
-  if (loading) {
-    return <Spinner color={activeColor} />;
-  }
-
   return (
     <Tooltip
       label={props['aria-label']}
@@ -33,21 +28,25 @@ export function Action({
       bg={activeColor}
       color="white"
     >
-      <IconButton
-        color={active ? activeColor : props.color}
-        variant="unstyled"
-        size="sm"
-        icon={
-          <Icon
-            as={icon}
-            fontSize={{ base: '2xl', md: '4xl' }}
-            _light={{ color: { base: '#191919', md: '#fff' } }}
-          />
-        }
-        {...props}
-      >
-        {children}
-      </IconButton>
+      {loading ? (
+        <Spinner color={activeColor} size={{ base: 'md', lg: 'xl' }} />
+      ) : (
+        <IconButton
+          color={active ? activeColor : props.color}
+          variant="unstyled"
+          size="sm"
+          icon={
+            <Icon
+              as={icon}
+              fontSize={{ base: '2xl', md: '4xl', lg: '6xl' }}
+              _light={{ color: { base: '#191919', md: '#fff' } }}
+            />
+          }
+          {...props}
+        >
+          {children}
+        </IconButton>
+      )}
     </Tooltip>
   );
 }

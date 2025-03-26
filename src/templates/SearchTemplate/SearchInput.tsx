@@ -1,5 +1,5 @@
-import { FormEvent, useState } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
+import { FormEvent, useState } from 'react';
 
 import {
   Box,
@@ -27,6 +27,7 @@ export function SearchInput({ onSubmit, isLoading }: SearchInputProps) {
     <Box as="form" w="full" onSubmit={handleSubmit}>
       <InputGroup>
         <Input
+          autoFocus
           value={game}
           onChange={(event) => setGame(event.target.value)}
           border="1px"

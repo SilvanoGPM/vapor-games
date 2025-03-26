@@ -34,7 +34,12 @@ export function UserInfo({ name, image, email }: UserInfoProps) {
       <Box display={{ base: 'none', md: 'block' }} mr="4">
         <OneLineText title={name}>{name}</OneLineText>
 
-        <OneLineText title={String(email)} color="gray.500" fontSize="sm">
+        <OneLineText
+          title={String(email)}
+          color="gray.500"
+          fontSize="sm"
+          maxWidth="140px"
+        >
           {email}
         </OneLineText>
       </Box>

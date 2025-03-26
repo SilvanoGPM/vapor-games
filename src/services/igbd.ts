@@ -81,7 +81,9 @@ export async function getGameVideos(
     );
 
     return videos || [];
-  } catch {
+  } catch (error) {
+    console.log(`error on getGameVideos trying again (${tried})`, error);
+
     await generateToken();
     return getGameVideos(gameName, tried + 1);
   }

@@ -1,4 +1,5 @@
-import { keyframes, usePrefersReducedMotion } from '@chakra-ui/react';
+import { usePrefersReducedMotion } from '@chakra-ui/react';
+import { keyframes } from '@emotion/react';
 
 import { VaporImage } from 'components/VaporImage';
 

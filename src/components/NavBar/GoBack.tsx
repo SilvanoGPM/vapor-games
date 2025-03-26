@@ -18,6 +18,7 @@ export function GoBack({ isOpen }: GoBackProps) {
         icon={<ArrowBackIcon />}
         fontWeight="bold"
         onClick={router.back}
+        color="white"
         bgColor="transparent"
         _hover={{
           bgColor: 'transparent',
